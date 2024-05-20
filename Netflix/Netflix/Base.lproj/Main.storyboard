@@ -372,7 +372,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFD-fY-rqw">
-                                <rect key="frame" x="40" y="500.33333333333331" width="313" height="20.999999999999943"/>
+                                <rect key="frame" x="40" y="504.66666666666674" width="313" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="bSH-W1-PPg"/>
                                 </constraints>
@@ -453,9 +453,9 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPu-3u-Y0T">
-                                <rect key="frame" x="36" y="526.66666666666663" width="149" height="41"/>
+                                <rect key="frame" x="36" y="537.66666666666663" width="149" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="VEM-NQ-pjt"/>
+                                    <constraint firstAttribute="height" constant="30" id="VEM-NQ-pjt"/>
                                 </constraints>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
@@ -464,9 +464,12 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eay-PO-dCV">
-                                <rect key="frame" x="197" y="533.33333333333337" width="156" height="34.333333333333371"/>
+                                <rect key="frame" x="197" y="537.66666666666663" width="156" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="m8o-tJ-cvR"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CDd-0c-wZ2"/>
@@ -505,6 +508,10 @@
                         <outlet property="thirdPosterImgView" destination="JZa-3e-Ch5" id="9NL-pq-60m"/>
                         <outlet property="top10ImageView" destination="UcY-e4-nfy" id="tky-QV-C5H"/>
                         <outlet property="watchLabel" destination="hVl-3x-sne" id="rIU-iZ-cg9"/>
+                        <outletCollection property="postImageView" destination="5oQ-Tl-hBR" collectionClass="NSMutableArray" id="MOy-mj-Gc1"/>
+                        <outletCollection property="postImageView" destination="PmD-as-yTo" collectionClass="NSMutableArray" id="Xrt-UJ-hjg"/>
+                        <outletCollection property="postImageView" destination="Sx2-tN-xa8" collectionClass="NSMutableArray" id="dMI-4M-S8X"/>
+                        <outletCollection property="postImageView" destination="JZa-3e-Ch5" collectionClass="NSMutableArray" id="DhD-NK-jcn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="42m-0J-LhH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

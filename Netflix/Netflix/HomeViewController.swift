@@ -20,16 +20,12 @@ class HomeViewController: UIViewController {
     @IBOutlet var newEpisodeLabel: UILabel!
     @IBOutlet var watchLabel: UILabel!
     
+    @IBOutlet var postImageView: [UIImageView]!
+    
     var posters = ["명량", "더퍼스트슬램덩크", "알라딘", "아바타물의길"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        mainPosterImgView.image = UIImage.명량
-        mainPosterImgView.contentMode = .scaleAspectFill
-        mainPosterImgView.layer.cornerRadius = 10
-        mainPosterImgView.layer.borderWidth = 2
-        mainPosterImgView.layer.borderColor = UIColor.systemGray2.cgColor
         
         posterCategoryLabel.text = "응원하고픈 . 흥미진진 . 사극 . 전투 . 한국작품"
         posterCategoryLabel.textColor = .white
@@ -43,36 +39,23 @@ class HomeViewController: UIViewController {
         likeButton.setTitle("내가 찜한 리스트", for: .normal)
         likeButton.setTitleColor(.white, for: .normal)
         likeButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        likeButton.titleLabel?.font = .systemFont(ofSize: 11, weight: .semibold)
         likeButton.tintColor = .white
         likeButton.backgroundColor = .gray
         likeButton.layer.cornerRadius = 7
         
         risingContent.text = "지금 뜨는 콘텐츠"
-        risingContent.textColor = .white
+        risingContent.textColor = .label
         risingContent.font = .systemFont(ofSize: 22, weight: .heavy)
         
-        firstPosterImgView.image = UIImage.더퍼스트슬램덩크
-        firstPosterImgView.contentMode = .scaleAspectFill
-        firstPosterImgView.layer.cornerRadius = 5
-        firstPosterImgView.layer.borderWidth = 2
-        firstPosterImgView.layer.borderColor = UIColor.systemGray2.cgColor
-        
-        secondPosterImgView.image = UIImage.알라딘
-        secondPosterImgView.contentMode = .scaleAspectFill
-        secondPosterImgView.layer.cornerRadius = 5
-        secondPosterImgView.layer.borderWidth = 2
-        secondPosterImgView.layer.borderColor = UIColor.systemGray2.cgColor
-        
-        thirdPosterImgView.image = UIImage.아바타물의길
-        thirdPosterImgView.contentMode = .scaleAspectFill
-        thirdPosterImgView.layer.cornerRadius = 5
-        thirdPosterImgView.layer.borderWidth = 2
-        thirdPosterImgView.layer.borderColor = UIColor.systemGray2.cgColor
+        for i in 0..<postImageView.count {
+            setPostUI(postImageView[i], image: UIImage(named: posters[i])!, cornerRadius: i == 0 ? 10 : 5)
+        }
         
         top10ImageView.image = UIImage.top10Badge
         top10ImageView.contentMode = .scaleAspectFit
         
-        newEpisodeLabel.text = "지금 시청하기"
+        newEpisodeLabel.text = " 지금 시청하기 "
         newEpisodeLabel.textColor = .black
         newEpisodeLabel.textAlignment = .center
         newEpisodeLabel.font = .systemFont(ofSize: 14, weight: .semibold)
@@ -80,6 +63,7 @@ class HomeViewController: UIViewController {
         newEpisodeLabel.layer.cornerRadius = 5
         newEpisodeLabel.layer.borderWidth = 1
         newEpisodeLabel.layer.borderColor = UIColor.black.cgColor
+        newEpisodeLabel.clipsToBounds = true
         
         watchLabel.text = "새로운 에피소드"
         watchLabel.textColor = .white
@@ -87,6 +71,14 @@ class HomeViewController: UIViewController {
         watchLabel.font = .systemFont(ofSize: 14, weight: .semibold)
         watchLabel.backgroundColor = .red
         watchLabel.layer.cornerRadius = 5
+    }
+    
+    func setPostUI(_ imageView: UIImageView, image: UIImage, cornerRadius: CGFloat) {
+        imageView.image = image
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.cornerRadius = cornerRadius
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.systemGray2.cgColor
     }
     
     @IBAction func playBtnTapped(_ sender: UIButton) {

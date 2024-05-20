@@ -14,7 +14,8 @@ class WordViewController: UIViewController {
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var resultLabel: UILabel!
     
-    let wordList = ["무물보" : "무엇이든 물어보세요", "스불재" : "스스로 불러온 재앙", "디토합니다" : "동의합니다", "중꺾마" : "중요한건 꺾이지 않는 마음", "자만추" : "자연스러운 만남 추구"]
+    let wordList = ["무물보", "스불재", "디토합니다", "중꺾마", "자만추", "별다줄", "분좋카", "700", "완내스", "억텐"]
+    let resultList = ["무엇이든 물어보세요", "스스로 불러온 재앙", "동의합니다", "중요한건 꺾이지 않는 마음", "자연스러운 만남 추구", "별걸 다 줄이네", "분위기 좋은 카페", "귀여워", "완전 내 스타일", "억지 텐션"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,8 @@ class WordViewController: UIViewController {
         setTextField()
         setSearchButton()
         
-        for (index, word) in wordList.enumerated() {
-            setWordButton(wordButtons[index], title: word.key)
+        for i in 0..<5 {
+            setWordButton(wordButtons[i], title: wordList[i])
         }
         
         setResult()
@@ -65,8 +66,9 @@ class WordViewController: UIViewController {
     
     @IBAction func searchWord(_ sender: Any) {
         let search = searchTextField.text ?? ""
-        if let result = wordList[search] {
-            resultLabel.text = result
+        
+        if let index = wordList.firstIndex(of: search) {
+            resultLabel.text = resultList[index]
         } else {
             resultLabel.text = "검색 결과가 없습니다."
         }
@@ -76,9 +78,10 @@ class WordViewController: UIViewController {
     
     @IBAction func wordBtnDidTapped(_ sender: UIButton) {
         let word = sender.titleLabel?.text ?? ""
+        let index = wordList.firstIndex(of: word) ?? 0
         
         searchTextField.text = word
-        resultLabel.text = wordList[word]
+        resultLabel.text = resultList[index]
         
         view.endEditing(true)
     }

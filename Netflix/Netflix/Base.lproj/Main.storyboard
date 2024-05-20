@@ -283,52 +283,58 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RUT-vZ-Jc8">
-                                <rect key="frame" x="28" y="103" width="336" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RUT-vZ-Jc8">
+                                <rect key="frame" x="20" y="115" width="353" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="returnDidTapped:" destination="p0O-dK-lbx" eventType="editingDidEndOnExit" id="QKn-eb-Szi"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCI-gD-Udf">
-                                <rect key="frame" x="16" y="272" width="361" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCI-gD-Udf">
+                                <rect key="frame" x="16" y="402.66666666666669" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDC-xh-gNa">
-                                <rect key="frame" x="16" y="301" width="361" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDC-xh-gNa">
+                                <rect key="frame" x="16" y="435.66666666666669" width="361" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-Wb-sM5">
-                                <rect key="frame" x="1" y="155" width="89" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg5-Wb-sM5">
+                                <rect key="frame" x="1" y="161" width="66" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="aaa-6Q-3aQ"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
                                 <connections>
                                     <action selector="categoryBtnDidTap:" destination="p0O-dK-lbx" eventType="touchUpInside" id="S5G-3K-W0c"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqN-ge-NtJ">
-                                <rect key="frame" x="133" y="155" width="146" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fqN-ge-NtJ">
+                                <rect key="frame" x="75" y="161" width="66" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="A3D-do-iN2"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="categoryBtnDidTap:" destination="p0O-dK-lbx" eventType="touchUpInside" id="aTT-Lr-EMv"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjO-dO-pju">
-                                <rect key="frame" x="282" y="155" width="110" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjO-dO-pju">
+                                <rect key="frame" x="149" y="161" width="66" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Ns7-7Y-xQb"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
                                     <action selector="categoryBtnDidTap:" destination="p0O-dK-lbx" eventType="touchUpInside" id="NRx-Gg-M6c"/>
                                 </connections>
@@ -336,6 +342,23 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2fk-yd-jL2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="YCI-gD-Udf" firstAttribute="leading" secondItem="2fk-yd-jL2" secondAttribute="leading" constant="16" id="7IG-qd-tkB"/>
+                            <constraint firstItem="RUT-vZ-Jc8" firstAttribute="leading" secondItem="2fk-yd-jL2" secondAttribute="leading" constant="20" id="E7b-ww-csA"/>
+                            <constraint firstItem="NDC-xh-gNa" firstAttribute="top" secondItem="YCI-gD-Udf" secondAttribute="bottom" constant="12" id="M5X-8c-SAO"/>
+                            <constraint firstItem="2fk-yd-jL2" firstAttribute="trailing" secondItem="NDC-xh-gNa" secondAttribute="trailing" constant="16" id="MfP-Da-5dw"/>
+                            <constraint firstItem="2fk-yd-jL2" firstAttribute="trailing" secondItem="RUT-vZ-Jc8" secondAttribute="trailing" constant="20" id="NVB-wl-aZ2"/>
+                            <constraint firstItem="eg5-Wb-sM5" firstAttribute="top" secondItem="RUT-vZ-Jc8" secondAttribute="bottom" constant="12" id="Q8C-jN-NHw"/>
+                            <constraint firstItem="XjO-dO-pju" firstAttribute="leading" secondItem="fqN-ge-NtJ" secondAttribute="trailing" constant="8" id="Rfh-YJ-3Gs"/>
+                            <constraint firstItem="fqN-ge-NtJ" firstAttribute="top" secondItem="RUT-vZ-Jc8" secondAttribute="bottom" constant="12" id="RhG-6h-Yfh"/>
+                            <constraint firstItem="XjO-dO-pju" firstAttribute="top" secondItem="RUT-vZ-Jc8" secondAttribute="bottom" constant="12" id="U2j-el-Tch"/>
+                            <constraint firstItem="eg5-Wb-sM5" firstAttribute="leading" secondItem="2fk-yd-jL2" secondAttribute="leading" constant="1" id="UOX-QH-txU"/>
+                            <constraint firstItem="NDC-xh-gNa" firstAttribute="centerY" secondItem="Vhk-sS-ayX" secondAttribute="centerY" constant="20" id="cbo-WM-mGO"/>
+                            <constraint firstItem="fqN-ge-NtJ" firstAttribute="leading" secondItem="eg5-Wb-sM5" secondAttribute="trailing" constant="8" id="dJw-Lx-mXj"/>
+                            <constraint firstItem="NDC-xh-gNa" firstAttribute="leading" secondItem="2fk-yd-jL2" secondAttribute="leading" constant="16" id="hX3-9f-dup"/>
+                            <constraint firstItem="RUT-vZ-Jc8" firstAttribute="top" secondItem="2fk-yd-jL2" secondAttribute="top" constant="12" id="pjq-ZC-aKz"/>
+                            <constraint firstItem="2fk-yd-jL2" firstAttribute="trailing" secondItem="YCI-gD-Udf" secondAttribute="trailing" constant="16" id="sxa-UU-a10"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New &amp; Hot 검색" id="Cp2-Id-VZy"/>
                     <connections>
@@ -345,6 +368,9 @@
                         <outlet property="resultLabel" destination="YCI-gD-Udf" id="W5J-Oy-tH7"/>
                         <outlet property="searchTextField" destination="RUT-vZ-Jc8" id="NSm-zy-bWC"/>
                         <outlet property="top10Button" destination="XjO-dO-pju" id="su1-B2-Rx1"/>
+                        <outletCollection property="capsuleButton" destination="eg5-Wb-sM5" collectionClass="NSMutableArray" id="drw-cU-316"/>
+                        <outletCollection property="capsuleButton" destination="fqN-ge-NtJ" collectionClass="NSMutableArray" id="zlE-Pf-8LS"/>
+                        <outletCollection property="capsuleButton" destination="XjO-dO-pju" collectionClass="NSMutableArray" id="cXb-QT-pKZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bvS-TM-xfE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

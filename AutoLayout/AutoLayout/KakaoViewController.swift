@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class KakaoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

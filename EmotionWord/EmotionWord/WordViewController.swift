@@ -10,11 +10,7 @@ import UIKit
 class WordViewController: UIViewController {
     @IBOutlet var searchTextField: UITextField!
     @IBOutlet var searchButton: UIButton!
-    @IBOutlet var word1Button: UIButton!
-    @IBOutlet var word2Button: UIButton!
-    @IBOutlet var word3Button: UIButton!
-    @IBOutlet var word4Button: UIButton!
-    @IBOutlet var word5Button: UIButton!
+    @IBOutlet var wordButtons: [UIButton]!
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var resultLabel: UILabel!
     
@@ -25,11 +21,11 @@ class WordViewController: UIViewController {
         
         setTextField()
         setSearchButton()
-        setWordButton(word1Button, title: "무물보")
-        setWordButton(word2Button, title: "스불재")
-        setWordButton(word3Button, title: "디토합니다")
-        setWordButton(word4Button, title: "중꺾마")
-        setWordButton(word5Button, title: "자만추")
+        
+        for (index, word) in wordList.enumerated() {
+            setWordButton(wordButtons[index], title: word.key)
+        }
+        
         setResult()
     }
 

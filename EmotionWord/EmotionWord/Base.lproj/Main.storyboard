@@ -478,11 +478,11 @@
                         <outlet property="resultLabel" destination="06A-sQ-vVD" id="CkN-b2-0hf"/>
                         <outlet property="searchButton" destination="Nxo-WI-xVb" id="geV-yK-KIV"/>
                         <outlet property="searchTextField" destination="XEl-p9-ZEF" id="qmM-PS-ecz"/>
-                        <outlet property="word1Button" destination="dzM-iy-zOX" id="bmq-zv-nTR"/>
-                        <outlet property="word2Button" destination="KQF-ls-8JU" id="3Xu-2j-k51"/>
-                        <outlet property="word3Button" destination="ZcM-0y-SsT" id="uQ5-TX-9h4"/>
-                        <outlet property="word4Button" destination="plU-hJ-JLQ" id="x3E-Vv-qG0"/>
-                        <outlet property="word5Button" destination="DFY-f5-LtS" id="5dZ-x6-gFQ"/>
+                        <outletCollection property="wordButtons" destination="dzM-iy-zOX" collectionClass="NSMutableArray" id="wff-oS-RHD"/>
+                        <outletCollection property="wordButtons" destination="KQF-ls-8JU" collectionClass="NSMutableArray" id="Kyk-2N-04i"/>
+                        <outletCollection property="wordButtons" destination="ZcM-0y-SsT" collectionClass="NSMutableArray" id="fne-8c-Uzg"/>
+                        <outletCollection property="wordButtons" destination="plU-hJ-JLQ" collectionClass="NSMutableArray" id="To8-Yw-LJK"/>
+                        <outletCollection property="wordButtons" destination="DFY-f5-LtS" collectionClass="NSMutableArray" id="m0t-mn-11u"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgH-hp-ZhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

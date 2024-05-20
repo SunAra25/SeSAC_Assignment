@@ -167,29 +167,29 @@
                     <tabBarItem key="tabBarItem" title="emotion" image="face.smiling.inverse" catalog="system" id="MUG-tf-4TB"/>
                     <navigationItem key="navigationItem" title="감정 다이어리" id="xjV-on-eps"/>
                     <connections>
-                        <outlet property="boringButton" destination="lLd-Od-CIX" id="Epz-WB-QFN"/>
-                        <outlet property="boringLabel" destination="22q-sI-RoU" id="Eta-D2-X58"/>
-                        <outlet property="disappointedButton" destination="poE-IJ-Icm" id="Fvx-kb-bwq"/>
-                        <outlet property="disappointedLabel" destination="JRF-1M-gGS" id="P4Y-8E-de9"/>
-                        <outlet property="happyButton" destination="v2k-6m-JZp" id="aRQ-AY-953"/>
-                        <outlet property="happyLabel" destination="iro-Ag-kE0" id="xc7-j5-hkG"/>
-                        <outlet property="likeButton" destination="dH6-Ve-gn9" id="bm2-Fe-oLc"/>
-                        <outlet property="likeLabel" destination="9l7-r1-1B6" id="jZb-nC-k1Q"/>
-                        <outlet property="loveButton" destination="apF-nc-36x" id="OCz-YG-gYo"/>
-                        <outlet property="loveLabel" destination="WWX-Cp-cbf" id="zUH-pT-KPW"/>
-                        <outlet property="panicButton" destination="SVJ-Fl-uOY" id="lGS-nS-1uC"/>
-                        <outlet property="panicLabel" destination="XaN-bU-CEM" id="BSK-Am-hA4"/>
-                        <outlet property="relifeButton" destination="35u-82-4ct" id="jyE-g1-GTU"/>
-                        <outlet property="relifeLabel" destination="WeD-EB-beM" id="gYw-el-dRW"/>
-                        <outlet property="sadButton" destination="xWj-bO-D1M" id="ha4-Pt-JCy"/>
-                        <outlet property="sadLabel" destination="lp6-5r-6DM" id="LvY-hR-JJ3"/>
-                        <outlet property="upsetButton" destination="h4u-Ab-cEm" id="Sdw-hX-pJb"/>
-                        <outlet property="upsetLabel" destination="gK9-WV-93f" id="zri-Ny-723"/>
+                        <outletCollection property="emotionButtons" destination="v2k-6m-JZp" collectionClass="NSMutableArray" id="74G-LR-LEF"/>
+                        <outletCollection property="emotionButtons" destination="apF-nc-36x" collectionClass="NSMutableArray" id="aNe-pm-Woa"/>
+                        <outletCollection property="emotionButtons" destination="dH6-Ve-gn9" collectionClass="NSMutableArray" id="aeQ-2c-hvC"/>
+                        <outletCollection property="emotionButtons" destination="h4u-Ab-cEm" collectionClass="NSMutableArray" id="dTE-Ak-DKf"/>
+                        <outletCollection property="emotionButtons" destination="lLd-Od-CIX" collectionClass="NSMutableArray" id="vVb-FG-HW0"/>
+                        <outletCollection property="emotionButtons" destination="35u-82-4ct" collectionClass="NSMutableArray" id="vra-nm-3rw"/>
+                        <outletCollection property="emotionButtons" destination="SVJ-Fl-uOY" collectionClass="NSMutableArray" id="H6n-la-ZQt"/>
+                        <outletCollection property="emotionButtons" destination="poE-IJ-Icm" collectionClass="NSMutableArray" id="M9z-nv-uog"/>
+                        <outletCollection property="emotionButtons" destination="xWj-bO-D1M" collectionClass="NSMutableArray" id="RiE-o0-C1x"/>
+                        <outletCollection property="emotionLabels" destination="iro-Ag-kE0" collectionClass="NSMutableArray" id="pA8-tq-fkl"/>
+                        <outletCollection property="emotionLabels" destination="WWX-Cp-cbf" collectionClass="NSMutableArray" id="tfK-ec-hpC"/>
+                        <outletCollection property="emotionLabels" destination="9l7-r1-1B6" collectionClass="NSMutableArray" id="MgT-Om-sXI"/>
+                        <outletCollection property="emotionLabels" destination="gK9-WV-93f" collectionClass="NSMutableArray" id="vf5-LA-49r"/>
+                        <outletCollection property="emotionLabels" destination="22q-sI-RoU" collectionClass="NSMutableArray" id="IIy-0G-aML"/>
+                        <outletCollection property="emotionLabels" destination="WeD-EB-beM" collectionClass="NSMutableArray" id="uVR-Nn-eP2"/>
+                        <outletCollection property="emotionLabels" destination="XaN-bU-CEM" collectionClass="NSMutableArray" id="7e0-GP-eL2"/>
+                        <outletCollection property="emotionLabels" destination="JRF-1M-gGS" collectionClass="NSMutableArray" id="dbo-ME-uvo"/>
+                        <outletCollection property="emotionLabels" destination="lp6-5r-6DM" collectionClass="NSMutableArray" id="I2o-Xz-IL7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aIw-z8-ElI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1882" y="296"/>
+            <point key="canvasLocation" x="1881.679389312977" y="295.77464788732397"/>
         </scene>
         <!--emotion-->
         <scene sceneID="uDv-YY-Se8">

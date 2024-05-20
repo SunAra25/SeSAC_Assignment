@@ -18,32 +18,26 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        idTextField.attributedPlaceholder = NSAttributedString(string: "이메일 주소 또는 전화번호", attributes: [.foregroundColor : UIColor.white])
+        setTextFieldUI(idTextField, title: "이메일 주소 또는 전화번호")
+        setTextFieldUI(passwordTextField, title: "비밀번호")
+        setTextFieldUI(nicknameTextField, title: "닉네임")
+        setTextFieldUI(addressTextField, title: "위치")
+        setTextFieldUI(codeTextField, title: "추천 코드 입력")
         
-        passwordTextField.attributedPlaceholder = NSAttributedString(string: "비밀번호", attributes: [.foregroundColor : UIColor.white])
         passwordTextField.isSecureTextEntry = true
-        nicknameTextField.attributedPlaceholder = NSAttributedString(string: "닉네임", attributes: [.foregroundColor : UIColor.white])
-        addressTextField.attributedPlaceholder = NSAttributedString(string: "위치", attributes: [.foregroundColor : UIColor.white])
-        codeTextField.attributedPlaceholder = NSAttributedString(string: "추천 코드 입력", attributes: [.foregroundColor : UIColor.white])
-        
         joinButton.isEnabled = false
     }
     
-    @IBAction func idEndEditing(_ sender: UITextField) {
-        joinButton.isEnabled = isJoinBtnVaild()
-    }
-    
-    @IBAction func passwordEndEditing(_ sender: UITextField) {
-        joinButton.isEnabled = isJoinBtnVaild()
-    }
-    
-    
-    @IBAction func codeEndEditing(_ sender: UITextField) {
-        joinButton.isEnabled = isJoinBtnVaild()
+    @IBAction func checkJoinEnable(_ sender: UITextField) {
+        joinButton.isEnabled = isIdVaild() && isPasswordVaild() && isCodeVaild()
     }
     
     @IBAction func joinButtonDidTapped(_ sender: UIButton) {
         print("회원가입 버튼이 눌렸습니다")
+    }
+    
+    func setTextFieldUI(_ textField: UITextField, title: String) {
+        textField.attributedPlaceholder = NSAttributedString(string: title, attributes: [.foregroundColor : UIColor.white])
     }
     
     func isIdVaild() -> Bool {
@@ -55,12 +49,8 @@ class ViewController: UIViewController {
     }
     
     func isCodeVaild() -> Bool {
-        guard let codeString = codeTextField.text, let code = Int(codeString) else { return false }
+        guard let codeString = codeTextField.text, let _ = Int(codeString) else { return false }
         
         return true
-    }
-    
-    func isJoinBtnVaild() -> Bool {
-        isIdVaild() && isPasswordVaild() && isCodeVaild()
     }
 }

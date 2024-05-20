@@ -396,7 +396,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="returnBtnDidTapped:" destination="ag2-1x-nYP" eventType="editingDidEndOnExit" id="wX3-9Z-vcj"/>
+                                    <action selector="searchWord:" destination="ag2-1x-nYP" eventType="editingDidEndOnExit" id="bF2-H5-okK"/>
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nxo-WI-xVb">
@@ -405,7 +405,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 <connections>
-                                    <action selector="searchBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="ade-lc-cX0"/>
+                                    <action selector="searchWord:" destination="ag2-1x-nYP" eventType="touchUpInside" id="xTB-vk-0LI"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-iy-zOX">
@@ -467,6 +467,10 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2k2-RY-1Sg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="0bx-aS-ObW" appends="YES" id="ioq-Tr-6H2"/>
+                        </connections>
                     </view>
                     <tabBarItem key="tabBarItem" title="word" image="text.word.spacing" catalog="system" id="vxb-0a-Cnv"/>
                     <connections>
@@ -482,6 +486,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgH-hp-ZhM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0bx-aS-ObW">
+                    <connections>
+                        <action selector="keyboardDismiss:" destination="ag2-1x-nYP" id="byI-OY-eXB"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1226.7175572519084" y="-385.21126760563385"/>
         </scene>

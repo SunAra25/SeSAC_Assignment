@@ -67,21 +67,15 @@ class WordViewController: UIViewController {
         resultLabel.font = .systemFont(ofSize: 16, weight: .semibold)
     }
     
-    func searchWord() {
+    @IBAction func searchWord(_ sender: Any) {
         let search = searchTextField.text ?? ""
         if let result = wordList[search] {
             resultLabel.text = result
         } else {
             resultLabel.text = "검색 결과가 없습니다."
         }
-    }
-    
-    @IBAction func returnBtnDidTapped(_ sender: UITextField) {
-        searchWord()
-    }
-    
-    @IBAction func searchBtnDidTapped(_ sender: UIButton) {
-        searchWord()
+        
+        view.endEditing(true)
     }
     
     @IBAction func wordBtnDidTapped(_ sender: UIButton) {
@@ -89,19 +83,11 @@ class WordViewController: UIViewController {
         
         searchTextField.text = word
         resultLabel.text = wordList[word]
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         view.endEditing(true)
     }
     
-    func hideKeyboard() {
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
-                                                                 action: #selector(dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-        
-    @objc func dismissKeyboard() {
+    @IBAction func keyboardDismiss(_ sender: UITapGestureRecognizer) {
         view.endEditing(true)
     }
 }

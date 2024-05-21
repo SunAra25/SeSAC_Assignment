@@ -44,6 +44,7 @@ class ViewController: UIViewController {
         setTextFieldUI(weightTextField)
         
         imageView.image = UIImage.image
+        imageView.contentMode = .scaleAspectFill
     }
 
     func setLabelUI(_ label: UILabel, title: String, font: UIFont?) {

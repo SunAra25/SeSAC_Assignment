@@ -77,12 +77,23 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
-    @IBAction func calcuateBMI(_ sender: UIButton) {
+    func calculateBMI(height: Int, weight: Int) -> Double {
+        return Double(weight) / Double(height * height) * 10000
+    }
+    
+    @IBAction func calcuateUserInfo(_ sender: UIButton) {
         guard let heightString = heightTextField.text, let height = Int(heightString) else { return }
         guard let weightString = weightTextField.text, let weight = Int(weightString) else { return }
         
-        let result: Double = Double(weight) / Double(height * height) * 10000
+        let result = calculateBMI(height: height, weight: weight)
+        displayResult(height: height, weight: weight, num: result)
+    }
+    
+    @IBAction func randomCalculate(_ sender: UIButton) {
+        let height = Int.random(in: 100...200)
+        let weight = Int.random(in: 30...150)
         
+        let result = calculateBMI(height: height, weight: weight)
         displayResult(height: height, weight: weight, num: result)
     }
 }

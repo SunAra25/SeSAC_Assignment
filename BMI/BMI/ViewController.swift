@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         calculateButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
         calculateButton.backgroundColor = .purple
         calculateButton.layer.cornerRadius = 12
-        calculateButton.isEnabled = false
+        //calculateButton.isEnabled = false
         
         setTextFieldUI(heightTextField)
         setTextFieldUI(weightTextField)
@@ -53,6 +53,37 @@ class ViewController: UIViewController {
         textField.layer.borderWidth = 2
         textField.layer.cornerRadius = 16
         textField.keyboardType = .numberPad
+    }
+    
+    func displayResult(height: Int, weight: Int, num: Double) {
+        var result = ""
+        switch num {
+        case ...18.5: result = "저체중"
+        case 18.6..<23: result = "정상체중"
+        case 23..<25: result = "과체중"
+        case 25..<30: result = "비만"
+        case 30...: result = "고도비만"
+        default: break
+        }
+        
+        let alert = UIAlertController(title: "계산 결과 \(result)입니다.", message: "신장 \(height) 몸무게 \(weight)", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "확인", style: .default)
+        let cancle = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancle)
+        
+        present(alert, animated: true)
+    }
+    
+    @IBAction func calcuateBMI(_ sender: UIButton) {
+        guard let heightString = heightTextField.text, let height = Int(heightString) else { return }
+        guard let weightString = weightTextField.text, let weight = Int(weightString) else { return }
+        
+        let result: Double = Double(weight) / Double(height * height) * 10000
+        
+        displayResult(height: height, weight: weight, num: result)
     }
 }
 

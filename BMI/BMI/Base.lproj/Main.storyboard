@@ -48,6 +48,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="checkTextFieldInput:" destination="BYZ-38-t0r" eventType="editingChanged" id="Egn-Gd-dcj"/>
+                                    <action selector="endOnExit:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="30c-WK-aSg"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75p-aw-xuY">
                                 <rect key="frame" x="40" y="415.66666666666669" width="42" height="21"/>
@@ -62,6 +66,10 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="checkTextFieldInput:" destination="BYZ-38-t0r" eventType="editingChanged" id="XcN-zY-pM4"/>
+                                    <action selector="endOnExit:" destination="BYZ-38-t0r" eventType="editingDidEndOnExit" id="88E-8e-qwz"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-17-h8C">
                                 <rect key="frame" x="317" y="512.66666666666663" width="46" height="30"/>
@@ -85,6 +93,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="6nh-HL-AwT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="1wW-Ke-v8M"/>
                             <constraint firstItem="goi-I2-b9x" firstAttribute="top" secondItem="H4M-5B-Tgz" secondAttribute="bottom" constant="8" id="240-iQ-fvh"/>
@@ -109,6 +118,9 @@
                             <constraint firstItem="6nh-HL-AwT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="yia-z9-Qxk"/>
                             <constraint firstItem="goi-I2-b9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zfN-8f-yZm"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="aSB-lQ-eJN" appends="YES" id="S7a-9k-9rn"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="calculateButton" destination="YlR-Xu-1Dc" id="Qxp-BZ-gED"/>
@@ -123,6 +135,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="aSB-lQ-eJN">
+                    <connections>
+                        <action selector="endOnExit:" destination="BYZ-38-t0r" id="EHG-GO-b3w"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="112.21374045801527" y="-2.1126760563380285"/>
         </scene>

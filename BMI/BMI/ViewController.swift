@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     @IBOutlet var randomButton: UIButton!
     @IBOutlet var calculateButton: UIButton!
     
+    var isHeightValid = false
+    var isWeightValid = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setLabelUI(titleLabel, title: "BMI Calculator", font: .systemFont(ofSize: 24, weight: .heavy))
@@ -29,12 +32,13 @@ class ViewController: UIViewController {
         randomButton.setTitleColor(.purple, for: .normal)
         randomButton.titleLabel?.font = UIFont.systemFont(ofSize: 12)
         
+        calculateButton.isEnabled = false
         calculateButton.setTitle("결과 확인", for: .normal)
+        calculateButton.setTitleColor(.darkGray, for: .disabled)
         calculateButton.setTitleColor(.white, for: .normal)
         calculateButton.titleLabel?.font = .boldSystemFont(ofSize: 18)
-        calculateButton.backgroundColor = .purple
+        calculateButton.backgroundColor = .lightGray
         calculateButton.layer.cornerRadius = 12
-        //calculateButton.isEnabled = false
         
         setTextFieldUI(heightTextField)
         setTextFieldUI(weightTextField)
@@ -95,6 +99,25 @@ class ViewController: UIViewController {
         
         let result = calculateBMI(height: height, weight: weight)
         displayResult(height: height, weight: weight, num: result)
+    }
+    
+    
+    @IBAction func checkTextFieldInput(_ sender: UITextField) {
+        guard let input = sender.text else { return }
+        let new = input.filter { $0 != " " }
+        
+        guard let num = Int(new) else { return }
+        
+        isHeightValid = sender == heightTextField ? (100...200) ~= num : isHeightValid
+        
+        isWeightValid = sender == weightTextField ? (30...150) ~= num : isWeightValid
+        
+        calculateButton.isEnabled = isHeightValid && isWeightValid
+        calculateButton.backgroundColor = calculateButton.isEnabled ? .purple : .lightGray
+    }
+    
+    @IBAction func endOnExit(_ sender: Any) {
+        view.endEditing(true)
     }
 }
 

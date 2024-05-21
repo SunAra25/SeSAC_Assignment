@@ -30,42 +30,51 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3hB-IL-73J">
-                                <rect key="frame" x="212" y="79" width="161" height="286.66666666666669"/>
+                                <rect key="frame" x="227.66666666666663" y="79" width="145.33333333333337" height="258.66666666666669"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="3hB-IL-73J" secondAttribute="height" multiplier="9:16" id="sAb-g8-Sco"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H4M-5B-Tgz">
-                                <rect key="frame" x="30" y="336.66666666666669" width="42" height="21"/>
+                                <rect key="frame" x="40" y="308.66666666666669" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="goi-I2-b9x">
-                                <rect key="frame" x="20" y="365.66666666666669" width="353" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="goi-I2-b9x">
+                                <rect key="frame" x="20" y="337.66666666666669" width="353" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="JnE-wG-zGM"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="75p-aw-xuY">
-                                <rect key="frame" x="30" y="415.66666666666669" width="42" height="21"/>
+                                <rect key="frame" x="40" y="415.66666666666669" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ak-a4-hMw">
-                                <rect key="frame" x="20" y="444.66666666666669" width="353" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ak-a4-hMw">
+                                <rect key="frame" x="20" y="444.66666666666669" width="353" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="mJ6-gp-8fK"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w1B-17-h8C">
-                                <rect key="frame" x="288" y="490.66666666666669" width="75" height="35.000000000000057"/>
+                                <rect key="frame" x="317" y="512.66666666666663" width="46" height="30"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YlR-Xu-1Dc">
-                                <rect key="frame" x="20" y="555.66666666666663" width="353" height="35"/>
+                                <rect key="frame" x="20" y="572.66666666666663" width="353" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="JTx-zo-pnl"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -77,13 +86,13 @@
                             <constraint firstItem="75p-aw-xuY" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="4lP-iP-ntR"/>
                             <constraint firstItem="4ak-a4-hMw" firstAttribute="top" secondItem="75p-aw-xuY" secondAttribute="bottom" constant="8" id="7eZ-uB-a0j"/>
                             <constraint firstItem="2UN-To-gP7" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="AlN-vH-k42"/>
-                            <constraint firstItem="H4M-5B-Tgz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="FZw-GA-A0w"/>
+                            <constraint firstItem="H4M-5B-Tgz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="FZw-GA-A0w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YlR-Xu-1Dc" secondAttribute="trailing" constant="20" id="FjJ-wo-BuZ"/>
                             <constraint firstItem="3hB-IL-73J" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="G41-gf-2Gh"/>
                             <constraint firstItem="goi-I2-b9x" firstAttribute="top" secondItem="3hB-IL-73J" secondAttribute="bottom" id="M3W-Ct-0R3"/>
-                            <constraint firstItem="75p-aw-xuY" firstAttribute="top" secondItem="goi-I2-b9x" secondAttribute="bottom" constant="16" id="MhF-Ni-Erx"/>
+                            <constraint firstItem="75p-aw-xuY" firstAttribute="top" secondItem="goi-I2-b9x" secondAttribute="bottom" constant="22" id="MhF-Ni-Erx"/>
                             <constraint firstItem="2UN-To-gP7" firstAttribute="top" secondItem="6nh-HL-AwT" secondAttribute="bottom" constant="12" id="Xvs-bd-NfY"/>
-                            <constraint firstItem="75p-aw-xuY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="aVY-X8-V9m"/>
+                            <constraint firstItem="75p-aw-xuY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="aVY-X8-V9m"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="4ak-a4-hMw" secondAttribute="trailing" constant="20" id="b5F-Lv-yPm"/>
                             <constraint firstItem="w1B-17-h8C" firstAttribute="top" secondItem="4ak-a4-hMw" secondAttribute="bottom" constant="12" id="hn4-9A-n3H"/>
                             <constraint firstItem="YlR-Xu-1Dc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="iiF-UL-9fJ"/>
@@ -95,6 +104,17 @@
                             <constraint firstItem="goi-I2-b9x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="zfN-8f-yZm"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="calculateButton" destination="YlR-Xu-1Dc" id="Qxp-BZ-gED"/>
+                        <outlet property="heightLabel" destination="H4M-5B-Tgz" id="JKO-nF-nyE"/>
+                        <outlet property="heightTextField" destination="goi-I2-b9x" id="T2l-1y-wXr"/>
+                        <outlet property="imageView" destination="3hB-IL-73J" id="OtR-2J-CUJ"/>
+                        <outlet property="randomButton" destination="w1B-17-h8C" id="z58-rR-PNd"/>
+                        <outlet property="subTitleLabel" destination="2UN-To-gP7" id="y3l-ml-M25"/>
+                        <outlet property="titleLabel" destination="6nh-HL-AwT" id="5Db-tx-M9k"/>
+                        <outlet property="weightLabel" destination="75p-aw-xuY" id="32y-pu-wEc"/>
+                        <outlet property="weightTextField" destination="4ak-a4-hMw" id="Hq0-AP-RdH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

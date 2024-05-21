@@ -33,6 +33,23 @@ class KakaoViewController: UIViewController {
             
             setBottomBtnUI(bottomButtons[i], image: UIImage(systemName: bottomButtonImage[i]), title: bottomButtonTitle[i])
         }
+        
+        profileImageView.image = UIImage(named: "뽀야미")
+        profileImageView.layer.cornerRadius = 25
+        profileImageView.contentMode = .scaleAspectFill
+        
+        backgroundImageView.image = UIImage(named: "숲")
+        backgroundImageView.contentMode = .scaleAspectFill
+        
+        nameLabel.text = "이름"
+        nameLabel.textColor = .label
+        nameLabel.textAlignment = .center
+        nameLabel.font = .boldSystemFont(ofSize: 24)
+        
+        messageLabel.text = "상태메세지"
+        messageLabel.textColor = .darkGray
+        messageLabel.textAlignment = .center
+        messageLabel.font = .systemFont(ofSize: 18, weight: .semibold)
     }
     
     func setTopBtnUI(_ button: UIButton, image: UIImage?) {

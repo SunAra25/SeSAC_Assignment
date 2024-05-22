@@ -17,14 +17,16 @@ class EmotionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        emotionCount = getCount()
+        
         for i in 0..<9 {
             setButtonUI(emotionButtons[i], num: i)
-            setLabelUI(emotionLabels[i], title: emotions[i])
+            setLabelUI(emotionLabels[i], title: emotions[i], count: emotionCount[i])
         }
     }
 
-    func setLabelUI(_ label: UILabel, title: String) {
-        label.text = "\(title) 0"
+    func setLabelUI(_ label: UILabel, title: String, count: Int) {
+        label.text = "\(title) \(count)"
         label.textAlignment = .center
     }
     
@@ -34,10 +36,23 @@ class EmotionViewController: UIViewController {
         button.setTitle("", for: .normal)
     }
     
+    func setCount() {
+        UserDefaults.standard.setValue(emotionCount, forKey: "EmotionCount")
+    }
+    
+    func getCount() -> [Int] {
+        guard let array = UserDefaults.standard.array(forKey: "EmotionCount") as? [Int] else {
+            return [0, 0, 0, 0, 0, 0, 0, 0, 0]
+        }
+        return array
+    }
+    
     @IBAction func slimeDidTapped(_ sender: UIButton) {
         let index = sender.tag
         emotionCount[index] += 1
         emotionLabels[index].text = "\(emotions[index]) \(emotionCount[index])"
+        setCount()
+        
     }
 }
 

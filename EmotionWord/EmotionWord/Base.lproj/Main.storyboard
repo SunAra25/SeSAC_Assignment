@@ -424,18 +424,71 @@
                                     <action selector="searchWord:" destination="ag2-1x-nYP" eventType="touchUpInside" id="xTB-vk-0LI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-iy-zOX">
-                                <rect key="frame" x="16" y="165" width="66" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="XCx-AK-UAX"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="9KN-9s-NIf"/>
-                                </connections>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="22B-7c-NkL">
+                                <rect key="frame" x="16" y="165" width="361" height="35"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dzM-iy-zOX">
+                                        <rect key="frame" x="0.0" y="0.0" width="65" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="XCx-AK-UAX"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="9KN-9s-NIf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-ls-8JU">
+                                        <rect key="frame" x="73" y="0.0" width="66" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="k6o-kS-Qkg"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="Pu6-j4-3HL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-0y-SsT">
+                                        <rect key="frame" x="147" y="0.0" width="66" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="xpJ-xf-QZB"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="jlw-r8-BSp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plU-hJ-JLQ">
+                                        <rect key="frame" x="221" y="0.0" width="66" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="dRU-8O-fYK"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="5gu-ec-CHf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-f5-LtS">
+                                        <rect key="frame" x="295" y="0.0" width="66" height="35"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="35" id="K0j-qg-yVQ"/>
+                                        </constraints>
+                                        <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="v7G-4M-8bJ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ihZ-kx-UgH">
                                 <rect key="frame" x="0.0" y="293.66666666666669" width="393" height="265.00000000000006"/>
                                 <constraints>
@@ -443,88 +496,33 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06A-sQ-vVD">
-                                <rect key="frame" x="0.0" y="415.66666666666669" width="393" height="21"/>
+                                <rect key="frame" x="0.0" y="416" width="393" height="20.333333333333314"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQF-ls-8JU">
-                                <rect key="frame" x="90" y="165" width="66" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="k6o-kS-Qkg"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="Pu6-j4-3HL"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZcM-0y-SsT">
-                                <rect key="frame" x="164" y="165" width="66" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="xpJ-xf-QZB"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="jlw-r8-BSp"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="plU-hJ-JLQ">
-                                <rect key="frame" x="238" y="165" width="66" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="dRU-8O-fYK"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="5gu-ec-CHf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFY-f5-LtS">
-                                <rect key="frame" x="312" y="165" width="66" height="35"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="35" id="K0j-qg-yVQ"/>
-                                </constraints>
-                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <connections>
-                                    <action selector="wordBtnDidTapped:" destination="ag2-1x-nYP" eventType="touchUpInside" id="v7G-4M-8bJ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2k2-RY-1Sg"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
                         <constraints>
-                            <constraint firstItem="ZcM-0y-SsT" firstAttribute="leading" secondItem="KQF-ls-8JU" secondAttribute="trailing" constant="8" id="0lE-f2-ZMw"/>
-                            <constraint firstItem="plU-hJ-JLQ" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="325-vd-G6n"/>
                             <constraint firstItem="06A-sQ-vVD" firstAttribute="centerY" secondItem="yXt-it-9SX" secondAttribute="centerY" id="6Ag-q5-JYc"/>
                             <constraint firstItem="2k2-RY-1Sg" firstAttribute="trailing" secondItem="06A-sQ-vVD" secondAttribute="trailing" id="918-Bl-OdU"/>
-                            <constraint firstItem="ZcM-0y-SsT" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="CF4-qR-XQR"/>
                             <constraint firstItem="ihZ-kx-UgH" firstAttribute="centerX" secondItem="yXt-it-9SX" secondAttribute="centerX" id="DOm-Lq-pqd"/>
                             <constraint firstItem="ihZ-kx-UgH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Nxo-WI-xVb" secondAttribute="bottom" constant="8" symbolic="YES" id="G76-74-lc1"/>
+                            <constraint firstItem="2k2-RY-1Sg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="22B-7c-NkL" secondAttribute="trailing" constant="16" id="I1C-kB-aZJ"/>
+                            <constraint firstItem="22B-7c-NkL" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="IJK-Bk-b6u"/>
                             <constraint firstItem="ihZ-kx-UgH" firstAttribute="leading" secondItem="2k2-RY-1Sg" secondAttribute="leading" id="N9c-so-O1C"/>
-                            <constraint firstItem="dzM-iy-zOX" firstAttribute="leading" secondItem="2k2-RY-1Sg" secondAttribute="leading" constant="16" id="NAz-c1-8BI"/>
-                            <constraint firstItem="KQF-ls-8JU" firstAttribute="leading" secondItem="dzM-iy-zOX" secondAttribute="trailing" constant="8" id="OBl-Km-e9w"/>
                             <constraint firstItem="ihZ-kx-UgH" firstAttribute="trailing" secondItem="2k2-RY-1Sg" secondAttribute="trailing" id="PUy-SP-cD6"/>
-                            <constraint firstItem="plU-hJ-JLQ" firstAttribute="leading" secondItem="ZcM-0y-SsT" secondAttribute="trailing" constant="8" id="Q6f-LS-Jh2"/>
                             <constraint firstItem="Nxo-WI-xVb" firstAttribute="leading" secondItem="XEl-p9-ZEF" secondAttribute="trailing" id="ULL-lV-tft"/>
                             <constraint firstItem="ihZ-kx-UgH" firstAttribute="centerY" secondItem="yXt-it-9SX" secondAttribute="centerY" id="UaQ-Qk-YTH"/>
                             <constraint firstItem="06A-sQ-vVD" firstAttribute="centerX" secondItem="yXt-it-9SX" secondAttribute="centerX" id="VqI-xo-HEM"/>
                             <constraint firstItem="XEl-p9-ZEF" firstAttribute="leading" relation="lessThanOrEqual" secondItem="2k2-RY-1Sg" secondAttribute="leading" constant="16" id="aQW-G8-GGY"/>
-                            <constraint firstItem="dzM-iy-zOX" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="fIl-SD-ybr"/>
                             <constraint firstItem="2k2-RY-1Sg" firstAttribute="trailing" secondItem="Nxo-WI-xVb" secondAttribute="trailing" constant="16" id="gcV-5z-Hwk"/>
                             <constraint firstItem="06A-sQ-vVD" firstAttribute="leading" secondItem="2k2-RY-1Sg" secondAttribute="leading" id="kRY-46-kQ1"/>
+                            <constraint firstItem="22B-7c-NkL" firstAttribute="leading" secondItem="2k2-RY-1Sg" secondAttribute="leading" constant="16" id="nD6-Oo-c4V"/>
                             <constraint firstItem="Nxo-WI-xVb" firstAttribute="top" secondItem="2k2-RY-1Sg" secondAttribute="top" constant="56" id="pQz-Az-tK1"/>
-                            <constraint firstItem="DFY-f5-LtS" firstAttribute="leading" secondItem="plU-hJ-JLQ" secondAttribute="trailing" constant="8" id="qw9-lv-kYM"/>
                             <constraint firstItem="XEl-p9-ZEF" firstAttribute="top" secondItem="2k2-RY-1Sg" secondAttribute="top" constant="56" id="tqf-3G-nqa"/>
-                            <constraint firstItem="KQF-ls-8JU" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="u6b-qd-zD7"/>
-                            <constraint firstItem="DFY-f5-LtS" firstAttribute="top" secondItem="XEl-p9-ZEF" secondAttribute="bottom" constant="10" id="vSv-vk-kQ1"/>
                         </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="0bx-aS-ObW" appends="YES" id="ioq-Tr-6H2"/>

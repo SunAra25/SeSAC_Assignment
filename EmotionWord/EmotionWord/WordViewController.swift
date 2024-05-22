@@ -16,6 +16,7 @@ class WordViewController: UIViewController {
     
     let wordList = ["무물보", "스불재", "디토합니다", "중꺾마", "자만추", "별다줄", "분좋카", "700", "완내스", "억텐"]
     let resultList = ["무엇이든 물어보세요", "스스로 불러온 재앙", "동의합니다", "중요한건 꺾이지 않는 마음", "자연스러운 만남 추구", "별걸 다 줄이네", "분위기 좋은 카페", "귀여워", "완전 내 스타일", "억지 텐션"]
+    var buttonItems: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,8 +24,8 @@ class WordViewController: UIViewController {
         setTextField()
         setSearchButton()
         
-        for i in 0..<5 {
-            setWordButton(wordButtons[i], title: wordList[i])
+        wordButtons.forEach {
+            setWordButton($0)
         }
         
         setResult()
@@ -44,14 +45,14 @@ class WordViewController: UIViewController {
         searchButton.tintColor = .white
     }
     
-    func setWordButton(_ button: UIButton, title: String) {
-        button.setTitle(title, for: .normal)
+    func setWordButton(_ button: UIButton) {
         button.setTitleColor(.black, for: .normal)
         button.setTitleColor(.lightGray, for: .highlighted)
         button.titleLabel?.font = .boldSystemFont(ofSize: 11)
         button.layer.cornerRadius = 12
         button.layer.borderWidth = 1.5
         button.layer.borderColor = UIColor.darkGray.cgColor
+        button.isHidden = true
     }
     
     func setResult() {
@@ -69,6 +70,21 @@ class WordViewController: UIViewController {
         
         if let index = wordList.firstIndex(of: search) {
             resultLabel.text = resultList[index]
+            
+            if let targetIndex = buttonItems.firstIndex(of: search) {
+                buttonItems.remove(at: targetIndex)
+            }
+            
+            if buttonItems.count >= 5 {
+                buttonItems.removeLast()
+            }
+            
+            buttonItems.insert(search, at: 0)
+            
+            for i in 0..<buttonItems.count {
+                wordButtons[i].setTitle(buttonItems[i], for: .normal)
+                wordButtons[i].isHidden = false
+            }
         } else {
             resultLabel.text = "검색 결과가 없습니다."
         }

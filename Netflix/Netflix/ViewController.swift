@@ -33,7 +33,15 @@ class ViewController: UIViewController {
     }
     
     @IBAction func joinButtonDidTapped(_ sender: UIButton) {
-        print("회원가입 버튼이 눌렸습니다")
+        let alert = UIAlertController(title: "회원가입에 성공하였습니다", message: "로그인 하시겠습니까?", preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "확인", style: .default)
+        let cancel = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        
+        present(alert, animated: true)
     }
     
     func setTextFieldUI(_ textField: UITextField, title: String) {

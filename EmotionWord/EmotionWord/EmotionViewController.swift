@@ -10,6 +10,7 @@ import UIKit
 class EmotionViewController: UIViewController {
     @IBOutlet var emotionButtons: [UIButton]!
     @IBOutlet var emotionLabels: [UILabel]!
+    @IBOutlet var resetButton: UIButton!
     
     let emotions = ["행복해", "사랑해", "좋아해", "화가나", "지루해", "안심해", "당황해", "실망해", "속상해"]
     var emotionCount = [0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -23,6 +24,8 @@ class EmotionViewController: UIViewController {
             setButtonUI(emotionButtons[i], num: i)
             setLabelUI(emotionLabels[i], title: emotions[i], count: emotionCount[i])
         }
+        
+        resetButton.setTitle("Reset", for: .normal)
     }
 
     func setLabelUI(_ label: UILabel, title: String, count: Int) {
@@ -42,6 +45,7 @@ class EmotionViewController: UIViewController {
     
     func getCount() -> [Int] {
         guard let array = UserDefaults.standard.array(forKey: "EmotionCount") as? [Int] else {
+            
             return [0, 0, 0, 0, 0, 0, 0, 0, 0]
         }
         return array
@@ -52,7 +56,16 @@ class EmotionViewController: UIViewController {
         emotionCount[index] += 1
         emotionLabels[index].text = "\(emotions[index]) \(emotionCount[index])"
         setCount()
+    }
+    
+    @IBAction func resetButtonDidTap(_ sender: UIButton) {
+        let initCount = [0, 0, 0, 0, 0, 0, 0, 0, 0]
         
+        for i in 0..<9 {
+            emotionLabels[i].text = "\(emotions[i]) \(initCount[i])"
+        }
+        
+        UserDefaults.standard.setValue(initCount, forKey: "EmotionCount")
     }
 }
 

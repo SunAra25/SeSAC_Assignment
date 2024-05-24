@@ -57,16 +57,22 @@ class ShoppingTableViewController: UITableViewController {
         cell.baseView.backgroundColor = .lightGray.withAlphaComponent(0.1)
         cell.baseView.layer.cornerRadius = 12
         
+        cell.titleLabel.text = row.title
+        cell.titleLabel.font = .systemFont(ofSize: 12)
+        
         let checkImage = row.isComplete ? "checkmark.square.fill" : "checkmark.square"
         cell.checkButton.setImage(UIImage(systemName: checkImage), for: .normal)
         cell.checkButton.tintColor = .black
         
-        cell.titleLabel.text = row.title
-        cell.titleLabel.font = .systemFont(ofSize: 12)
-        
         let starImage = row.isLike ? "star.fill" : "star"
         cell.starButton.setImage(UIImage(systemName: starImage), for: .normal)
         cell.starButton.tintColor = .black
+        
+        cell.checkButton.tag = indexPath.row
+        cell.checkButton.addTarget(self, action: #selector(checkButtonDidTap), for: .touchUpInside)
+        
+        cell.starButton.tag = indexPath.row
+        cell.starButton.addTarget(self, action: #selector(starButtonDidTap), for: .touchUpInside)
         
         return cell
     }
@@ -78,5 +84,17 @@ class ShoppingTableViewController: UITableViewController {
         list.append(Shopping(isComplete: false, title: item, isLike: false))
         
         tableView.reloadData()
+    }
+    
+    @objc func checkButtonDidTap(_ sender: UIButton) {
+        list[sender.tag].isComplete.toggle()
+        
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
+    }
+    
+    @objc func starButtonDidTap(_ sender: UIButton) {
+        list[sender.tag].isLike.toggle()
+        
+        tableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
     }
 }

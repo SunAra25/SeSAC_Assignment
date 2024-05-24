@@ -17,7 +17,7 @@ class ShoppingTableViewController: UITableViewController {
     @IBOutlet var inputTextField: UITextField!
     @IBOutlet var addButton: UIButton!
     
-    let list = [
+    var list = [
     Shopping(isComplete: true, title: "그립톡 구매하기", isLike: true),
     Shopping(isComplete: false, title: "사이다 구매", isLike: false),
     Shopping(isComplete: false, title: "아애피드 케이스 최저가 알아보기", isLike: true),
@@ -40,11 +40,14 @@ class ShoppingTableViewController: UITableViewController {
         addButton.layer.cornerRadius = 10
         addButton.backgroundColor = .lightGray.withAlphaComponent(0.3)
         
+        inputTextField.addTarget(self, action: #selector(addItem), for: .editingDidEndOnExit)
+        addButton.addTarget(self, action: #selector(addItem), for: .touchUpInside)
+        
         tableView.rowHeight = 44
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+        list.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -66,5 +69,14 @@ class ShoppingTableViewController: UITableViewController {
         cell.starButton.tintColor = .black
         
         return cell
+    }
+    
+    @objc func addItem(sender: Any) {
+        guard let item = inputTextField.text, !item.isEmpty else { return }
+        inputTextField.text = ""
+        
+        list.append(Shopping(isComplete: false, title: item, isLike: false))
+        
+        tableView.reloadData()
     }
 }

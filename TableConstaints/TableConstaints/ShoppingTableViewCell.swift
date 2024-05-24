@@ -12,4 +12,6 @@ class ShoppingTableViewCell: UITableViewCell {
     @IBOutlet var checkButton: UIButton!
     @IBOutlet var starButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
+    
+    
 }

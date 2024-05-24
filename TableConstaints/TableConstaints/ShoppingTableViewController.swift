@@ -78,8 +78,23 @@ class ShoppingTableViewController: UITableViewController {
     }
     
     @objc func addItem(sender: Any) {
-        guard let item = inputTextField.text, !item.isEmpty else { return }
+        guard var item = inputTextField.text, !item.isEmpty, !item.filter { $0 != " " }.isEmpty else { return }
         inputTextField.text = ""
+        
+        if let startIdx = item.firstIndex(where: { $0 != " " }), startIdx != item.startIndex {
+            item = String(item.suffix(from: startIdx))
+        }
+        
+        if let endIdx = item.lastIndex(where: { $0 != " " }), endIdx != item.endIndex {
+            item = String(item.prefix(upTo: endIdx))
+        }
+        
+//        while item.first == " " {
+//            item.removeFirst()
+//        }
+//        while item.last == " " {
+//            item.removeLast()
+//        }
         
         list.append(Shopping(isComplete: false, title: item, isLike: false))
         

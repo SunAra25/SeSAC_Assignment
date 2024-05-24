@@ -253,7 +253,7 @@
         <scene sceneID="Mqc-3L-p31">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6E2-gb-PKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tableViewController id="6x2-mR-OXa" sceneMemberID="viewController">
+                <tableViewController id="6x2-mR-OXa" customClass="ShoppingTableViewController" customModule="TableConstaints" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dZ6-Jz-hYm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -295,7 +295,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="88" id="4x8-v9-dUI">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="88" id="4x8-v9-dUI" customClass="ShoppingTableViewCell" customModule="TableConstaints" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="154" width="393" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4x8-v9-dUI" id="dpg-CL-JIG">
@@ -323,6 +323,11 @@
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkButton" destination="0P8-tl-LCT" id="3jZ-e6-HAc"/>
+                                    <outlet property="starButton" destination="HAi-vc-xsu" id="xDr-eb-dMb"/>
+                                    <outlet property="titleLabel" destination="P5z-9H-fHh" id="oWG-Lu-FPL"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

@@ -35,20 +35,17 @@ class SettingTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "wholeCell")!
         var text = ""
         
         switch indexPath.section {
         case 0:
-            cell = tableView.dequeueReusableCell(withIdentifier: "wholeCell")!
             text = wholeList[indexPath.row]
             print(text)
         case 1:
-            cell = tableView.dequeueReusableCell(withIdentifier: "personalCell")!
             text = personalList[indexPath.row]
             print(text)
         case 2:
-            cell = tableView.dequeueReusableCell(withIdentifier: "etcCell")!
             text = "고객센터/도움말"
             print(text)
         default:

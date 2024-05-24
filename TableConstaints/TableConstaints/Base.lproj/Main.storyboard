@@ -252,51 +252,54 @@
         <!--Item-->
         <scene sceneID="Mqc-3L-p31">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6E2-gb-PKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tableViewController id="6x2-mR-OXa" customClass="ShoppingTableViewController" customModule="TableConstaints" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="dZ6-Jz-hYm">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="STf-8C-jLb">
-                            <rect key="frame" x="0.0" y="0.0" width="393" height="104"/>
+                            <rect key="frame" x="0.0" y="0.0" width="393" height="123"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="쇼핑" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9rA-tA-a3j">
-                                    <rect key="frame" x="181.66666666666666" y="15.999999999999998" width="30" height="20.333333333333329"/>
+                                    <rect key="frame" x="181.66666666666666" y="16" width="30" height="15"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T2q-zg-WkF">
-                                    <rect key="frame" x="20" y="52.333333333333343" width="353" height="43.666666666666657"/>
-                                    <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="31o-nj-z1d">
-                                            <rect key="frame" x="262" y="4.3333333333333286" width="75" height="35"/>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        </button>
-                                    </subviews>
-                                    <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-cf-DJh">
+                                    <rect key="frame" x="20" y="47" width="353" height="60"/>
                                     <constraints>
-                                        <constraint firstItem="31o-nj-z1d" firstAttribute="centerY" secondItem="T2q-zg-WkF" secondAttribute="centerY" id="JZc-ij-EBH"/>
-                                        <constraint firstAttribute="trailing" secondItem="31o-nj-z1d" secondAttribute="trailing" constant="16" id="zeR-BC-FA3"/>
+                                        <constraint firstAttribute="height" constant="60" id="zgh-Yv-JNv"/>
                                     </constraints>
-                                </view>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcU-19-rQb">
+                                    <rect key="frame" x="329" y="61" width="24" height="32"/>
+                                    <color key="backgroundColor" red="0.97970138809999996" green="0.98607101450000001" blue="0.76612277610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="32" id="vDC-HT-PDY"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain"/>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="T2q-zg-WkF" secondAttribute="bottom" constant="8" id="60n-9u-DcD"/>
-                                <constraint firstItem="T2q-zg-WkF" firstAttribute="leading" secondItem="STf-8C-jLb" secondAttribute="leading" constant="20" id="A4b-Nb-tFq"/>
-                                <constraint firstAttribute="trailing" secondItem="T2q-zg-WkF" secondAttribute="trailing" constant="20" id="gBe-7F-MbZ"/>
-                                <constraint firstItem="T2q-zg-WkF" firstAttribute="top" secondItem="9rA-tA-a3j" secondAttribute="bottom" constant="16" id="q02-LE-5EK"/>
+                                <constraint firstItem="RcU-19-rQb" firstAttribute="trailing" secondItem="2eP-cf-DJh" secondAttribute="trailing" constant="-20" id="Bwp-YT-DXA"/>
+                                <constraint firstAttribute="trailing" secondItem="2eP-cf-DJh" secondAttribute="trailing" constant="20" id="TRg-Sz-Dou"/>
+                                <constraint firstItem="RcU-19-rQb" firstAttribute="centerY" secondItem="2eP-cf-DJh" secondAttribute="centerY" id="Xjc-G6-fvL"/>
+                                <constraint firstAttribute="bottom" secondItem="2eP-cf-DJh" secondAttribute="bottom" constant="16" id="e9w-Mf-18H"/>
+                                <constraint firstItem="2eP-cf-DJh" firstAttribute="top" secondItem="9rA-tA-a3j" secondAttribute="bottom" constant="16" id="pOx-vR-PnW"/>
+                                <constraint firstItem="2eP-cf-DJh" firstAttribute="leading" secondItem="STf-8C-jLb" secondAttribute="leading" constant="20" id="qQ2-wh-pS6"/>
                                 <constraint firstItem="9rA-tA-a3j" firstAttribute="top" secondItem="STf-8C-jLb" secondAttribute="top" constant="16" id="xAO-ch-qqt"/>
                                 <constraint firstItem="9rA-tA-a3j" firstAttribute="centerX" secondItem="STf-8C-jLb" secondAttribute="centerX" id="xjx-Ib-31k"/>
                             </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ShoppingTableViewCell" rowHeight="88" id="4x8-v9-dUI" customClass="ShoppingTableViewCell" customModule="TableConstaints" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="154" width="393" height="88"/>
+                                <rect key="frame" x="0.0" y="173" width="393" height="88"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4x8-v9-dUI" id="dpg-CL-JIG">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="88"/>
@@ -336,7 +339,12 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Item" id="CFB-T8-5Y8"/>
+                    <connections>
+                        <outlet property="addButton" destination="RcU-19-rQb" id="cWa-yl-Ts7"/>
+                        <outlet property="inputTextField" destination="2eP-cf-DJh" id="ctm-fN-gcy"/>
+                    </connections>
                 </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6E2-gb-PKO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1100" y="776.76056338028172"/>
         </scene>
@@ -348,9 +356,6 @@
         <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray6Color">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

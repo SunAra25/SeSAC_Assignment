@@ -276,13 +276,15 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RcU-19-rQb">
-                                    <rect key="frame" x="329" y="61" width="24" height="32"/>
+                                    <rect key="frame" x="309" y="61" width="44" height="32"/>
                                     <color key="backgroundColor" red="0.97970138809999996" green="0.98607101450000001" blue="0.76612277610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="cwz-Jb-Vqx"/>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="iQB-5O-PbS"/>
                                         <constraint firstAttribute="height" constant="32" id="vDC-HT-PDY"/>
                                     </constraints>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="Button"/>
-                                    <buttonConfiguration key="configuration" style="plain"/>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -305,28 +307,50 @@
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="88"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-tl-LCT">
-                                            <rect key="frame" x="13" y="27" width="75" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jP1-Wx-ofK">
+                                            <rect key="frame" x="20" y="0.0" width="353" height="88"/>
+                                            <color key="backgroundColor" red="0.97970138809999996" green="0.98607101450000001" blue="0.76612277610000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </view>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0P8-tl-LCT">
+                                            <rect key="frame" x="40" y="34" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="FfK-5v-Bhv"/>
+                                                <constraint firstAttribute="width" constant="20" id="h04-Q0-tq0"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAi-vc-xsu">
-                                            <rect key="frame" x="312" y="27" width="75" height="35"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HAi-vc-xsu">
+                                            <rect key="frame" x="333" y="34" width="20" height="20"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="3X9-Zx-ace"/>
+                                                <constraint firstAttribute="width" constant="20" id="4MD-6m-8t2"/>
+                                            </constraints>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5z-9H-fHh">
-                                            <rect key="frame" x="106" y="34" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P5z-9H-fHh">
+                                            <rect key="frame" x="72" y="33.666666666666664" width="41.333333333333343" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="jP1-Wx-ofK" firstAttribute="trailing" secondItem="dpg-CL-JIG" secondAttribute="trailingMargin" id="25N-kR-rcV"/>
+                                        <constraint firstItem="P5z-9H-fHh" firstAttribute="leading" secondItem="0P8-tl-LCT" secondAttribute="trailing" constant="12" id="679-oA-IhC"/>
+                                        <constraint firstItem="jP1-Wx-ofK" firstAttribute="top" secondItem="dpg-CL-JIG" secondAttribute="top" id="9Mo-3c-TIl"/>
+                                        <constraint firstItem="0P8-tl-LCT" firstAttribute="leading" secondItem="dpg-CL-JIG" secondAttribute="leadingMargin" constant="20" id="D86-LN-42A"/>
+                                        <constraint firstItem="HAi-vc-xsu" firstAttribute="trailing" secondItem="dpg-CL-JIG" secondAttribute="trailingMargin" constant="-20" id="Lwc-s4-mWE"/>
+                                        <constraint firstItem="0P8-tl-LCT" firstAttribute="centerY" secondItem="dpg-CL-JIG" secondAttribute="centerY" id="PGj-Hg-gew"/>
+                                        <constraint firstItem="HAi-vc-xsu" firstAttribute="centerY" secondItem="dpg-CL-JIG" secondAttribute="centerY" id="VBA-eh-eyG"/>
+                                        <constraint firstItem="P5z-9H-fHh" firstAttribute="centerY" secondItem="dpg-CL-JIG" secondAttribute="centerY" id="eFt-j5-L2L"/>
+                                        <constraint firstItem="jP1-Wx-ofK" firstAttribute="leading" secondItem="dpg-CL-JIG" secondAttribute="leadingMargin" id="oFY-Bl-YHV"/>
+                                        <constraint firstAttribute="bottom" secondItem="jP1-Wx-ofK" secondAttribute="bottom" id="th0-Gt-Sb3"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="baseView" destination="jP1-Wx-ofK" id="VjH-XG-Js8"/>
                                     <outlet property="checkButton" destination="0P8-tl-LCT" id="3jZ-e6-HAc"/>
                                     <outlet property="starButton" destination="HAi-vc-xsu" id="xDr-eb-dMb"/>
                                     <outlet property="titleLabel" destination="P5z-9H-fHh" id="oWG-Lu-FPL"/>

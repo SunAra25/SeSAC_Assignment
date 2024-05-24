@@ -8,9 +8,8 @@
 import UIKit
 
 class ShoppingTableViewCell: UITableViewCell {
+    @IBOutlet var baseView: UIView!
     @IBOutlet var checkButton: UIButton!
     @IBOutlet var starButton: UIButton!
     @IBOutlet var titleLabel: UILabel!
-    
-    
 }

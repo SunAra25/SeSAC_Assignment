@@ -48,10 +48,17 @@ class MagazineTableViewController: UITableViewController {
         cell.subTitleLabel.textAlignment = .left
         cell.subTitleLabel.font = .systemFont(ofSize: 12, weight: .semibold)
         
-        cell.dateLabel.text = row.date
-        cell.dateLabel.textColor = .systemGray
-        cell.dateLabel.textAlignment = .right
-        cell.dateLabel.font = .systemFont(ofSize: 12)
+        let rowDate = row.date
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyMMdd"
+        
+        if let date = formatter.date(from: rowDate) {
+            formatter.dateFormat = "yy년 MM월 dd일"
+            cell.dateLabel.text = formatter.string(from: date)
+            cell.dateLabel.textColor = .systemGray
+            cell.dateLabel.textAlignment = .right
+            cell.dateLabel.font = .systemFont(ofSize: 12)
+        }
         
         return cell
     }

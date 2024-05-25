@@ -16,6 +16,9 @@
 		C0A341402C020272008F373F /* MagazineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3413F2C020272008F373F /* MagazineTableViewController.swift */; };
 		C0A341422C020294008F373F /* MagazineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A341412C020294008F373F /* MagazineTableViewCell.swift */; };
 		C0A341442C020429008F373F /* MagazineInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A341432C020428008F373F /* MagazineInfo.swift */; };
+		C0A341482C022F4B008F373F /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */; };
+		C0A3414C2C022F93008F373F /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */; };
+		C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3414D2C022FC3008F373F /* Restaurant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +32,9 @@
 		C0A3413F2C020272008F373F /* MagazineTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewController.swift; sourceTree = "<group>"; };
 		C0A341412C020294008F373F /* MagazineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagazineTableViewCell.swift; sourceTree = "<group>"; };
 		C0A341432C020428008F373F /* MagazineInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagazineInfo.swift; sourceTree = "<group>"; };
+		C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
+		C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
+		C0A3414D2C022FC3008F373F /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,9 @@
 		C0A341462C022EF2008F373F /* Restaurant */ = {
 			isa = PBXGroup;
 			children = (
+				C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */,
+				C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */,
+				C0A3414D2C022FC3008F373F /* Restaurant.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -170,8 +179,11 @@
 			files = (
 				C0A341422C020294008F373F /* MagazineTableViewCell.swift in Sources */,
 				C0A341402C020272008F373F /* MagazineTableViewController.swift in Sources */,
+				C0A3414C2C022F93008F373F /* RestaurantTableViewController.swift in Sources */,
 				C0A341292C01F92F008F373F /* AppDelegate.swift in Sources */,
+				C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */,
 				C0A3412B2C01F92F008F373F /* SceneDelegate.swift in Sources */,
+				C0A341482C022F4B008F373F /* RestaurantTableViewCell.swift in Sources */,
 				C0A341442C020429008F373F /* MagazineInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -31,37 +31,40 @@ class RestaurantTableViewController: UITableViewController {
         cell.thumbnailImage.clipsToBounds = true
         cell.thumbnailImage.contentMode = .scaleAspectFill
         
-        cell.nameLabel.text = row.name
-        cell.nameLabel.textColor = .black
-        cell.nameLabel.textAlignment = .left
-        cell.nameLabel.font = .boldSystemFont(ofSize: 16)
+        setLabel(cell.nameLabel, text: row.name, color: .black, font: .boldSystemFont(ofSize: 16))
         
-        cell.categoryLabel.text = row.category
-        cell.categoryLabel.textColor = .black
-        cell.categoryLabel.textAlignment = .center
-        cell.categoryLabel.font = .systemFont(ofSize: 12)
-        cell.categoryLabel.backgroundColor = .systemGray6
-        cell.categoryLabel.layer.cornerRadius = 10
-        cell.categoryLabel.layer.borderColor = UIColor.darkGray.cgColor
-        cell.categoryLabel.layer.borderWidth = 2
-        cell.categoryLabel.clipsToBounds = true
+        setLabel(cell.categoryLabel, text: row.category, color: .black, font: .systemFont(ofSize: 12))
+        setCapsule(cell.categoryLabel)
         
-        cell.addressLabel.text = row.address
-        cell.addressLabel.textColor = .darkGray
-        cell.addressLabel.textAlignment = .left
-        cell.addressLabel.font = .systemFont(ofSize: 14)
+        setLabel(cell.addressLabel, text: row.address, color: .darkGray, font: .systemFont(ofSize: 14))
         cell.addressLabel.numberOfLines = 0
         
-        cell.phoneButton.setTitle(row.phoneNumber, for: .normal)
-        cell.phoneButton.setTitleColor(.darkGray, for: .normal)
-        cell.phoneButton.titleLabel?.font = .boldSystemFont(ofSize: 15)
-        cell.phoneButton.tintColor = .darkGray
+        setButton(cell.phoneButton, title: row.phoneNumber)
         
-        cell.priceLabel.text = "가격 : \(row.price)"
-        cell.priceLabel.textColor = .darkGray
-        cell.priceLabel.textAlignment = .left
-        cell.priceLabel.font = .systemFont(ofSize: 12)
+        setLabel(cell.priceLabel, text: "가격 : \(row.price)", color: .darkGray, font: .systemFont(ofSize: 12))
         
         return cell
+    }
+    
+    func setLabel(_ label: UILabel, text: String, color: UIColor?, font: UIFont?) {
+        label.text = text
+        label.textColor = color
+        label.font = font
+    }
+    
+    func setCapsule(_ label: UILabel) {
+        label.textAlignment = .center
+        label.backgroundColor = .systemGray6
+        label.layer.cornerRadius = 10
+        label.layer.borderColor = UIColor.darkGray.cgColor
+        label.layer.borderWidth = 2
+        label.clipsToBounds = true
+    }
+    
+    func setButton(_ button: UIButton, title: String) {
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(.darkGray, for: .normal)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        button.tintColor = .darkGray
     }
 }

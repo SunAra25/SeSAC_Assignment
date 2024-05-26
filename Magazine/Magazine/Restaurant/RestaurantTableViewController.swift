@@ -15,7 +15,7 @@ class RestaurantTableViewController: UITableViewController {
     
     let list = RestaurantList().restaurantArray
     var currentList: [Restaurant] = []
-    lazy var categoryList = Array(Set<String>(self.list.map { $0.category }))
+    lazy var categoryList = Array(Set<String>(self.list.map { $0.category })).sorted { $0 > $1}
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +105,8 @@ class RestaurantTableViewController: UITableViewController {
     }
     
     @objc func categoryButtonDidTap(_ sender: UIButton) {
+        searchTextField.text = nil
+        
         let category = categoryList[sender.tag]
         
         currentList = list.filter { $0.category == category }

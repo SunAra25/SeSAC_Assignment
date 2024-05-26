@@ -66,5 +66,20 @@ class RestaurantTableViewController: UITableViewController {
         button.setTitleColor(.darkGray, for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 15)
         button.tintColor = .darkGray
+        
+        button.addTarget(self, action: #selector(phoeButtonDidTap), for: .touchUpInside)
+    }
+    
+    @objc func phoeButtonDidTap(_ sender: UIButton) {
+        guard let number = sender.titleLabel?.text else { return }
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let call = UIAlertAction(title: "통화 \(number)", style: .default)
+        let cancle = UIAlertAction(title: "취소", style: .cancel)
+        
+        alert.addAction(call)
+        alert.addAction(cancle)
+        
+        self.present(alert, animated: true)
     }
 }

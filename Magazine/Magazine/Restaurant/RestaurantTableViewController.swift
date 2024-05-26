@@ -9,12 +9,22 @@ import UIKit
 import Kingfisher
 
 class RestaurantTableViewController: UITableViewController {
+    @IBOutlet var searchTextField: UITextField!
+    @IBOutlet var searchButton: UIButton!
+    @IBOutlet var categoryButtons: [UIButton]!
+    
     let list = RestaurantList().restaurantArray
+    lazy var categoryList = Array(Set<String>(self.list.map { $0.category }))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = 140
+        
+        for (idx, button) in categoryButtons.enumerated() {
+            setButton(button, title: categoryList[idx], fontSize: 11)
+            setCapsule(button, cornerRadius: 15)
+        }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,13 +43,15 @@ class RestaurantTableViewController: UITableViewController {
         
         setLabel(cell.nameLabel, text: row.name, color: .black, font: .boldSystemFont(ofSize: 16))
         
+        cell.categoryLabel.textAlignment = .center
         setLabel(cell.categoryLabel, text: row.category, color: .black, font: .systemFont(ofSize: 12))
-        setCapsule(cell.categoryLabel)
+        setCapsule(cell.categoryLabel, cornerRadius: 1015)
         
         setLabel(cell.addressLabel, text: row.address, color: .darkGray, font: .systemFont(ofSize: 14))
         cell.addressLabel.numberOfLines = 0
         
-        setButton(cell.phoneButton, title: row.phoneNumber)
+        setButton(cell.phoneButton, title: row.phoneNumber, fontSize: 15)
+        cell.phoneButton.addTarget(self, action: #selector(phoeButtonDidTap), for: .touchUpInside)
         
         setLabel(cell.priceLabel, text: "가격 : \(row.price)", color: .darkGray, font: .systemFont(ofSize: 12))
         
@@ -52,22 +64,19 @@ class RestaurantTableViewController: UITableViewController {
         label.font = font
     }
     
-    func setCapsule(_ label: UILabel) {
-        label.textAlignment = .center
-        label.backgroundColor = .systemGray6
-        label.layer.cornerRadius = 10
-        label.layer.borderColor = UIColor.darkGray.cgColor
-        label.layer.borderWidth = 2
-        label.clipsToBounds = true
+    func setCapsule(_ view: UIView, cornerRadius: CGFloat) {
+        view.backgroundColor = .systemGray6
+        view.layer.cornerRadius = cornerRadius
+        view.layer.borderColor = UIColor.darkGray.cgColor
+        view.layer.borderWidth = 2
+        view.clipsToBounds = true
     }
     
-    func setButton(_ button: UIButton, title: String) {
+    func setButton(_ button: UIButton, title: String, fontSize: CGFloat) {
         button.setTitle(title, for: .normal)
         button.setTitleColor(.darkGray, for: .normal)
-        button.titleLabel?.font = .boldSystemFont(ofSize: 15)
+        button.titleLabel?.font = .boldSystemFont(ofSize: fontSize)
         button.tintColor = .darkGray
-        
-        button.addTarget(self, action: #selector(phoeButtonDidTap), for: .touchUpInside)
     }
     
     @objc func phoeButtonDidTap(_ sender: UIButton) {

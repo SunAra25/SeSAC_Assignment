@@ -24,6 +24,11 @@ class RestaurantTableViewController: UITableViewController {
         
         tableView.rowHeight = 140
         
+        searchTextField.placeholder = "식당을 검색해보세요"
+        searchTextField.font = .systemFont(ofSize: 12)
+        
+        setButton(searchButton, title: "", fontSize: 0)
+        
         for (idx, button) in categoryButtons.enumerated() {
             setButton(button, title: categoryList[idx], fontSize: 11)
             setCapsule(button, cornerRadius: 15)

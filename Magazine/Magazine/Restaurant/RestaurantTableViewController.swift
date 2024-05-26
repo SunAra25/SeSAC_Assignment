@@ -14,26 +14,31 @@ class RestaurantTableViewController: UITableViewController {
     @IBOutlet var categoryButtons: [UIButton]!
     
     let list = RestaurantList().restaurantArray
+    var currentList: [Restaurant] = []
     lazy var categoryList = Array(Set<String>(self.list.map { $0.category }))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentList = list
         
         tableView.rowHeight = 140
         
         for (idx, button) in categoryButtons.enumerated() {
             setButton(button, title: categoryList[idx], fontSize: 11)
             setCapsule(button, cornerRadius: 15)
+            button.tag = idx
+            button.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
         }
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        list.count
+        currentList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestaurantTableViewCell", for: indexPath) as! RestaurantTableViewCell
-        let row = list[indexPath.row]
+        let row = currentList[indexPath.row]
         
         guard let imageURL = URL(string: row.image) else { return cell }
         cell.thumbnailImage.kf.setImage(with: imageURL)
@@ -45,7 +50,7 @@ class RestaurantTableViewController: UITableViewController {
         
         cell.categoryLabel.textAlignment = .center
         setLabel(cell.categoryLabel, text: row.category, color: .black, font: .systemFont(ofSize: 12))
-        setCapsule(cell.categoryLabel, cornerRadius: 1015)
+        setCapsule(cell.categoryLabel, cornerRadius: 10)
         
         setLabel(cell.addressLabel, text: row.address, color: .darkGray, font: .systemFont(ofSize: 14))
         cell.addressLabel.numberOfLines = 0
@@ -90,5 +95,13 @@ class RestaurantTableViewController: UITableViewController {
         alert.addAction(cancle)
         
         self.present(alert, animated: true)
+    }
+    
+    @objc func categoryButtonDidTap(_ sender: UIButton) {
+        let category = categoryList[sender.tag]
+        
+        currentList = list.filter { $0.category == category }
+        
+        tableView.reloadData()
     }
 }

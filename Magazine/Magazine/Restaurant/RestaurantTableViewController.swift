@@ -26,8 +26,10 @@ class RestaurantTableViewController: UITableViewController {
         
         searchTextField.placeholder = "식당을 검색해보세요"
         searchTextField.font = .systemFont(ofSize: 12)
+        searchTextField.addTarget(self, action: #selector(searchRestaurant), for: .editingDidEndOnExit)
         
         setButton(searchButton, title: "", fontSize: 0)
+        searchButton.addTarget(self, action: #selector(searchRestaurant), for: .touchUpInside)
         
         for (idx, button) in categoryButtons.enumerated() {
             setButton(button, title: categoryList[idx], fontSize: 11)
@@ -108,5 +110,15 @@ class RestaurantTableViewController: UITableViewController {
         currentList = list.filter { $0.category == category }
         
         tableView.reloadData()
+    }
+    
+    @objc func searchRestaurant(_ sender: Any) {
+        guard let text = searchTextField.text else { return }
+        
+        currentList = list.filter { $0.name.contains(text) }
+        
+        tableView.reloadData()
+        
+        view.endEditing(true)
     }
 }

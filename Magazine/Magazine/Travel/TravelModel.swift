@@ -11,7 +11,7 @@ struct Travel {
     let description: String?
     let travel_image: String?
     let grade: Double?
-    let save: Int?
+    var save: Int?
     var like: Bool?
     let ad: Bool
 }

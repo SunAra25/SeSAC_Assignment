@@ -10,7 +10,7 @@ import UIKit
 class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var recommendTableView: UITableView!
     
-    let list = TravelInfo().travel
+    var list = TravelInfo().travel
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +40,9 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         } else {
             let cell = recommendTableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
             
-            cell.configureCell(data: data)
+            cell.configureCell(data: data, tag: indexPath.row)
+            
+            cell.saveButton.addTarget(self, action: #selector(saveButtonDidTap), for: .touchUpInside)
             return cell
         }
     }
@@ -49,5 +51,15 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let isAd = list[indexPath.row].ad
         
         return isAd ? 80 : 120
+    }
+    
+    @objc func saveButtonDidTap(sender: UIButton) {
+        guard let current = list[sender.tag].like else { return }
+        
+        let save = list[sender.tag].save!
+        list[sender.tag].save! = current ? save - 1 : save + 1
+        list[sender.tag].like!.toggle()
+        
+        recommendTableView.reloadRows(at: [IndexPath(row: sender.tag, section: 0)], with: .automatic)
     }
 }

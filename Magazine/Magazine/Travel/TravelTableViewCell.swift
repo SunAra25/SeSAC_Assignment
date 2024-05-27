@@ -43,15 +43,16 @@ class TravelTableViewCell: UITableViewCell {
         placeImageView.contentMode = .scaleAspectFill
         
         saveButton.setTitle("", for: .normal)
-        saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
         saveButton.tintColor = .white
     }
     
-    func configureCell(data: Travel) {
+    func configureCell(data: Travel, tag: Int) {
         titleLabel.text = data.title
         descriptionLabel.text = data.description
         etcLabel.text = "\(data.grade!) ∙ 저장 " + data.save!.formatted()
         placeImageView.kf.setImage(with: URL(string: data.travel_image!)!)
+        saveButton.setImage(UIImage(systemName: data.like! ? "heart.fill" : "heart"), for: .normal)
+        saveButton.tag = tag
         
         for (index, item) in gradeImage.enumerated() {
             item.tintColor = index >= Int(data.grade!) ? .systemGray5 : .systemYellow

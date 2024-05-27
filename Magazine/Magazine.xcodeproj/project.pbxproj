@@ -12,6 +12,7 @@
 		C0A2F9DA2C0464DF001CFAA2 /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2F9D72C0464DF001CFAA2 /* TravelTableViewCell.swift */; };
 		C0A2F9DD2C0464FA001CFAA2 /* AdTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A2F9DC2C0464FA001CFAA2 /* AdTableViewCell.xib */; };
 		C0A2F9DE2C0464FA001CFAA2 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2F9DB2C0464FA001CFAA2 /* AdTableViewCell.swift */; };
+		C0A2F9E42C04835D001CFAA2 /* TravelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2F9E32C04835D001CFAA2 /* TravelViewController.swift */; };
 		C0A341292C01F92F008F373F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A341282C01F92F008F373F /* AppDelegate.swift */; };
 		C0A3412B2C01F92F008F373F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3412A2C01F92F008F373F /* SceneDelegate.swift */; };
 		C0A341302C01F92F008F373F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C0A3412F2C01F92F008F373F /* Base */; };
@@ -32,6 +33,7 @@
 		C0A2F9D82C0464DF001CFAA2 /* TravelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelTableViewCell.xib; sourceTree = "<group>"; };
 		C0A2F9DB2C0464FA001CFAA2 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		C0A2F9DC2C0464FA001CFAA2 /* AdTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AdTableViewCell.xib; sourceTree = "<group>"; };
+		C0A2F9E32C04835D001CFAA2 /* TravelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelViewController.swift; sourceTree = "<group>"; };
 		C0A341252C01F92F008F373F /* Magazine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Magazine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A341282C01F92F008F373F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0A3412A2C01F92F008F373F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 				C0A2F9D82C0464DF001CFAA2 /* TravelTableViewCell.xib */,
 				C0A2F9DB2C0464FA001CFAA2 /* AdTableViewCell.swift */,
 				C0A2F9DC2C0464FA001CFAA2 /* AdTableViewCell.xib */,
+				C0A2F9E32C04835D001CFAA2 /* TravelViewController.swift */,
 			);
 			path = Travel;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				C0A2F9DA2C0464DF001CFAA2 /* TravelTableViewCell.swift in Sources */,
 				C0A2F9D62C045D96001CFAA2 /* TravelModel.swift in Sources */,
 				C0A341292C01F92F008F373F /* AppDelegate.swift in Sources */,
+				C0A2F9E42C04835D001CFAA2 /* TravelViewController.swift in Sources */,
 				C0A2F9DE2C0464FA001CFAA2 /* AdTableViewCell.swift in Sources */,
 				C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */,
 				C0A3412B2C01F92F008F373F /* SceneDelegate.swift in Sources */,

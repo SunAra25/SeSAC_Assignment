@@ -10,6 +10,8 @@ import UIKit
 class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     @IBOutlet var recommendTableView: UITableView!
     
+    let list = TravelInfo().travel
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,12 +27,27 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 100
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = recommendTableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+        let data = list[indexPath.row]
         
-        return cell
+        if data.ad {
+            let cell = recommendTableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+            cell.configureCell(data: data)
+            return cell
+        } else {
+            let cell = recommendTableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
+            
+            cell.configureCell(data: data)
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let isAd = list[indexPath.row].ad
+        
+        return isAd ? 80 : 120
     }
 }

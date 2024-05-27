@@ -6,18 +6,55 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TravelTableViewCell: UITableViewCell {
-
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var gradeImage: [UIImageView]!
+    @IBOutlet var etcLabel: UILabel!
+    @IBOutlet var placeImageView: UIImageView!
+    @IBOutlet var saveButton: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        configureLayout()
     }
     
+    func configureLayout() {
+        titleLabel.textColor = .darkGray
+        titleLabel.font = .systemFont(ofSize: 17, weight: .black)
+        titleLabel.textAlignment = .left
+        
+        descriptionLabel.textColor = .systemGray2
+        descriptionLabel.font = .boldSystemFont(ofSize: 14)
+        descriptionLabel.textAlignment = .left
+        descriptionLabel.numberOfLines = 0
+        
+        for view in gradeImage {
+            view.image = UIImage(systemName: "star.fill")
+        }
+        
+        etcLabel.textColor = .systemGray3
+        etcLabel.font = .systemFont(ofSize: 12)
+        etcLabel.textAlignment = .left
+        
+        placeImageView.layer.cornerRadius = 12
+        placeImageView.contentMode = .scaleAspectFill
+        
+        saveButton.setTitle("", for: .normal)
+        saveButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        saveButton.tintColor = .white
+    }
+    
+    func configureCell(data: Travel) {
+        titleLabel.text = data.title
+        descriptionLabel.text = data.description
+        etcLabel.text = "\(data.grade!) ∙ 저장 " + data.save!.formatted()
+        placeImageView.kf.setImage(with: URL(string: data.travel_image!)!)
+        
+        for (index, item) in gradeImage.enumerated() {
+            item.tintColor = index >= Int(data.grade!) ? .systemGray5 : .systemYellow
+        }
+    }
 }

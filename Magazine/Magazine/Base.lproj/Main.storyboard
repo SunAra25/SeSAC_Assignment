@@ -311,10 +311,10 @@
             </objects>
             <point key="canvasLocation" x="581" y="763"/>
         </scene>
-        <!--View Controller-->
+        <!--Travel View Controller-->
         <scene sceneID="KxC-nu-iTg">
             <objects>
-                <viewController id="gCv-Mi-bm2" sceneMemberID="viewController">
+                <viewController id="gCv-Mi-bm2" customClass="TravelViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pnj-IF-SJi">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -334,6 +334,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="VZO-WS-J6I"/>
+                    <connections>
+                        <outlet property="recommendTableView" destination="T9f-SK-Yrc" id="3ZY-Yw-1YT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qth-Y6-pPP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,7 +14,8 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
     
     let list = RestaurantList().restaurantArray
     var currentList: [Restaurant] = []
-    lazy var categoryList = Array(Set<String>(self.list.map { $0.category })).sorted { $0 > $1}
+    lazy var categoryList = ["전체"] + Array(Set<String>(self.list.map { $0.category })).sorted { $0 > $1}
+       var currentCategoryIdx = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,10 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
         for (idx, button) in categoryButtons.enumerated() {
             setButton(button, title: categoryList[idx], fontSize: 11)
             setCapsule(button, cornerRadius: 15)
+            if idx == currentCategoryIdx {
+                button.backgroundColor = .darkGray
+                button.setTitleColor(.white, for: .normal)
+            }
             button.tag = idx
             button.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
         }
@@ -115,7 +120,13 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
     @objc func categoryButtonDidTap(_ sender: UIButton) {
         let category = categoryList[sender.tag]
         
-        currentList = list.filter { $0.category == category }
+        currentList = category == "전체" ? list : list.filter { $0.category == category }
+        
+        for (idx, button) in categoryButtons.enumerated() {
+            button.backgroundColor = idx == sender.tag ? .darkGray : .systemGray6
+            button.setTitleColor(idx == sender.tag ? .white : .darkGray, for: .normal)
+            
+        }
         
         tableView.reloadData()
     }

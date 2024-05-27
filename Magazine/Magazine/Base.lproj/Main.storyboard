@@ -135,40 +135,45 @@
                                     </constraints>
                                 </view>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZHR-Jg-i7a">
-                                    <rect key="frame" x="16" y="69" width="361" height="32"/>
+                                    <rect key="frame" x="2" y="69" width="389" height="32"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00K-ip-3XQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="44.666666666666664" height="32"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="41.666666666666664" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PfQ-QP-8eS">
-                                            <rect key="frame" x="52.666666666666671" y="0.0" width="44.666666666666671" height="32"/>
+                                            <rect key="frame" x="49.666666666666671" y="0.0" width="41.666666666666671" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ed-q6-Bhh">
-                                            <rect key="frame" x="105.33333333333333" y="0.0" width="44.666666666666671" height="32"/>
+                                            <rect key="frame" x="99.333333333333329" y="0.0" width="41.666666666666671" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="li9-2c-yoH">
-                                            <rect key="frame" x="158" y="0.0" width="45" height="32"/>
+                                            <rect key="frame" x="149" y="0.0" width="41.666666666666657" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RZo-gE-ohv">
-                                            <rect key="frame" x="211" y="0.0" width="44.666666666666657" height="32"/>
+                                            <rect key="frame" x="198.66666666666666" y="0.0" width="41.333333333333343" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mlc-Ax-4l1">
-                                            <rect key="frame" x="263.66666666666669" y="0.0" width="44.666666666666686" height="32"/>
+                                            <rect key="frame" x="247.99999999999997" y="0.0" width="41.666666666666657" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cc0-8p-vCa">
-                                            <rect key="frame" x="316.33333333333331" y="0.0" width="44.666666666666686" height="32"/>
+                                            <rect key="frame" x="297.66666666666669" y="0.0" width="41.666666666666686" height="32"/>
+                                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                            <state key="normal" title="Button"/>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EC7-e0-9ur">
+                                            <rect key="frame" x="347.33333333333331" y="0.0" width="41.666666666666686" height="32"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                             <state key="normal" title="Button"/>
                                         </button>
@@ -190,7 +195,7 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="ZHR-Jg-i7a" firstAttribute="leading" secondItem="68c-WW-4yE" secondAttribute="leading" constant="16" id="09N-m6-J4k"/>
+                                <constraint firstItem="ZHR-Jg-i7a" firstAttribute="leading" secondItem="68c-WW-4yE" secondAttribute="leading" constant="2" id="09N-m6-J4k"/>
                                 <constraint firstAttribute="trailing" secondItem="hHW-m0-YZo" secondAttribute="trailing" id="5S7-g9-HIq"/>
                                 <constraint firstAttribute="trailing" secondItem="v4b-Wc-rHb" secondAttribute="trailing" id="OPX-aX-foH"/>
                                 <constraint firstItem="hHW-m0-YZo" firstAttribute="leading" secondItem="68c-WW-4yE" secondAttribute="leading" id="R2F-9R-pGa"/>
@@ -198,7 +203,7 @@
                                 <constraint firstItem="v4b-Wc-rHb" firstAttribute="top" secondItem="ZHR-Jg-i7a" secondAttribute="bottom" constant="16" id="g68-r9-GfZ"/>
                                 <constraint firstItem="v4b-Wc-rHb" firstAttribute="leading" secondItem="68c-WW-4yE" secondAttribute="leading" id="pr8-Cv-KdB"/>
                                 <constraint firstItem="hHW-m0-YZo" firstAttribute="top" secondItem="68c-WW-4yE" secondAttribute="top" constant="8" id="qaj-UL-fKO"/>
-                                <constraint firstAttribute="trailing" secondItem="ZHR-Jg-i7a" secondAttribute="trailing" constant="16" id="x3P-8z-OVn"/>
+                                <constraint firstAttribute="trailing" secondItem="ZHR-Jg-i7a" secondAttribute="trailing" constant="2" id="x3P-8z-OVn"/>
                             </constraints>
                         </view>
                         <prototypes>
@@ -287,13 +292,14 @@
                     <tabBarItem key="tabBarItem" title="Item" id="qPX-do-qco"/>
                     <connections>
                         <outlet property="searchBar" destination="hHW-m0-YZo" id="9Pu-VI-y0c"/>
-                        <outletCollection property="categoryButtons" destination="00K-ip-3XQ" collectionClass="NSMutableArray" id="XRo-uF-1iN"/>
-                        <outletCollection property="categoryButtons" destination="PfQ-QP-8eS" collectionClass="NSMutableArray" id="ghj-GW-c56"/>
-                        <outletCollection property="categoryButtons" destination="4Ed-q6-Bhh" collectionClass="NSMutableArray" id="bj1-a0-jfw"/>
-                        <outletCollection property="categoryButtons" destination="li9-2c-yoH" collectionClass="NSMutableArray" id="coM-by-bPo"/>
-                        <outletCollection property="categoryButtons" destination="RZo-gE-ohv" collectionClass="NSMutableArray" id="WuB-Jz-nQ9"/>
-                        <outletCollection property="categoryButtons" destination="mlc-Ax-4l1" collectionClass="NSMutableArray" id="oqV-7g-f2Y"/>
-                        <outletCollection property="categoryButtons" destination="cc0-8p-vCa" collectionClass="NSMutableArray" id="waG-Oc-cBz"/>
+                        <outletCollection property="categoryButtons" destination="00K-ip-3XQ" collectionClass="NSMutableArray" id="G2V-Ch-DWd"/>
+                        <outletCollection property="categoryButtons" destination="PfQ-QP-8eS" collectionClass="NSMutableArray" id="azt-7E-hqD"/>
+                        <outletCollection property="categoryButtons" destination="4Ed-q6-Bhh" collectionClass="NSMutableArray" id="83N-yX-Rcq"/>
+                        <outletCollection property="categoryButtons" destination="li9-2c-yoH" collectionClass="NSMutableArray" id="zVh-kL-YE5"/>
+                        <outletCollection property="categoryButtons" destination="RZo-gE-ohv" collectionClass="NSMutableArray" id="DtQ-2q-oEm"/>
+                        <outletCollection property="categoryButtons" destination="mlc-Ax-4l1" collectionClass="NSMutableArray" id="w64-vU-IgW"/>
+                        <outletCollection property="categoryButtons" destination="cc0-8p-vCa" collectionClass="NSMutableArray" id="Q96-C8-9Tb"/>
+                        <outletCollection property="categoryButtons" destination="EC7-e0-9ur" collectionClass="NSMutableArray" id="cp8-xC-86V"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rs1-Yf-0Yu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

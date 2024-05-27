@@ -5,20 +5,25 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="AdTableViewCell" customModule="Magazine" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AdTableViewCell" rowHeight="110" id="KGk-i7-Jjw" customClass="AdTableViewCell" customModule="Magazine" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="389" height="110"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="389" height="110"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wUo-f1-cc6">
+                        <rect key="frame" x="16" y="0.0" width="357" height="110"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyO-KE-QLA">
-                        <rect key="frame" x="347" y="2" width="40" height="22"/>
+                        <rect key="frame" x="331" y="2" width="40" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="EP4-aC-Fiq"/>
                             <constraint firstAttribute="width" constant="40" id="Pdm-Ln-0kg"/>
@@ -36,13 +41,27 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="pyO-KE-QLA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="2" id="3kS-ex-StP"/>
+                    <constraint firstItem="wUo-f1-cc6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="5h2-pT-x4r"/>
+                    <constraint firstItem="pyO-KE-QLA" firstAttribute="trailing" secondItem="wUo-f1-cc6" secondAttribute="trailing" constant="-2" id="5l9-H7-eEh"/>
                     <constraint firstItem="oar-YY-1oX" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="DPi-Ms-q7r"/>
-                    <constraint firstAttribute="trailing" secondItem="pyO-KE-QLA" secondAttribute="trailing" constant="2" id="Quv-43-3f8"/>
+                    <constraint firstAttribute="trailing" secondItem="wUo-f1-cc6" secondAttribute="trailing" constant="16" id="Ftx-6v-XNh"/>
+                    <constraint firstAttribute="bottom" secondItem="wUo-f1-cc6" secondAttribute="bottom" id="KDJ-Vx-Uly"/>
+                    <constraint firstItem="wUo-f1-cc6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cT2-aE-Gt2"/>
                     <constraint firstItem="oar-YY-1oX" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="gTN-JK-pM1"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="badgeLabel" destination="pyO-KE-QLA" id="A3J-rs-6x6"/>
+                <outlet property="colorView" destination="wUo-f1-cc6" id="OKx-Er-Wud"/>
+                <outlet property="messageLabel" destination="oar-YY-1oX" id="PcQ-Xh-Dp5"/>
+            </connections>
             <point key="canvasLocation" x="191.6030534351145" y="21.83098591549296"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -8,10 +8,9 @@
 import UIKit
 import Kingfisher
 
-class RestaurantTableViewController: UITableViewController {
-    @IBOutlet var searchTextField: UITextField!
-    @IBOutlet var searchButton: UIButton!
+class RestaurantTableViewController: UITableViewController, UISearchBarDelegate {
     @IBOutlet var categoryButtons: [UIButton]!
+    @IBOutlet var searchBar: UISearchBar!
     
     let list = RestaurantList().restaurantArray
     var currentList: [Restaurant] = []
@@ -20,16 +19,11 @@ class RestaurantTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        searchBar.delegate = self
+        
         currentList = list
         
         tableView.rowHeight = 140
-        
-        searchTextField.placeholder = "식당을 검색해보세요"
-        searchTextField.font = .systemFont(ofSize: 12)
-        searchTextField.addTarget(self, action: #selector(searchRestaurant), for: .editingDidEndOnExit)
-        
-        setButton(searchButton, title: "", fontSize: 0)
-        searchButton.addTarget(self, action: #selector(searchRestaurant), for: .touchUpInside)
         
         for (idx, button) in categoryButtons.enumerated() {
             setButton(button, title: categoryList[idx], fontSize: 11)
@@ -91,6 +85,20 @@ class RestaurantTableViewController: UITableViewController {
         button.tintColor = .darkGray
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        
+        if text.isEmpty {
+            currentList = list
+        } else {
+            let searchList = list.filter { $0.name.contains(text) }
+            
+            currentList = searchList
+        }
+        
+        tableView.reloadData()
+    }
+    
     @objc func phoeButtonDidTap(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -105,22 +113,10 @@ class RestaurantTableViewController: UITableViewController {
     }
     
     @objc func categoryButtonDidTap(_ sender: UIButton) {
-        searchTextField.text = nil
-        
         let category = categoryList[sender.tag]
         
         currentList = list.filter { $0.category == category }
         
         tableView.reloadData()
-    }
-    
-    @objc func searchRestaurant(_ sender: Any) {
-        guard let text = searchTextField.text else { return }
-        
-        currentList = list.filter { $0.name.contains(text) }
-        
-        tableView.reloadData()
-        
-        view.endEditing(true)
     }
 }

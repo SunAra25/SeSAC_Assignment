@@ -53,6 +53,26 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return isAd ? 80 : 120
     }
     
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let data = list[indexPath.row]
+        
+        let save = UIContextualAction(style: .normal, title: "") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
+            let isSave = self.list[indexPath.row].like!
+            let save = self.list[indexPath.row].save!
+            
+            self.list[indexPath.row].like!.toggle()
+            self.list[indexPath.row].save! = isSave ? save - 1 : save + 1
+            
+            self.recommendTableView.reloadRows(at: [indexPath], with: .automatic)
+            success(true)
+        }
+        
+        save.image = UIImage(systemName: data.like! ? "heart.fill" : "heart")
+        save.backgroundColor = .systemPink.withAlphaComponent(0.3)
+        
+        return UISwipeActionsConfiguration(actions:[save])
+    }
+    
     @objc func saveButtonDidTap(sender: UIButton) {
         guard let current = list[sender.tag].like else { return }
         

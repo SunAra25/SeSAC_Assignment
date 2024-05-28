@@ -12,4 +12,6 @@ class MagazineTableViewCell: UITableViewCell {
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var subTitleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
+    
+    static let identifier = "MagazineTableViewCell"
 }

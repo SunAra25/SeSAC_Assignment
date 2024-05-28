@@ -18,11 +18,11 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         recommendTableView.delegate = self
         recommendTableView.dataSource = self
         
-        let travelXib = UINib(nibName: "TravelTableViewCell", bundle: nil)
-        let adXib = UINib(nibName: "AdTableViewCell", bundle: nil)
+        let travelXib = UINib(nibName: TravelTableViewCell.identifier, bundle: nil)
+        let adXib = UINib(nibName: AdTableViewCell.identifier, bundle: nil)
         
-        recommendTableView.register(travelXib, forCellReuseIdentifier: "TravelTableViewCell")
-        recommendTableView.register(adXib, forCellReuseIdentifier: "AdTableViewCell")
+        recommendTableView.register(travelXib, forCellReuseIdentifier: TravelTableViewCell.identifier)
+        recommendTableView.register(adXib, forCellReuseIdentifier: AdTableViewCell.identifier)
         
     }
     
@@ -34,11 +34,11 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let data = list[indexPath.row]
         
         if data.ad {
-            let cell = recommendTableView.dequeueReusableCell(withIdentifier: "AdTableViewCell", for: indexPath) as! AdTableViewCell
+            let cell = recommendTableView.dequeueReusableCell(withIdentifier: AdTableViewCell.identifier, for: indexPath) as! AdTableViewCell
             cell.configureCell(data: data)
             return cell
         } else {
-            let cell = recommendTableView.dequeueReusableCell(withIdentifier: "TravelTableViewCell", for: indexPath) as! TravelTableViewCell
+            let cell = recommendTableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as! TravelTableViewCell
             
             cell.configureCell(data: data, tag: indexPath.row)
             

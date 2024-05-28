@@ -12,6 +12,7 @@ class AdTableViewCell: UITableViewCell {
     @IBOutlet var messageLabel: UILabel!
     @IBOutlet var colorView: UIView!
     
+    static let identifier = "AdTableViewCell"
     let backgorundColors: [UIColor] = [
         .systemRed.withAlphaComponent(0.1),
         .systemGreen.withAlphaComponent(0.1),

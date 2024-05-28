@@ -16,6 +16,8 @@ class TravelTableViewCell: UITableViewCell {
     @IBOutlet var placeImageView: UIImageView!
     @IBOutlet var saveButton: UIButton!
     
+    static let identifier = "TravelTableViewCell"
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         configureLayout()

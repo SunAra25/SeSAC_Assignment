@@ -8,9 +8,8 @@
 import UIKit
 import Kingfisher
 
-class RestaurantTableViewController: UITableViewController, UISearchBarDelegate {
+class RestaurantTableViewController: UITableViewController, UISearchBarDelegate, UISearchResultsUpdating {
     @IBOutlet var categoryButtons: [UIButton]!
-    @IBOutlet var searchBar: UISearchBar!
     
     let list = RestaurantList().restaurantArray
     var currentList: [Restaurant] = []
@@ -20,7 +19,7 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchBar.delegate = self
+        setSearchController()
         
         currentList = list
         
@@ -36,6 +35,36 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
             button.tag = idx
             button.addTarget(self, action: #selector(categoryButtonDidTap), for: .touchUpInside)
         }
+    }
+    
+    func setSearchController() {
+        let searchController = UISearchController(searchResultsController: nil)
+        searchController.searchBar.placeholder = "음식점을 검색해보세요!"
+        searchController.obscuresBackgroundDuringPresentation = false
+        
+        searchController.searchResultsUpdater = self
+        
+        self.navigationItem.hidesSearchBarWhenScrolling = false
+        self.navigationItem.searchController = searchController
+        self.navigationItem.title = "문래역 맛집 탐방"
+        
+        searchController.searchBar.returnKeyType = .done
+        searchController.searchBar.searchTextField.addTarget(self, action: #selector(keyboardDismiss), for: .editingDidEndOnExit)
+    }
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        print(#function)
+        guard let text = searchController.searchBar.text else { return }
+        
+        if text.isEmpty {
+            currentList = list
+        } else {
+            let searchList = list.filter { $0.name.contains(text) }
+            
+            currentList = searchList
+        }
+        
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -90,20 +119,6 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
         button.tintColor = .darkGray
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text else { return }
-        
-        if text.isEmpty {
-            currentList = list
-        } else {
-            let searchList = list.filter { $0.name.contains(text) }
-            
-            currentList = searchList
-        }
-        
-        tableView.reloadData()
-    }
-    
     @objc func phoeButtonDidTap(_ sender: UIButton) {
         guard let number = sender.titleLabel?.text else { return }
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -129,5 +144,9 @@ class RestaurantTableViewController: UITableViewController, UISearchBarDelegate 
         }
         
         tableView.reloadData()
+    }
+    
+    @objc func keyboardDismiss(_ sender: UISearchTextField) {
+        view.endEditing(true)
     }
 }

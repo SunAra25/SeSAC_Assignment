@@ -49,7 +49,7 @@ class TravelTableViewCell: UITableViewCell {
     func configureCell(data: Travel, tag: Int) {
         titleLabel.text = data.title
         descriptionLabel.text = data.description
-        etcLabel.text = "\(data.grade!) ∙ 저장 " + data.save!.formatted()
+        etcLabel.text = "\(data.grade!) ∙ 저장 \(data.saveFormat)"
         placeImageView.kf.setImage(with: URL(string: data.travel_image!)!)
         saveButton.setImage(UIImage(systemName: data.like! ? "heart.fill" : "heart"), for: .normal)
         saveButton.tag = tag

@@ -14,6 +14,10 @@ struct Travel {
     var save: Int?
     var like: Bool?
     let ad: Bool
+    
+    var saveFormat: String {
+        save?.formatted() ?? ""
+    }
 }
 
 struct TravelInfo {

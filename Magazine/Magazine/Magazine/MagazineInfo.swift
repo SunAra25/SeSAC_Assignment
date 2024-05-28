@@ -12,6 +12,16 @@ struct Magazine {
     let photo_image: String
     let date: String
     let link: String
+    
+    var dateFormat: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyMMdd"
+        
+        guard let date = formatter.date(from: date) else { return "" }
+        
+        formatter.dateFormat = "yy년 MM월 dd일"
+        return formatter.string(from: date)
+    }
 }
 
 struct MagazineInfo {

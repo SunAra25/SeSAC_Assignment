@@ -27,17 +27,12 @@ class AdTableViewCell: UITableViewCell {
     func configureLayout() {
         colorView.layer.cornerRadius = 8
         
-        badgeLabel.text = "AD"
-        badgeLabel.textColor = .black
-        badgeLabel.textAlignment = .center
-        badgeLabel.font = .systemFont(ofSize: 14)
+        badgeLabel.configureLabel(text: "AD", color: .black, font: .systemFont(ofSize: 14), alignment: .center)
         badgeLabel.backgroundColor = .systemGray6
         badgeLabel.clipsToBounds = true
         badgeLabel.layer.cornerRadius = 8
         
-        messageLabel.textColor = .black
-        messageLabel.textAlignment = .center
-        messageLabel.font = .systemFont(ofSize: 16, weight: .black)
+        messageLabel.configureLabel(text: "", color: .black, font: .systemFont(ofSize: 16, weight: .black), alignment: .center)
         messageLabel.numberOfLines = 0
     }
     

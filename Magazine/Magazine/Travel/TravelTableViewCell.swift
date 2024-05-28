@@ -24,22 +24,16 @@ class TravelTableViewCell: UITableViewCell {
     }
     
     func configureLayout() {
-        titleLabel.textColor = .darkGray
-        titleLabel.font = .systemFont(ofSize: 17, weight: .black)
-        titleLabel.textAlignment = .left
-        
-        descriptionLabel.textColor = .systemGray2
-        descriptionLabel.font = .boldSystemFont(ofSize: 14)
-        descriptionLabel.textAlignment = .left
+        titleLabel.configureLabel(text: "", color: .darkGray, font: .systemFont(ofSize: 17, weight: .black), alignment: .left)
+
+        descriptionLabel.configureLabel(text: "", color: .systemGray2, font: .boldSystemFont(ofSize: 14), alignment:  .left)
         descriptionLabel.numberOfLines = 0
         
         for view in gradeImage {
             view.image = UIImage(systemName: "star.fill")
         }
         
-        etcLabel.textColor = .systemGray3
-        etcLabel.font = .systemFont(ofSize: 12)
-        etcLabel.textAlignment = .left
+        etcLabel.configureLabel(text: "", color: .systemGray3, font: .systemFont(ofSize: 12), alignment: .left)
         
         placeImageView.layer.cornerRadius = 12
         placeImageView.contentMode = .scaleAspectFill

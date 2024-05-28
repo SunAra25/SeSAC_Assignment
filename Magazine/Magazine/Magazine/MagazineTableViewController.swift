@@ -16,10 +16,7 @@ class MagazineTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        headerLabel.text = "SeSAC TRAVEL"
-        headerLabel.textColor = .black
-        headerLabel.font = .boldSystemFont(ofSize: 16)
-        headerLabel.textAlignment = .center
+        headerLabel.configureLabel(text: "SeSAC TRAVEL", color: .black, font: .boldSystemFont(ofSize: 16), alignment: .center)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,21 +34,12 @@ class MagazineTableViewController: UITableViewController {
         cell.photoImageView.contentMode = .scaleAspectFill
         cell.photoImageView.clipsToBounds = true
         
-        cell.titleLabel.text = row.title
-        cell.titleLabel.textColor = .darkGray
-        cell.titleLabel.textAlignment = .left
-        cell.titleLabel.font = .systemFont(ofSize: 18, weight: .heavy)
+        cell.titleLabel.configureLabel(text: row.title, color: .darkGray, font: .systemFont(ofSize: 18, weight: .heavy), alignment: .left)
         cell.titleLabel.numberOfLines = 0
         
-        cell.subTitleLabel.text = row.subtitle
-        cell.subTitleLabel.textColor = .systemGray
-        cell.subTitleLabel.textAlignment = .left
-        cell.subTitleLabel.font = .systemFont(ofSize: 12, weight: .semibold)
-        
-        cell.dateLabel.text = row.dateFormat
-        cell.dateLabel.textColor = .systemGray
-        cell.dateLabel.textAlignment = .right
-        cell.dateLabel.font = .systemFont(ofSize: 12)
+        cell.subTitleLabel.configureLabel(text: row.subtitle, color: .systemGray, font: .systemFont(ofSize: 12, weight: .semibold), alignment: .left)
+       
+        cell.dateLabel.configureLabel(text: row.dateFormat, color: .systemGray, font: .systemFont(ofSize: 12), alignment: .right)
         
         return cell
     }

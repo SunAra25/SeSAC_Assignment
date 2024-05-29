@@ -338,11 +338,22 @@
                         <segue destination="Ych-vY-Ztj" kind="relationship" relationship="viewControllers" id="Hjp-WR-pOY"/>
                         <segue destination="3qM-5B-byh" kind="relationship" relationship="viewControllers" id="XUF-cB-gHT"/>
                         <segue destination="bMi-ox-dKy" kind="relationship" relationship="viewControllers" id="mac-dD-M84"/>
+                        <segue destination="P4v-aB-YFs" kind="relationship" relationship="viewControllers" id="ExT-tQ-Wq3"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yZV-hW-Du7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="580.91603053435108" y="9.8591549295774659"/>
+        </scene>
+        <!--CityInfo-->
+        <scene sceneID="c9A-ne-6bZ">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="CityInfo" storyboardName="CityInfo" id="osU-K0-XM2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZW4-Vf-EPt"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="s4h-nS-Tgy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2272" y="23"/>
         </scene>
         <!--Item-->
         <scene sceneID="cBB-gr-MrL">
@@ -382,6 +393,25 @@
             </objects>
             <point key="canvasLocation" x="580.91603053435108" y="762.67605633802816"/>
         </scene>
+        <!--Item-->
+        <scene sceneID="fc2-6e-wQT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="P4v-aB-YFs" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="d8I-Oy-qK6"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="nke-6z-KE0">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="osU-K0-XM2" kind="relationship" relationship="rootViewController" id="HKK-EZ-mQS"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XIe-JJ-tFO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1618" y="23"/>
+        </scene>
     </scenes>
     <resources>
         <image name="phone" catalog="system" width="128" height="115"/>
@@ -389,10 +419,10 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray3Color">
-            <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

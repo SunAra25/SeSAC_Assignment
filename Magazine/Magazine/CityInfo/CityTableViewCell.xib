@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kob-L1-TWd">
-                        <rect key="frame" x="0.0" y="0.0" width="370" height="116"/>
+                        <rect key="frame" x="20" y="8" width="330" height="100"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-U5-BEw">
-                        <rect key="frame" x="0.0" y="92" width="370" height="24"/>
+                        <rect key="frame" x="20" y="84" width="330" height="24"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5A-CK-jiv">
                                 <rect key="frame" x="4" y="1.6666666666666714" width="42" height="21"/>
@@ -31,35 +31,35 @@
                             </label>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="height" constant="24" id="D8u-aX-34f"/>
+                            <constraint firstAttribute="height" constant="24" id="1sG-nL-ZHv"/>
                             <constraint firstItem="e5A-CK-jiv" firstAttribute="centerY" secondItem="zYo-U5-BEw" secondAttribute="centerY" id="m9i-DE-mGd"/>
                             <constraint firstItem="e5A-CK-jiv" firstAttribute="leading" secondItem="zYo-U5-BEw" secondAttribute="leading" constant="4" id="vtg-Bp-thC"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-7z-D43">
-                        <rect key="frame" x="324" y="4" width="42" height="21"/>
+                        <rect key="frame" x="304" y="12" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="zYo-U5-BEw" secondAttribute="trailing" id="3aI-Hb-Afw"/>
-                    <constraint firstItem="l4F-7z-D43" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="766-6N-qDa"/>
-                    <constraint firstItem="zYo-U5-BEw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Aba-Ya-XYi"/>
-                    <constraint firstAttribute="trailing" secondItem="l4F-7z-D43" secondAttribute="trailing" constant="4" id="LxA-g0-LO9"/>
-                    <constraint firstAttribute="trailing" secondItem="Kob-L1-TWd" secondAttribute="trailing" id="Vy4-rK-Faf"/>
-                    <constraint firstAttribute="bottom" secondItem="zYo-U5-BEw" secondAttribute="bottom" id="aGc-rQ-sOA"/>
-                    <constraint firstItem="Kob-L1-TWd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f9V-1M-AWj"/>
-                    <constraint firstAttribute="bottom" secondItem="Kob-L1-TWd" secondAttribute="bottom" id="mO8-BI-xED"/>
-                    <constraint firstItem="Kob-L1-TWd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vXJ-aA-v3H"/>
+                    <constraint firstItem="zYo-U5-BEw" firstAttribute="leading" secondItem="Kob-L1-TWd" secondAttribute="leading" id="536-IU-FRq"/>
+                    <constraint firstItem="zYo-U5-BEw" firstAttribute="trailing" secondItem="Kob-L1-TWd" secondAttribute="trailing" id="LdZ-E9-sVc"/>
+                    <constraint firstItem="l4F-7z-D43" firstAttribute="trailing" secondItem="Kob-L1-TWd" secondAttribute="trailing" constant="-4" id="MQM-pT-KW6"/>
+                    <constraint firstAttribute="trailing" secondItem="Kob-L1-TWd" secondAttribute="trailing" constant="20" id="Vy4-rK-Faf"/>
+                    <constraint firstItem="zYo-U5-BEw" firstAttribute="bottom" secondItem="Kob-L1-TWd" secondAttribute="bottom" id="Ww9-A6-9dU"/>
+                    <constraint firstItem="Kob-L1-TWd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="f9V-1M-AWj"/>
+                    <constraint firstItem="l4F-7z-D43" firstAttribute="top" secondItem="Kob-L1-TWd" secondAttribute="top" constant="4" id="g7c-Qv-oAM"/>
+                    <constraint firstAttribute="bottom" secondItem="Kob-L1-TWd" secondAttribute="bottom" constant="8" id="mO8-BI-xED"/>
+                    <constraint firstItem="Kob-L1-TWd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="vXJ-aA-v3H"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cityImageView" destination="Kob-L1-TWd" id="KVn-uv-4Hc"/>
                 <outlet property="cityLabel" destination="l4F-7z-D43" id="wKw-bE-n3S"/>
-                <outlet property="explainLabel" destination="m9i-DE-mGd" id="GFi-Ln-3uJ"/>
+                <outlet property="explainLabel" destination="e5A-CK-jiv" id="leG-tu-f8g"/>
                 <outlet property="shadowBackgroundView" destination="zYo-U5-BEw" id="nof-Ye-wRy"/>
             </connections>
             <point key="canvasLocation" x="175.57251908396947" y="44.366197183098592"/>

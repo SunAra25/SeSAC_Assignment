@@ -73,6 +73,23 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         return UISwipeActionsConfiguration(actions:[save])
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = list[indexPath.row]
+        
+        let sb = UIStoryboard(name: "Detail", bundle: nil)
+        if data.ad {
+            let vc = sb.instantiateViewController(withIdentifier: "AdDetailVC")
+            let nv = UINavigationController(rootViewController: vc)
+            
+            nv.modalPresentationStyle = .fullScreen
+            present(nv, animated: true)
+        } else {
+            let vc = sb.instantiateViewController(withIdentifier: "TravelDetailVC")
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
     @objc func saveButtonDidTap(sender: UIButton) {
         guard let current = list[sender.tag].like else { return }
         

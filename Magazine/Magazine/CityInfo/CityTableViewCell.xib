@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CityTableViewCell" rowHeight="116" id="KGk-i7-Jjw" customClass="CityTableViewCell" customModule="Magazine" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="370" height="116"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="370" height="116"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kob-L1-TWd">
+                        <rect key="frame" x="0.0" y="0.0" width="370" height="116"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zYo-U5-BEw">
+                        <rect key="frame" x="0.0" y="92" width="370" height="24"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e5A-CK-jiv">
+                                <rect key="frame" x="4" y="1.6666666666666714" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="D8u-aX-34f"/>
+                            <constraint firstItem="e5A-CK-jiv" firstAttribute="centerY" secondItem="zYo-U5-BEw" secondAttribute="centerY" id="m9i-DE-mGd"/>
+                            <constraint firstItem="e5A-CK-jiv" firstAttribute="leading" secondItem="zYo-U5-BEw" secondAttribute="leading" constant="4" id="vtg-Bp-thC"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l4F-7z-D43">
+                        <rect key="frame" x="324" y="4" width="42" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="zYo-U5-BEw" secondAttribute="trailing" id="3aI-Hb-Afw"/>
+                    <constraint firstItem="l4F-7z-D43" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="766-6N-qDa"/>
+                    <constraint firstItem="zYo-U5-BEw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="Aba-Ya-XYi"/>
+                    <constraint firstAttribute="trailing" secondItem="l4F-7z-D43" secondAttribute="trailing" constant="4" id="LxA-g0-LO9"/>
+                    <constraint firstAttribute="trailing" secondItem="Kob-L1-TWd" secondAttribute="trailing" id="Vy4-rK-Faf"/>
+                    <constraint firstAttribute="bottom" secondItem="zYo-U5-BEw" secondAttribute="bottom" id="aGc-rQ-sOA"/>
+                    <constraint firstItem="Kob-L1-TWd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="f9V-1M-AWj"/>
+                    <constraint firstAttribute="bottom" secondItem="Kob-L1-TWd" secondAttribute="bottom" id="mO8-BI-xED"/>
+                    <constraint firstItem="Kob-L1-TWd" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="vXJ-aA-v3H"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="cityImageView" destination="Kob-L1-TWd" id="KVn-uv-4Hc"/>
+                <outlet property="cityLabel" destination="l4F-7z-D43" id="wKw-bE-n3S"/>
+                <outlet property="explainLabel" destination="m9i-DE-mGd" id="GFi-Ln-3uJ"/>
+                <outlet property="shadowBackgroundView" destination="zYo-U5-BEw" id="nof-Ye-wRy"/>
+            </connections>
+            <point key="canvasLocation" x="175.57251908396947" y="44.366197183098592"/>
+        </tableViewCell>
+    </objects>
+</document>

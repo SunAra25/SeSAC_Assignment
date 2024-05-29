@@ -11,19 +11,16 @@ class AdDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let backbutton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(dismissPresentView))
+        backbutton.tintColor = .black
+        
+        navigationItem.leftBarButtonItem = backbutton
 
-        // Do any additional setup after loading the view.
+        navigationItem.title = "관광지 화면"
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func dismissPresentView() {
+        dismiss(animated: true)
     }
-    */
-
 }

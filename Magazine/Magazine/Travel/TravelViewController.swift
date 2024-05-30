@@ -84,8 +84,8 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
             nv.modalPresentationStyle = .fullScreen
             present(nv, animated: true)
         } else {
-            let vc = sb.instantiateViewController(withIdentifier: "TravelDetailVC")
-            
+            let vc = sb.instantiateViewController(withIdentifier: "TravelDetailVC") as! TravelDetailViewController
+            vc.travel = data
             navigationController?.pushViewController(vc, animated: true)
         }
     }

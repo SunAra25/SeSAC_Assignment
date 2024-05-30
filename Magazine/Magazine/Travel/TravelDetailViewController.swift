@@ -6,8 +6,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 class TravelDetailViewController: UIViewController {
+    @IBOutlet var travelImageView: UIImageView!
+    @IBOutlet var detailLabel: UILabel!
+    @IBOutlet var likeButton: UIButton!
+    
+    var travel: Travel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,8 +22,26 @@ class TravelDetailViewController: UIViewController {
         backbutton.tintColor = .black
         
         navigationItem.leftBarButtonItem = backbutton
-
-        navigationItem.title = "관광지 화면"
+        
+        configureLayout()
+        configuration(data: travel)
+    }
+    
+    func configuration(data: Travel?) {
+        guard let data = data, let imageString = data.travel_image, let detail = data.description, let like = data.like  else { return }
+        navigationItem.title = data.title
+        travelImageView.kf.setImage(with: URL(string: imageString)!)
+        detailLabel.text = detail
+        likeButton.setImage(UIImage(systemName: like ? "heart.fill" : "heart"), for: .normal)
+    }
+    
+    func configureLayout() {
+        travelImageView.contentMode = .scaleAspectFill
+        travelImageView.layer.cornerRadius = 12
+        detailLabel.font = .systemFont(ofSize: 17)
+        detailLabel.numberOfLines = 0
+        likeButton.setTitle("", for: .normal)
+        likeButton.tintColor = .systemPink.withAlphaComponent(0.7)
     }
     
     @objc func popToPreviousView() {

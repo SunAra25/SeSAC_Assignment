@@ -17,9 +17,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="관광지 화면" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHz-5A-lQ0">
-                                <rect key="frame" x="146.66666666666666" y="413" width="100" height="26.333333333333314"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fAr-oA-jjW">
+                                <rect key="frame" x="20" y="79" width="353" height="353"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fAr-oA-jjW" secondAttribute="height" multiplier="1:1" id="qx4-PP-fR7"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iNY-2A-hIv">
+                                <rect key="frame" x="321" y="380" width="44" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Pfb-NW-iq5"/>
+                                    <constraint firstAttribute="width" constant="44" id="Rpy-5Q-32A"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6oC-wo-dqG">
+                                <rect key="frame" x="20" y="444" width="353" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -27,10 +42,21 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="VHz-5A-lQ0" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="4xU-ZX-KU5"/>
-                            <constraint firstItem="VHz-5A-lQ0" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="aPP-kk-d3L"/>
+                            <constraint firstItem="iNY-2A-hIv" firstAttribute="trailing" secondItem="fAr-oA-jjW" secondAttribute="trailing" constant="-8" id="7k2-rf-Id0"/>
+                            <constraint firstItem="fAr-oA-jjW" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="CpR-gf-etg"/>
+                            <constraint firstItem="6oC-wo-dqG" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="EaU-fo-ks3"/>
+                            <constraint firstItem="iNY-2A-hIv" firstAttribute="bottom" secondItem="fAr-oA-jjW" secondAttribute="bottom" constant="-8" id="UyH-qn-iFX"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="fAr-oA-jjW" secondAttribute="trailing" constant="20" id="Z8s-hM-MEo"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="6oC-wo-dqG" secondAttribute="trailing" constant="20" id="gq5-ez-rRr"/>
+                            <constraint firstItem="6oC-wo-dqG" firstAttribute="top" secondItem="fAr-oA-jjW" secondAttribute="bottom" constant="12" id="u8f-PI-ePc"/>
+                            <constraint firstItem="fAr-oA-jjW" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="uWT-cU-fR3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="detailLabel" destination="6oC-wo-dqG" id="fEf-b0-yhY"/>
+                        <outlet property="likeButton" destination="iNY-2A-hIv" id="abN-5e-Mje"/>
+                        <outlet property="travelImageView" destination="fAr-oA-jjW" id="p0C-kx-dTx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

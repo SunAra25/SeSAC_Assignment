@@ -16,6 +16,8 @@
 		C08249E32C074CD200299987 /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08249E22C074CD200299987 /* CityInfo.swift */; };
 		C08249E82C074F8900299987 /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08249E62C074F8900299987 /* CityTableViewCell.swift */; };
 		C08249E92C074F8900299987 /* CityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C08249E72C074F8900299987 /* CityTableViewCell.xib */; };
+		C09E32442C086F5500C6BDF6 /* RestaurantMap.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C09E32432C086F5500C6BDF6 /* RestaurantMap.storyboard */; };
+		C09E32462C086F6200C6BDF6 /* RestaurantMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09E32452C086F6200C6BDF6 /* RestaurantMapViewController.swift */; };
 		C0A2F9D62C045D96001CFAA2 /* TravelModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2F9D52C045D96001CFAA2 /* TravelModel.swift */; };
 		C0A2F9D92C0464DF001CFAA2 /* TravelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0A2F9D82C0464DF001CFAA2 /* TravelTableViewCell.xib */; };
 		C0A2F9DA2C0464DF001CFAA2 /* TravelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A2F9D72C0464DF001CFAA2 /* TravelTableViewCell.swift */; };
@@ -46,6 +48,8 @@
 		C08249E22C074CD200299987 /* CityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
 		C08249E62C074F8900299987 /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		C08249E72C074F8900299987 /* CityTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CityTableViewCell.xib; sourceTree = "<group>"; };
+		C09E32432C086F5500C6BDF6 /* RestaurantMap.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RestaurantMap.storyboard; sourceTree = "<group>"; };
+		C09E32452C086F6200C6BDF6 /* RestaurantMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantMapViewController.swift; sourceTree = "<group>"; };
 		C0A2F9D52C045D96001CFAA2 /* TravelModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelModel.swift; sourceTree = "<group>"; };
 		C0A2F9D72C0464DF001CFAA2 /* TravelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTableViewCell.swift; sourceTree = "<group>"; };
 		C0A2F9D82C0464DF001CFAA2 /* TravelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TravelTableViewCell.xib; sourceTree = "<group>"; };
@@ -165,6 +169,8 @@
 				C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */,
 				C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */,
 				C0A3414D2C022FC3008F373F /* Restaurant.swift */,
+				C09E32432C086F5500C6BDF6 /* RestaurantMap.storyboard */,
+				C09E32452C086F6200C6BDF6 /* RestaurantMapViewController.swift */,
 			);
 			path = Restaurant;
 			sourceTree = "<group>";
@@ -237,6 +243,7 @@
 				C0A341322C01F931008F373F /* Assets.xcassets in Resources */,
 				C08249E92C074F8900299987 /* CityTableViewCell.xib in Resources */,
 				C0A2F9D92C0464DF001CFAA2 /* TravelTableViewCell.xib in Resources */,
+				C09E32442C086F5500C6BDF6 /* RestaurantMap.storyboard in Resources */,
 				C08249DF2C074C2200299987 /* CityInfo.storyboard in Resources */,
 				C0A341352C01F931008F373F /* Base in Resources */,
 				C0A341302C01F92F008F373F /* Base in Resources */,
@@ -259,6 +266,7 @@
 				C0A2F9DA2C0464DF001CFAA2 /* TravelTableViewCell.swift in Sources */,
 				C0A2F9D62C045D96001CFAA2 /* TravelModel.swift in Sources */,
 				C0A341292C01F92F008F373F /* AppDelegate.swift in Sources */,
+				C09E32462C086F6200C6BDF6 /* RestaurantMapViewController.swift in Sources */,
 				C08249DC2C074A1A00299987 /* TravelDetailViewController.swift in Sources */,
 				C0A2F9E42C04835D001CFAA2 /* TravelViewController.swift in Sources */,
 				C0A2F9DE2C0464FA001CFAA2 /* AdTableViewCell.swift in Sources */,

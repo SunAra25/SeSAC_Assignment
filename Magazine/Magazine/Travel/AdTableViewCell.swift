@@ -13,11 +13,6 @@ class AdTableViewCell: UITableViewCell {
     @IBOutlet var colorView: UIView!
     
     static let identifier = "AdTableViewCell"
-    let backgorundColors: [UIColor] = [
-        .systemRed.withAlphaComponent(0.1),
-        .systemGreen.withAlphaComponent(0.1),
-        .systemBlue.withAlphaComponent(0.1),
-        .systemPurple.withAlphaComponent(0.1)]
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -36,9 +31,8 @@ class AdTableViewCell: UITableViewCell {
         messageLabel.numberOfLines = 0
     }
     
-    func configureCell(data: Travel) {
-        let index = Int.random(in: 0...100)
-        colorView.backgroundColor = backgorundColors[index % 4]
+    func configureCell(data: Travel, backgroundColor: UIColor) {
+        colorView.backgroundColor = backgroundColor
         messageLabel.text = data.title
     }
 }

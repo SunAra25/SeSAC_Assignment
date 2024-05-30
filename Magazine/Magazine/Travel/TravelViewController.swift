@@ -11,6 +11,11 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
     @IBOutlet var recommendTableView: UITableView!
     
     var list = TravelInfo().travel
+    let backgorundColors: [UIColor] = [
+        .systemRed.withAlphaComponent(0.1),
+        .systemGreen.withAlphaComponent(0.1),
+        .systemBlue.withAlphaComponent(0.1),
+        .systemPurple.withAlphaComponent(0.1)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,11 +36,15 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = list[indexPath.row]
+        var data = list[indexPath.row]
         
         if data.ad {
             let cell = recommendTableView.dequeueReusableCell(withIdentifier: AdTableViewCell.identifier, for: indexPath) as! AdTableViewCell
-            cell.configureCell(data: data)
+            let index = Int.random(in: 0...100)
+            let color = backgorundColors[index % 4]
+            list[indexPath.row].backColorIndex = index % 4
+            
+            cell.configureCell(data: data, backgroundColor: backgorundColors[index % 4])
             return cell
         } else {
             let cell = recommendTableView.dequeueReusableCell(withIdentifier: TravelTableViewCell.identifier, for: indexPath) as! TravelTableViewCell
@@ -78,7 +87,11 @@ class TravelViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let sb = UIStoryboard(name: "Detail", bundle: nil)
         if data.ad {
-            let vc = sb.instantiateViewController(withIdentifier: "AdDetailVC")
+
+            let vc = sb.instantiateViewController(withIdentifier: "AdDetailVC") as! AdDetailViewController
+            vc.content = data.title
+            vc.backColor = backgorundColors[data.backColorIndex!]
+            
             let nv = UINavigationController(rootViewController: vc)
             
             nv.modalPresentationStyle = .fullScreen

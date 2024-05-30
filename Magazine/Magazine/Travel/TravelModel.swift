@@ -14,6 +14,7 @@ struct Travel {
     var save: Int?
     var like: Bool?
     let ad: Bool
+    var backColorIndex: Int?
     
     var saveFormat: String {
         save?.formatted() ?? ""
@@ -56,7 +57,8 @@ struct TravelInfo {
                grade: nil,
                save: nil,
                like: nil,
-               ad: true),
+               ad: true,
+               backColorIndex: 0),
         Travel(title: "철도 박물관",
                description: "일본 철도의 역사를 둘러볼 수 있는 박물관",
                travel_image: "https://images.unsplash.com/photo-1562326303-31bb8d0f4873?q=80&w=3264&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -84,7 +86,8 @@ struct TravelInfo {
                grade: nil,
                save: nil,
                like: nil,
-               ad: true),
+               ad: true,
+               backColorIndex: 0),
         Travel(title: "동문 재래 시장",
                description: "먹거리와 생활용품을 판매하는, 제주에서 가장 큰 시장",
                travel_image: "https://images.unsplash.com/photo-1501523460185-2aa5d2a0f981?q=80&w=3331&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -119,7 +122,8 @@ struct TravelInfo {
                grade: nil,
                save: nil,
                like: nil,
-               ad: true),
+               ad: true,
+               backColorIndex: 0),
         Travel(title: "영등포 캠퍼스",
                description: "Jack님과 함께하는,\n우당탕탕 iOS 개발 성장기!",
                travel_image: "https://images.unsplash.com/photo-1679285516851-4f0cb04a3893?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",

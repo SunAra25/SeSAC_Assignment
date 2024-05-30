@@ -70,6 +70,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4j8-Bt-3hT">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="광고 화면" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dnJ-ge-4TF">
                                 <rect key="frame" x="156" y="413" width="81" height="26.333333333333314"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
@@ -80,10 +84,18 @@
                         <viewLayoutGuide key="safeArea" id="HOM-DP-ZKv"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="4j8-Bt-3hT" firstAttribute="leading" secondItem="HOM-DP-ZKv" secondAttribute="leading" id="FW3-Yx-yn9"/>
+                            <constraint firstAttribute="bottom" secondItem="4j8-Bt-3hT" secondAttribute="bottom" id="GKR-ux-C4d"/>
                             <constraint firstItem="dnJ-ge-4TF" firstAttribute="centerX" secondItem="QAV-E6-xlG" secondAttribute="centerX" id="LF5-2Z-MOq"/>
+                            <constraint firstItem="4j8-Bt-3hT" firstAttribute="top" secondItem="QAV-E6-xlG" secondAttribute="top" id="Lhr-0C-BVn"/>
                             <constraint firstItem="dnJ-ge-4TF" firstAttribute="centerY" secondItem="QAV-E6-xlG" secondAttribute="centerY" id="MX0-XE-KWI"/>
+                            <constraint firstItem="HOM-DP-ZKv" firstAttribute="trailing" secondItem="4j8-Bt-3hT" secondAttribute="trailing" id="f1X-dT-PHG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="backView" destination="4j8-Bt-3hT" id="UhM-EE-TAL"/>
+                        <outlet property="contentLabel" destination="dnJ-ge-4TF" id="mpZ-yh-2Gn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7zx-nC-TEc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

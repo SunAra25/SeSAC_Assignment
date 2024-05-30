@@ -8,7 +8,12 @@
 import UIKit
 
 class AdDetailViewController: UIViewController {
-
+    @IBOutlet var contentLabel: UILabel!
+    @IBOutlet var backView: UIView!
+    
+    var content = ""
+    var backColor = UIColor.clear
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +22,18 @@ class AdDetailViewController: UIViewController {
         
         navigationItem.leftBarButtonItem = backbutton
 
-        navigationItem.title = "관광지 화면"
+        navigationItem.title = "광고 화면"
+        
+        view.backgroundColor = .white
+        
+        contentLabel.numberOfLines = 0
+        contentLabel.textAlignment = .center
+        configuration(content: content, backgroundColor: backColor)
+    }
+    
+    func configuration(content: String, backgroundColor: UIColor?) {
+        backView.backgroundColor = backgroundColor
+        contentLabel.text = content
     }
     
     @objc func dismissPresentView() {

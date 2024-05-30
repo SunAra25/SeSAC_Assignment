@@ -19,14 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8E6-Q5-xMh">
-                                <rect key="frame" x="0.0" y="119" width="393" height="699"/>
+                                <rect key="frame" x="0.0" y="114" width="393" height="704"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7ts-ts-g39">
+                                <rect key="frame" x="20" y="71" width="353" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="8E6-Q5-xMh" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="60" id="lqc-NQ-qyE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="7ts-ts-g39" secondAttribute="trailing" constant="20" id="4p8-Ap-CUE"/>
+                            <constraint firstItem="7ts-ts-g39" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="12" id="Htq-HI-eXL"/>
+                            <constraint firstItem="8E6-Q5-xMh" firstAttribute="top" secondItem="7ts-ts-g39" secondAttribute="bottom" constant="12" id="Ku5-vV-Gm6"/>
+                            <constraint firstItem="7ts-ts-g39" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="R7w-XU-eDL"/>
                             <constraint firstItem="8E6-Q5-xMh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="nzF-g7-wgu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="8E6-Q5-xMh" secondAttribute="trailing" id="qQP-Bt-Wh3"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="8E6-Q5-xMh" secondAttribute="bottom" id="xJZ-Zc-Ams"/>
@@ -34,6 +44,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="8E6-Q5-xMh" id="0QN-gA-9ls"/>
+                        <outlet property="segmentedCtr" destination="7ts-ts-g39" id="pCu-xl-kxO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

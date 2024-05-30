@@ -18,26 +18,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="xhW-Ub-RR4">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="130" width="393" height="688"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="5HM-lc-IB1">
+                                <rect key="frame" x="20" y="79" width="353" height="32"/>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="5HM-lc-IB1" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="20" id="BQ5-Oi-zmH"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="5HM-lc-IB1" secondAttribute="trailing" constant="20" id="FQX-cu-51M"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="xhW-Ub-RR4" secondAttribute="bottom" id="Qh0-AZ-EEM"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="xhW-Ub-RR4" secondAttribute="trailing" id="Qmj-ZU-Ne1"/>
                             <constraint firstItem="xhW-Ub-RR4" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="YJT-LT-xXU"/>
-                            <constraint firstItem="xhW-Ub-RR4" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="m22-cn-Z6M"/>
+                            <constraint firstItem="xhW-Ub-RR4" firstAttribute="top" secondItem="5HM-lc-IB1" secondAttribute="bottom" constant="20" id="g2G-6P-mwd"/>
+                            <constraint firstItem="5HM-lc-IB1" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="iEy-Ee-WJZ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="cityTableView" destination="xhW-Ub-RR4" id="2SC-Lq-hdd"/>
+                        <outlet property="segmentedControl" destination="5HM-lc-IB1" id="AUD-J0-NrQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="28" y="-17"/>
+            <point key="canvasLocation" x="26.717557251908396" y="-17.605633802816904"/>
         </scene>
     </scenes>
     <resources>

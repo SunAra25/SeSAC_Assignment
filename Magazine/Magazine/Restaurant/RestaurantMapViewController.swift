@@ -56,13 +56,6 @@ class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
             annotations.append(anno)
         }
         
-//        var annotations = Array(repeating: MKPointAnnotation(), count: coordinates.count)
-        
-//        for (idx, anno) in annotations.enumerated() {
-//            annotations[idx].coordinate = coordinates[idx]
-//            annotations[idx].title = list[idx].name
-//        }
-        
         return annotations
     }
     

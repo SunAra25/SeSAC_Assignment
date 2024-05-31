@@ -22,6 +22,8 @@ class CityTableViewCell: UITableViewCell {
     }
     
     func setConfigure() {
+        cityImageView.addSubview(shadowBackgroundView)
+        
         cityLabel.textColor = .white
         cityLabel.font = .systemFont(ofSize: 24, weight: .heavy)
         cityLabel.textAlignment = .right
@@ -33,6 +35,7 @@ class CityTableViewCell: UITableViewCell {
         cityImageView.contentMode = .scaleAspectFill
         cityImageView.clipsToBounds = true
         cityImageView.layer.cornerRadius = 15
+        cityImageView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMaxYCorner]
         
         shadowBackgroundView.backgroundColor = .black.withAlphaComponent(0.5)
         shadowBackgroundView.clipsToBounds = true

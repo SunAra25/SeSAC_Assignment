@@ -51,8 +51,55 @@
             </objects>
             <point key="canvasLocation" x="1066.4122137404579" y="-17.605633802816904"/>
         </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="7eH-H4-a8w">
+            <objects>
+                <viewController storyboardIdentifier="ChatRoomVC" id="juF-Bd-wck" customClass="ChatRoomViewController" customModule="Magazine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UGg-Lu-N6V">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="mTY-04-FeU">
+                                <rect key="frame" x="0.0" y="59" width="393" height="683"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="LiX-H4-b1m">
+                                <rect key="frame" x="20" y="758" width="353" height="44"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="jU9-dm-0Df"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="J99-BE-DPw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="LiX-H4-b1m" firstAttribute="top" secondItem="mTY-04-FeU" secondAttribute="bottom" constant="16" id="0G4-yC-Kz0"/>
+                            <constraint firstItem="J99-BE-DPw" firstAttribute="trailing" secondItem="mTY-04-FeU" secondAttribute="trailing" id="EKR-n3-OqQ"/>
+                            <constraint firstItem="J99-BE-DPw" firstAttribute="trailing" secondItem="LiX-H4-b1m" secondAttribute="trailing" constant="20" id="VLC-Wr-edv"/>
+                            <constraint firstItem="mTY-04-FeU" firstAttribute="leading" secondItem="J99-BE-DPw" secondAttribute="leading" id="lLp-4V-h9x"/>
+                            <constraint firstItem="J99-BE-DPw" firstAttribute="bottom" secondItem="LiX-H4-b1m" secondAttribute="bottom" constant="16" id="lUP-p1-iPD"/>
+                            <constraint firstItem="mTY-04-FeU" firstAttribute="top" secondItem="J99-BE-DPw" secondAttribute="top" id="tJI-Qd-mk5"/>
+                            <constraint firstItem="LiX-H4-b1m" firstAttribute="leading" secondItem="J99-BE-DPw" secondAttribute="leading" constant="20" id="uAc-Jt-Yo0"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="chatTableView" destination="mTY-04-FeU" id="Vn3-rh-uJ6"/>
+                        <outlet property="messageTextView" destination="LiX-H4-b1m" id="n2M-eL-b2e"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nK7-eB-69N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1878.6259541984732" y="-18.30985915492958"/>
+        </scene>
     </scenes>
     <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

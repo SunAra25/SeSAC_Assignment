@@ -43,6 +43,11 @@
 		C0A341482C022F4B008F373F /* RestaurantTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */; };
 		C0A3414C2C022F93008F373F /* RestaurantTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */; };
 		C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A3414D2C022FC3008F373F /* Restaurant.swift */; };
+		C0D383082C0C66D30081F8D5 /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D383072C0C66D30081F8D5 /* ChatRoomViewController.swift */; };
+		C0D383112C0C720F0081F8D5 /* MemberChattingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D383102C0C720F0081F8D5 /* MemberChattingTableViewCell.xib */; };
+		C0D383122C0C720F0081F8D5 /* MemberChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D3830F2C0C720F0081F8D5 /* MemberChattingTableViewCell.swift */; };
+		C0D383152C0C93C50081F8D5 /* MyChattingTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0D383142C0C93C50081F8D5 /* MyChattingTableViewCell.xib */; };
+		C0D383162C0C93C50081F8D5 /* MyChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0D383132C0C93C50081F8D5 /* MyChattingTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -83,6 +88,11 @@
 		C0A341472C022F4B008F373F /* RestaurantTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewCell.swift; sourceTree = "<group>"; };
 		C0A3414B2C022F93008F373F /* RestaurantTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantTableViewController.swift; sourceTree = "<group>"; };
 		C0A3414D2C022FC3008F373F /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		C0D383072C0C66D30081F8D5 /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		C0D3830F2C0C720F0081F8D5 /* MemberChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberChattingTableViewCell.swift; sourceTree = "<group>"; };
+		C0D383102C0C720F0081F8D5 /* MemberChattingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MemberChattingTableViewCell.xib; sourceTree = "<group>"; };
+		C0D383132C0C93C50081F8D5 /* MyChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChattingTableViewCell.swift; sourceTree = "<group>"; };
+		C0D383142C0C93C50081F8D5 /* MyChattingTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyChattingTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,12 +113,14 @@
 				C06DD62B2C0C3D920065D4DE /* ChattingData.swift */,
 				C06DD62D2C0C3D9F0065D4DE /* Chatting.storyboard */,
 				C06DD62F2C0C3DC00065D4DE /* ChattingViewController.swift */,
-				C06DD6352C0C411B0065D4DE /* ChattingRoom */,
+				C0D383072C0C66D30081F8D5 /* ChatRoomViewController.swift */,
+				C06DD6352C0C411B0065D4DE /* ChatRoom */,
+				C0D383092C0C71BA0081F8D5 /* Chatting */,
 			);
 			path = Chatting;
 			sourceTree = "<group>";
 		};
-		C06DD6352C0C411B0065D4DE /* ChattingRoom */ = {
+		C06DD6352C0C411B0065D4DE /* ChatRoom */ = {
 			isa = PBXGroup;
 			children = (
 				C06DD6312C0C41060065D4DE /* PersonalRoomTableViewCell.swift */,
@@ -116,7 +128,7 @@
 				C07EF6BB2C0C49F900C23229 /* GroupRoomTableViewCell.swift */,
 				C07EF6BC2C0C49F900C23229 /* GroupRoomTableViewCell.xib */,
 			);
-			path = ChattingRoom;
+			path = ChatRoom;
 			sourceTree = "<group>";
 		};
 		C0754CD42C05F8000097D1A0 /* Extension */ = {
@@ -212,6 +224,17 @@
 			path = Restaurant;
 			sourceTree = "<group>";
 		};
+		C0D383092C0C71BA0081F8D5 /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				C0D3830F2C0C720F0081F8D5 /* MemberChattingTableViewCell.swift */,
+				C0D383102C0C720F0081F8D5 /* MemberChattingTableViewCell.xib */,
+				C0D383132C0C93C50081F8D5 /* MyChattingTableViewCell.swift */,
+				C0D383142C0C93C50081F8D5 /* MyChattingTableViewCell.xib */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -276,10 +299,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0D383112C0C720F0081F8D5 /* MemberChattingTableViewCell.xib in Resources */,
 				C0A2F9DD2C0464FA001CFAA2 /* AdTableViewCell.xib in Resources */,
 				C0A341322C01F931008F373F /* Assets.xcassets in Resources */,
 				C06DD6342C0C41060065D4DE /* PersonalRoomTableViewCell.xib in Resources */,
 				C08249E92C074F8900299987 /* CityTableViewCell.xib in Resources */,
+				C0D383152C0C93C50081F8D5 /* MyChattingTableViewCell.xib in Resources */,
 				C0A2F9D92C0464DF001CFAA2 /* TravelTableViewCell.xib in Resources */,
 				C06DD62E2C0C3D9F0065D4DE /* Chatting.storyboard in Resources */,
 				C09E32442C086F5500C6BDF6 /* RestaurantMap.storyboard in Resources */,
@@ -309,7 +334,9 @@
 				C09E32462C086F6200C6BDF6 /* RestaurantMapViewController.swift in Sources */,
 				C08249DC2C074A1A00299987 /* TravelDetailViewController.swift in Sources */,
 				C0A2F9E42C04835D001CFAA2 /* TravelViewController.swift in Sources */,
+				C0D383082C0C66D30081F8D5 /* ChatRoomViewController.swift in Sources */,
 				C0A2F9DE2C0464FA001CFAA2 /* AdTableViewCell.swift in Sources */,
+				C0D383162C0C93C50081F8D5 /* MyChattingTableViewCell.swift in Sources */,
 				C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */,
 				C06DD62C2C0C3D920065D4DE /* ChattingData.swift in Sources */,
 				C06DD6332C0C41060065D4DE /* PersonalRoomTableViewCell.swift in Sources */,
@@ -318,6 +345,7 @@
 				C08249E32C074CD200299987 /* CityInfo.swift in Sources */,
 				C07EF6BE2C0C49F900C23229 /* GroupRoomTableViewCell.swift in Sources */,
 				C0754CD62C05FA020097D1A0 /* UILabel+.swift in Sources */,
+				C0D383122C0C720F0081F8D5 /* MemberChattingTableViewCell.swift in Sources */,
 				C0A3412B2C01F92F008F373F /* SceneDelegate.swift in Sources */,
 				C0A341482C022F4B008F373F /* RestaurantTableViewCell.swift in Sources */,
 				C0A341442C020429008F373F /* MagazineInfo.swift in Sources */,

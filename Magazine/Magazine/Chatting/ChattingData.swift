@@ -53,6 +53,7 @@ struct Chat {
         guard let date = formatter.date(from: date) else { return "" }
         
         formatter.dateFormat = "H:mm a"
+        formatter.locale = Locale(identifier:"ko_KR")
         return formatter.string(from: date)
     }
 }

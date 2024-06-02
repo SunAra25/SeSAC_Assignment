@@ -58,14 +58,26 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
         if data.chatroomImage.count > 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GroupRoomTableViewCell.identifier, for: indexPath) as! GroupRoomTableViewCell
             
+            cell.selectionStyle = .none
             cell.configureCell(data)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PersonalRoomTableViewCell.identifier, for: indexPath) as! PersonalRoomTableViewCell
             
+            cell.selectionStyle = .none
             cell.configureCell(data)
             return cell
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "ChatRoomVC") as! ChatRoomViewController
+        
+        let data = mockChatList[indexPath.row]
+        vc.naviTitle = data.chatroomName
+        vc.chatData = data
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

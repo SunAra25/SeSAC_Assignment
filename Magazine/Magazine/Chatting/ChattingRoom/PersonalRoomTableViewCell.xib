@@ -62,7 +62,7 @@
                 <outlet property="nameLabel" destination="QCz-G5-WpN" id="cn8-fq-zQa"/>
                 <outlet property="profileImageView" destination="mwh-KN-F31" id="Jk1-BJ-tdu"/>
             </connections>
-            <point key="canvasLocation" x="111" y="-1"/>
+            <point key="canvasLocation" x="110.68702290076335" y="-1.0563380281690142"/>
         </tableViewCell>
     </objects>
 </document>

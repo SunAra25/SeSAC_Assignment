@@ -24,22 +24,32 @@ class ChattingViewController: UIViewController {
         chattingRoomTableView.delegate = self
         chattingRoomTableView.dataSource = self
         
-        let xib = UINib(nibName: PersonalRoomTableViewCell.identifier, bundle: nil)
-        chattingRoomTableView.register(xib, forCellReuseIdentifier: PersonalRoomTableViewCell.identifier)
+        let personalXib = UINib(nibName: PersonalRoomTableViewCell.identifier, bundle: nil)
+        let groupXib = UINib(nibName: GroupRoomTableViewCell.identifier, bundle: nil)
+        
+        chattingRoomTableView.register(personalXib, forCellReuseIdentifier: PersonalRoomTableViewCell.identifier)
+        chattingRoomTableView.register(groupXib, forCellReuseIdentifier: GroupRoomTableViewCell.identifier)
+        
         chattingRoomTableView.rowHeight = 80
     }
 }
 
 extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return mockChatList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: PersonalRoomTableViewCell.identifier, for: indexPath)
+        let data = mockChatList[indexPath.row]
         
-        return cell
+        if data.chatroomImage.count > 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: GroupRoomTableViewCell.identifier, for: indexPath) as! GroupRoomTableViewCell
+            
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: PersonalRoomTableViewCell.identifier, for: indexPath) as! PersonalRoomTableViewCell
+            
+            return cell
+        }
     }
-    
-    
 }

@@ -44,6 +44,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="Lt3-eH-eHU" firstAttribute="leading" secondItem="mwh-KN-F31" secondAttribute="trailing" constant="6" id="Biv-xk-WZO"/>
+                    <constraint firstItem="jq0-OR-HPR" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QCz-G5-WpN" secondAttribute="trailing" constant="4" id="HMR-oi-FvL"/>
                     <constraint firstItem="mwh-KN-F31" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="NXG-vz-Jfo"/>
                     <constraint firstItem="QCz-G5-WpN" firstAttribute="leading" secondItem="mwh-KN-F31" secondAttribute="trailing" constant="6" id="bXc-L3-NVi"/>
                     <constraint firstItem="mwh-KN-F31" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="gcg-Xu-WsZ"/>

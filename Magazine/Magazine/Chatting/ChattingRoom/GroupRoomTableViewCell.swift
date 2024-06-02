@@ -24,7 +24,6 @@ class GroupRoomTableViewCell: UITableViewCell {
     func configure() {
         profileImageViews.forEach {
             $0.layer.cornerRadius = 12
-            $0.backgroundColor = .black
         }
         
         groupNameLabel.font = .boldSystemFont(ofSize: 16)

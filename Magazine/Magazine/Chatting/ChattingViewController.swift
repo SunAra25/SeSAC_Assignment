@@ -49,6 +49,7 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PersonalRoomTableViewCell.identifier, for: indexPath) as! PersonalRoomTableViewCell
             
+            cell.configureCell(data)
             return cell
         }
     }

@@ -45,6 +45,7 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
         if data.chatroomImage.count > 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GroupRoomTableViewCell.identifier, for: indexPath) as! GroupRoomTableViewCell
             
+            cell.configureCell(data)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PersonalRoomTableViewCell.identifier, for: indexPath) as! PersonalRoomTableViewCell

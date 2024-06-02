@@ -23,7 +23,10 @@ class GroupRoomTableViewCell: UITableViewCell {
 
     func configure() {
         profileImageViews.forEach {
+            $0.contentMode = .scaleAspectFill
             $0.layer.cornerRadius = 12
+            $0.layer.borderWidth = 1
+            $0.layer.borderColor = UIColor.lightGray.cgColor
         }
         
         groupNameLabel.font = .boldSystemFont(ofSize: 16)
@@ -41,5 +44,20 @@ class GroupRoomTableViewCell: UITableViewCell {
         lastDateLabel.font = .systemFont(ofSize: 12)
         lastDateLabel.textColor = .darkGray
         lastDateLabel.textAlignment = .right
+    }
+    
+    func configureCell(_ data: ChatRoom) {
+        for (imgView, img) in zip(profileImageViews, data.chatroomImage) {
+            imgView.image = UIImage(named: img)
+        }
+        
+        groupNameLabel.text = data.chatroomName
+        
+        memberCountLabel.text = "\(data.chatroomImage.count)"
+        
+        if let lastChat = data.chatList.last {
+            lastMessageLabel.text = lastChat.message
+            lastDateLabel.text = lastChat.chatDate
+        }
     }
 }

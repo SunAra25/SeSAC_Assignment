@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C06DD62C2C0C3D920065D4DE /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD62B2C0C3D920065D4DE /* ChattingData.swift */; };
+		C06DD62E2C0C3D9F0065D4DE /* Chatting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C06DD62D2C0C3D9F0065D4DE /* Chatting.storyboard */; };
+		C06DD6302C0C3DC00065D4DE /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD62F2C0C3DC00065D4DE /* ChattingViewController.swift */; };
+		C06DD6332C0C41060065D4DE /* PersonalRoomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06DD6312C0C41060065D4DE /* PersonalRoomTableViewCell.swift */; };
+		C06DD6342C0C41060065D4DE /* PersonalRoomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C06DD6322C0C41060065D4DE /* PersonalRoomTableViewCell.xib */; };
 		C0754CD62C05FA020097D1A0 /* UILabel+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0754CD52C05FA020097D1A0 /* UILabel+.swift */; };
 		C08249D82C0743E800299987 /* AdDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08249D72C0743E800299987 /* AdDetailViewController.swift */; };
 		C08249DA2C0743FF00299987 /* Detail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C08249D92C0743FF00299987 /* Detail.storyboard */; };
@@ -39,6 +44,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C06DD62B2C0C3D920065D4DE /* ChattingData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
+		C06DD62D2C0C3D9F0065D4DE /* Chatting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Chatting.storyboard; sourceTree = "<group>"; };
+		C06DD62F2C0C3DC00065D4DE /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		C06DD6312C0C41060065D4DE /* PersonalRoomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalRoomTableViewCell.swift; sourceTree = "<group>"; };
+		C06DD6322C0C41060065D4DE /* PersonalRoomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalRoomTableViewCell.xib; sourceTree = "<group>"; };
 		C0754CD52C05FA020097D1A0 /* UILabel+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+.swift"; sourceTree = "<group>"; };
 		C08249D72C0743E800299987 /* AdDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdDetailViewController.swift; sourceTree = "<group>"; };
 		C08249D92C0743FF00299987 /* Detail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Detail.storyboard; sourceTree = "<group>"; };
@@ -83,6 +93,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C06DD62A2C0C3D780065D4DE /* Chatting */ = {
+			isa = PBXGroup;
+			children = (
+				C06DD62B2C0C3D920065D4DE /* ChattingData.swift */,
+				C06DD62D2C0C3D9F0065D4DE /* Chatting.storyboard */,
+				C06DD62F2C0C3DC00065D4DE /* ChattingViewController.swift */,
+				C06DD6352C0C411B0065D4DE /* ChattingRoom */,
+			);
+			path = Chatting;
+			sourceTree = "<group>";
+		};
+		C06DD6352C0C411B0065D4DE /* ChattingRoom */ = {
+			isa = PBXGroup;
+			children = (
+				C06DD6312C0C41060065D4DE /* PersonalRoomTableViewCell.swift */,
+				C06DD6322C0C41060065D4DE /* PersonalRoomTableViewCell.xib */,
+			);
+			path = ChattingRoom;
+			sourceTree = "<group>";
+		};
 		C0754CD42C05F8000097D1A0 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +168,7 @@
 		C0A341272C01F92F008F373F /* Magazine */ = {
 			isa = PBXGroup;
 			children = (
+				C06DD62A2C0C3D780065D4DE /* Chatting */,
 				C0754CD42C05F8000097D1A0 /* Extension */,
 				C0A341462C022EF2008F373F /* Restaurant */,
 				C0A341452C022EE0008F373F /* Magazine */,
@@ -241,8 +272,10 @@
 			files = (
 				C0A2F9DD2C0464FA001CFAA2 /* AdTableViewCell.xib in Resources */,
 				C0A341322C01F931008F373F /* Assets.xcassets in Resources */,
+				C06DD6342C0C41060065D4DE /* PersonalRoomTableViewCell.xib in Resources */,
 				C08249E92C074F8900299987 /* CityTableViewCell.xib in Resources */,
 				C0A2F9D92C0464DF001CFAA2 /* TravelTableViewCell.xib in Resources */,
+				C06DD62E2C0C3D9F0065D4DE /* Chatting.storyboard in Resources */,
 				C09E32442C086F5500C6BDF6 /* RestaurantMap.storyboard in Resources */,
 				C08249DF2C074C2200299987 /* CityInfo.storyboard in Resources */,
 				C0A341352C01F931008F373F /* Base in Resources */,
@@ -271,7 +304,10 @@
 				C0A2F9E42C04835D001CFAA2 /* TravelViewController.swift in Sources */,
 				C0A2F9DE2C0464FA001CFAA2 /* AdTableViewCell.swift in Sources */,
 				C0A3414E2C022FC3008F373F /* Restaurant.swift in Sources */,
+				C06DD62C2C0C3D920065D4DE /* ChattingData.swift in Sources */,
+				C06DD6332C0C41060065D4DE /* PersonalRoomTableViewCell.swift in Sources */,
 				C08249E12C074C5300299987 /* CityInfoViewController.swift in Sources */,
+				C06DD6302C0C3DC00065D4DE /* ChattingViewController.swift in Sources */,
 				C08249E32C074CD200299987 /* CityInfo.swift in Sources */,
 				C0754CD62C05FA020097D1A0 /* UILabel+.swift in Sources */,
 				C0A3412B2C01F92F008F373F /* SceneDelegate.swift in Sources */,

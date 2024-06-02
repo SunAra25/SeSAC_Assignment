@@ -9,15 +9,28 @@ import UIKit
 
 class ChattingViewController: UIViewController {
     @IBOutlet var chattingRoomTableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    
+    var filterList : [ChatRoom] = mockChatList {
+        didSet {
+            chattingRoomTableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureNavigation()
+        configureSearchBar()
         configureTableView()
     }
     
     func configureNavigation() {
         navigationItem.title = "TRAVEL TALK"
+    }
+    
+    func configureSearchBar() {
+        searchBar.delegate = self
+        searchBar.placeholder = "친구 이름을 검색해보세요"
     }
     
     func configureTableView() {
@@ -36,11 +49,11 @@ class ChattingViewController: UIViewController {
 
 extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mockChatList.count
+        return filterList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let data = mockChatList[indexPath.row]
+        let data = filterList[indexPath.row]
         
         if data.chatroomImage.count > 1 {
             let cell = tableView.dequeueReusableCell(withIdentifier: GroupRoomTableViewCell.identifier, for: indexPath) as! GroupRoomTableViewCell
@@ -53,5 +66,39 @@ extension ChattingViewController: UITableViewDelegate, UITableViewDataSource {
             cell.configureCell(data)
             return cell
         }
+    }
+}
+
+extension ChattingViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let search = searchBar.text else { return }
+        let text = search.lowercased()
+        
+        var temp: [ChatRoom] = []
+        
+        for chat in mockChatList {
+            if chat.chatroomName.contains(text) || 
+                chat.chatList.contains(where: { $0.message.contains(text) || $0.user.rawValue.lowercased().contains(text)}) {
+                temp.append(chat)
+            }
+        }
+        
+        filterList = temp
+        
+        view.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = true
+    }
+        
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        searchBar.showsCancelButton = false
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        filterList = mockChatList
+        
+        view.endEditing(true)
     }
 }

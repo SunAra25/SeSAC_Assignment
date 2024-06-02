@@ -44,6 +44,7 @@
                     <navigationItem key="navigationItem" id="NLH-fT-MR8"/>
                     <connections>
                         <outlet property="chattingRoomTableView" destination="0RN-7I-UPQ" id="Zj1-nG-BO7"/>
+                        <outlet property="searchBar" destination="PSQ-tv-d2X" id="ftE-TJ-pRu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -23,15 +23,16 @@ class PersonalRoomTableViewCell: UITableViewCell {
     func configure() {
         profileImageView.layer.cornerRadius = 28
         profileImageView.backgroundColor = .black
-        nameLabel.font = .boldSystemFont(ofSize: 14)
+        
+        nameLabel.font = .boldSystemFont(ofSize: 16)
         nameLabel.textColor = .black
         nameLabel.textAlignment = .left
         
-        lastMessageLabel.font = .systemFont(ofSize: 12)
+        lastMessageLabel.font = .systemFont(ofSize: 15)
         lastMessageLabel.textColor = .darkGray
         lastMessageLabel.textAlignment = .left
         
-        lastDateLabel.font = .systemFont(ofSize: 11)
+        lastDateLabel.font = .systemFont(ofSize: 12)
         lastDateLabel.textColor = .darkGray
         lastDateLabel.textAlignment = .right
     }

@@ -10,6 +10,7 @@ import UIKit
 class ChatRoomViewController: UIViewController {
     @IBOutlet var chatTableView: UITableView!
     @IBOutlet var messageTextView: UITextView!
+    @IBOutlet var sendButton: UIButton!
     
     let placeholder = "메세지를 입력하세요"
     var naviTitle = ""
@@ -19,6 +20,7 @@ class ChatRoomViewController: UIViewController {
         super.viewDidLoad()
         
         configureNavigation()
+        configureButton()
         configureTableView()
         configureTextView()
     }
@@ -30,6 +32,13 @@ class ChatRoomViewController: UIViewController {
         backbutton.tintColor = .black
         
         navigationItem.leftBarButtonItem = backbutton
+    }
+    
+    func configureButton() {
+        sendButton.setTitle("", for: .normal)
+        sendButton.setImage(UIImage(systemName: "paperplane"), for: .normal)
+        sendButton.tintColor = .darkGray
+        sendButton.addTarget(self, action: #selector(sendButtonDidTap), for: .touchUpInside)
     }
     
     func configureTableView() {
@@ -54,6 +63,20 @@ class ChatRoomViewController: UIViewController {
         messageTextView.layer.cornerRadius = 12
         messageTextView.textContainerInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
         messageTextView.isScrollEnabled = false
+    }
+    
+    @objc func sendButtonDidTap() {
+        var date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let dateString = formatter.string(from: date)
+        
+        chatData.chatList.append(Chat(user: .user, date: dateString, message: messageTextView.text))
+
+        chatTableView.reloadData()
+        
+        let index = IndexPath(row: chatData.chatList.count - 1, section: 0)
+        chatTableView.scrollToRow(at: index, at: .bottom, animated: false)
     }
     
     @objc func popToPreviousView() {

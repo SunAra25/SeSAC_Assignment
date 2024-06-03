@@ -74,13 +74,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Tf-Z5-flI">
+                                <rect key="frame" x="321" y="758" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="BSQ-au-Kaj"/>
+                                    <constraint firstAttribute="width" constant="40" id="bXY-Yf-7vf"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="J99-BE-DPw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="LiX-H4-b1m" firstAttribute="top" secondItem="mTY-04-FeU" secondAttribute="bottom" constant="16" id="0G4-yC-Kz0"/>
+                            <constraint firstItem="3Tf-Z5-flI" firstAttribute="trailing" secondItem="LiX-H4-b1m" secondAttribute="trailing" constant="-12" id="BXz-te-Paz"/>
                             <constraint firstItem="J99-BE-DPw" firstAttribute="trailing" secondItem="mTY-04-FeU" secondAttribute="trailing" id="EKR-n3-OqQ"/>
                             <constraint firstItem="J99-BE-DPw" firstAttribute="trailing" secondItem="LiX-H4-b1m" secondAttribute="trailing" constant="20" id="VLC-Wr-edv"/>
+                            <constraint firstItem="3Tf-Z5-flI" firstAttribute="bottom" secondItem="LiX-H4-b1m" secondAttribute="bottom" constant="-4" id="eGD-21-wkg"/>
                             <constraint firstItem="mTY-04-FeU" firstAttribute="leading" secondItem="J99-BE-DPw" secondAttribute="leading" id="lLp-4V-h9x"/>
                             <constraint firstItem="J99-BE-DPw" firstAttribute="bottom" secondItem="LiX-H4-b1m" secondAttribute="bottom" constant="16" id="lUP-p1-iPD"/>
                             <constraint firstItem="mTY-04-FeU" firstAttribute="top" secondItem="J99-BE-DPw" secondAttribute="top" id="tJI-Qd-mk5"/>
@@ -90,6 +101,7 @@
                     <connections>
                         <outlet property="chatTableView" destination="mTY-04-FeU" id="Vn3-rh-uJ6"/>
                         <outlet property="messageTextView" destination="LiX-H4-b1m" id="n2M-eL-b2e"/>
+                        <outlet property="sendButton" destination="3Tf-Z5-flI" id="4eO-d1-j7h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nK7-eB-69N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

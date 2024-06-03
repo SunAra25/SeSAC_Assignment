@@ -11,6 +11,7 @@ class ChatRoomViewController: UIViewController {
     @IBOutlet var chatTableView: UITableView!
     @IBOutlet var messageTextView: UITextView!
     
+    let placeholder = "메세지를 입력하세요"
     var naviTitle = ""
     var chatData = ChatRoom(chatroomId: 0, chatroomImage: [], chatroomName: "", chatList: [])
     
@@ -44,6 +45,15 @@ class ChatRoomViewController: UIViewController {
     
     func configureTextView() {
         messageTextView.delegate = self
+        
+        messageTextView.text = placeholder
+        messageTextView.textColor = .darkGray
+        messageTextView.font = .systemFont(ofSize: 14)
+        
+        messageTextView.backgroundColor = .systemGray6
+        messageTextView.layer.cornerRadius = 12
+        messageTextView.textContainerInset = UIEdgeInsets(top: 16, left: 8, bottom: 16, right: 8)
+        messageTextView.isScrollEnabled = false
     }
     
     @objc func popToPreviousView() {
@@ -52,7 +62,19 @@ class ChatRoomViewController: UIViewController {
 }
 
 extension ChatRoomViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .darkGray {
+            textView.text = nil
+            textView.textColor = .black
+        }
+    }
     
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = placeholder
+            textView.textColor = .darkGray
+        }
+    }
 }
 
 extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {

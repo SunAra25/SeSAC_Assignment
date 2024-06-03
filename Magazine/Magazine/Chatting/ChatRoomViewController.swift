@@ -98,6 +98,18 @@ extension ChatRoomViewController: UITextViewDelegate {
             textView.textColor = .darkGray
         }
     }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        let size = CGSize(width: textView.frame.width, height: .infinity)
+        let estimatedSize = textView.sizeThatFits(size)
+        
+        let isMaxHeight = estimatedSize.height >= 80
+        
+        guard isMaxHeight != textView.isScrollEnabled else { return }
+        textView.isScrollEnabled = isMaxHeight
+        textView.reloadInputViews()
+        textView.setNeedsUpdateConstraints()
+    }
 }
 
 extension ChatRoomViewController: UITableViewDelegate, UITableViewDataSource {

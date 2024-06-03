@@ -23,6 +23,8 @@ class ChatRoomViewController: UIViewController {
         configureButton()
         configureTableView()
         configureTextView()
+        
+        scrollToBotton()
     }
     
     func configureNavigation() {
@@ -50,13 +52,15 @@ class ChatRoomViewController: UIViewController {
         
         chatTableView.register(memberXib, forCellReuseIdentifier: MemberChattingTableViewCell.identifier)
         chatTableView.register(myXib, forCellReuseIdentifier: MyChattingTableViewCell.identifier)
+        
+        chatTableView.separatorStyle = .none
     }
     
     func configureTextView() {
         messageTextView.delegate = self
         
         messageTextView.text = placeholder
-        messageTextView.textColor = .darkGray
+        messageTextView.textColor = .systemGray3
         messageTextView.font = .systemFont(ofSize: 14)
         
         messageTextView.backgroundColor = .systemGray6
@@ -65,7 +69,14 @@ class ChatRoomViewController: UIViewController {
         messageTextView.isScrollEnabled = false
     }
     
+    func scrollToBotton() {
+        let index = IndexPath(row: chatData.chatList.count - 1, section: 0)
+        chatTableView.scrollToRow(at: index, at: .bottom, animated: false)
+    }
+    
     @objc func sendButtonDidTap() {
+        guard messageTextView.textColor != .systemGray3 else { return }
+        
         var date = Date()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -73,10 +84,12 @@ class ChatRoomViewController: UIViewController {
         
         chatData.chatList.append(Chat(user: .user, date: dateString, message: messageTextView.text))
 
-        chatTableView.reloadData()
+        messageTextView.text = ""
         
-        let index = IndexPath(row: chatData.chatList.count - 1, section: 0)
-        chatTableView.scrollToRow(at: index, at: .bottom, animated: false)
+        view.endEditing(true)
+        
+        chatTableView.reloadData()
+        scrollToBotton()
     }
     
     @objc func popToPreviousView() {
@@ -86,7 +99,7 @@ class ChatRoomViewController: UIViewController {
 
 extension ChatRoomViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .darkGray {
+        if textView.textColor == .systemGray3 {
             textView.text = nil
             textView.textColor = .black
         }
@@ -95,7 +108,8 @@ extension ChatRoomViewController: UITextViewDelegate {
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
             textView.text = placeholder
-            textView.textColor = .darkGray
+            textView.textColor = .systemGray3
+            textViewDidChange(textView)
         }
     }
     

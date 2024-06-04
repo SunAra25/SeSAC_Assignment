@@ -99,6 +99,7 @@ class SignViewController: UIViewController {
 
     func configureView() {
         view.backgroundColor = .black
+        signUpButton.addTarget(self, action: #selector(signUpButtonDidTap), for: .touchUpInside)
     }
     
     func setHierachy() {
@@ -158,6 +159,12 @@ class SignViewController: UIViewController {
             make.top.equalTo(signUpButton.snp.bottom).offset(12)
             make.trailing.equalToSuperview().inset(20)
         }
+    }
+    
+    @objc func signUpButtonDidTap() {
+        let vc = MainViewController()
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 

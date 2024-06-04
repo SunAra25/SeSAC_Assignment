@@ -7,6 +7,28 @@
 
 import UIKit
 
+enum Option: Int, CaseIterable {
+    case whole
+    case personal
+    case others
+    
+    var mainOption: String {
+        switch self {
+        case .whole: "전체 설정"
+        case .personal: "개인 설정"
+        case .others: "기타"
+        }
+    }
+    
+    var subOption: [String] {
+        switch self {
+        case .whole: ["공지사항", "실험실", "버전 정보"]
+        case .personal: ["개인/보안", "알림", "채팅", "멀티프로필"]
+        case .others: ["고객센터/도움말"]
+        }
+    }
+}
+
 class SettingTableViewController: UITableViewController {
     let wholeList = ["공지사항", "실험실", "버전 정보"]
     let personalList = ["개인/보안", "알림", "채팅", "멀티프로필"]
@@ -18,15 +40,16 @@ class SettingTableViewController: UITableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
         
-        return 3
+        return Option.allCases.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 3 : section == 1 ? 4 : 1
+        
+        return Option.allCases[section].subOption.count
     }
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return section == 0 ? "전체 설정" : section == 1 ? "개인 설정" : "기타"
+        return Option.allCases[section].mainOption
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -36,24 +59,8 @@ class SettingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "wholeCell")!
-        var text = ""
         
-        switch indexPath.section {
-        case 0:
-            text = wholeList[indexPath.row]
-            print(text)
-        case 1:
-            text = personalList[indexPath.row]
-            print(text)
-        case 2:
-            text = "고객센터/도움말"
-            print(text)
-        default:
-            break
-            
-        }
-        
-        cell.textLabel?.text = text
+        cell.textLabel?.text = Option.allCases[indexPath.section].subOption[indexPath.row]
         return cell
     }
    

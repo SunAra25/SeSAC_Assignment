@@ -125,10 +125,87 @@ class MainViewController: UIViewController {
     }
     
     func setHierachy() {
-        
+        [backgroundView, mainImageView, risingLabel, firstImageView, secondImageView, thirdImageView, mainContentLabel, playButton, likeButton, top10ImageView, newEpisodeLabel, newSeriesLabel, watchLabel].forEach {
+            view.addSubview($0)
+        }
     }
     
     func setConstraints() {
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
+        mainImageView.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.horizontalEdges.equalToSuperview().inset(16)
+            make.height.equalTo(550)
+        }
+        
+        playButton.snp.makeConstraints { make in
+            make.leading.equalTo(mainImageView.snp.leading).offset(16)
+            make.bottom.equalTo(mainImageView.snp.bottom).offset(-16)
+            make.width.equalTo(120)
+            make.height.equalTo(48)
+        }
+        
+        likeButton.snp.makeConstraints { make in
+            make.trailing.bottom.equalTo(mainImageView).offset(-16)
+            make.width.equalTo(120)
+            make.height.equalTo(48)
+        }
+        
+        mainContentLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(playButton.snp.top).offset(-8)
+            make.centerX.equalToSuperview()
+        }
+        
+        risingLabel.snp.makeConstraints { make in
+            make.top.equalTo(mainImageView.snp.bottom).offset(4)
+            make.leading.equalToSuperview().offset(4)
+        }
+        
+        firstImageView.snp.makeConstraints { make in
+            make.top.equalTo(risingLabel.snp.bottom).offset(4)
+            make.leading.equalToSuperview().inset(16)
+            make.height.equalTo(150)
+        }
+        
+        secondImageView.snp.makeConstraints { make in
+            make.top.equalTo(risingLabel.snp.bottom).offset(4)
+            make.leading.equalTo(firstImageView.snp.trailing).offset(4)
+            make.width.equalTo(firstImageView)
+            make.height.equalTo(150)
+        }
+        
+        thirdImageView.snp.makeConstraints { make in
+            make.top.equalTo(risingLabel.snp.bottom).offset(4)
+            make.leading.equalTo(secondImageView.snp.trailing).offset(4)
+            make.trailing.equalToSuperview().inset(16)
+            make.width.equalTo(firstImageView)
+            make.height.equalTo(150)
+        }
+        
+        top10ImageView.snp.makeConstraints { make in
+            make.top.trailing.equalTo(secondImageView)
+        }
+        
+        watchLabel.snp.makeConstraints { make in
+            make.centerX.bottom.equalTo(secondImageView)
+            make.width.equalTo(80)
+            make.height.equalTo(16)
+        }
+        
+        newEpisodeLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(secondImageView)
+            make.bottom.equalTo(watchLabel.snp.top)
+            make.width.equalTo(80)
+            make.height.equalTo(16)
+        }
+        
+        newSeriesLabel.snp.makeConstraints { make in
+            make.centerX.bottom.equalTo(thirdImageView)
+            make.width.equalTo(80)
+            make.height.equalTo(16)
+        }
     }
 }

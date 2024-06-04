@@ -102,9 +102,62 @@ class SignViewController: UIViewController {
     }
     
     func setHierachy() {
+        [nameLabel, idTextField, passwordTextField, nicknameTextField, locationTextField, codeTextField, signUpButton, infoLabel, switchView].forEach {
+            view.addSubview($0)
+        }
     }
 
     func setConstraints() {
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.centerX.equalToSuperview()
+        }
+        
+        idTextField.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(50)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        passwordTextField.snp.makeConstraints { make in
+            make.top.equalTo(idTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        nicknameTextField.snp.makeConstraints { make in
+            make.top.equalTo(passwordTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        locationTextField.snp.makeConstraints { make in
+            make.top.equalTo(nicknameTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        codeTextField.snp.makeConstraints { make in
+            make.top.equalTo(locationTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(40)
+        }
+        
+        signUpButton.snp.makeConstraints { make in
+            make.top.equalTo(codeTextField.snp.bottom).offset(12)
+            make.leading.trailing.equalToSuperview().inset(20)
+            make.height.equalTo(48)
+        }
+        
+        infoLabel.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton.snp.bottom).offset(12)
+            make.leading.equalToSuperview().inset(20)
+        }
+        
+        switchView.snp.makeConstraints { make in
+            make.top.equalTo(signUpButton.snp.bottom).offset(12)
+            make.trailing.equalToSuperview().inset(20)
+        }
     }
 }
 

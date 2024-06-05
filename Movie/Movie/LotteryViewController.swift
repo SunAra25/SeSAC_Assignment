@@ -60,6 +60,9 @@ class LotteryViewController: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.systemGray3.cgColor
         
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        
         [firstNumberLabel, secondNumberLabel, thirdNumberLabel, fourthNumberLabel, fifthNumberLabel, sixthNumberLabel, bonusNumberLabel].forEach {
             $0.font = .boldSystemFont(ofSize: 14)
             textField.textAlignment = .center
@@ -204,5 +207,26 @@ class LotteryViewController: UIViewController {
     
     func callRequest() {
         
+    }
+}
+
+extension LotteryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return lottoRound
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let round = Array(stride(from: lottoRound, through: 1, by: -1))
+        return "\(round[row])"
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        let round = lottoRound - row
+        roundLabel.text = "\(round)회 당첨 결과"
+        dateLabel.text = dateForLottoRound(round) + "추첨"
     }
 }

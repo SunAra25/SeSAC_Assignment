@@ -6,7 +6,20 @@
 //
 
 import UIKit
+import Alamofire
 import SnapKit
+
+struct Lotto: Decodable {
+    let drwNo: Int
+    let drwNoDate: String
+    let drwtNo1: Int
+    let drwtNo2: Int
+    let drwtNo3: Int
+    let drwtNo4: Int
+    let drwtNo5: Int
+    let drwtNo6: Int
+    let bnusNo: Int
+}
 
 class LotteryViewController: UIViewController {
     let textField = UITextField()
@@ -26,7 +39,13 @@ class LotteryViewController: UIViewController {
     let plusLabel = UILabel()
     let bonusTextLabel = UILabel()
     
-    let lottoColor: [UIColor] = [.yellow, .blue, .red, .gray, .green]
+    let lottoColor: [UIColor] = [
+            .orange.withAlphaComponent(0.7),
+            .blue.withAlphaComponent(0.7),
+            .red.withAlphaComponent(0.7),
+            .gray.withAlphaComponent(0.7),
+            .green.withAlphaComponent(0.7)]
+    
     var lottoRound: Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -44,6 +63,7 @@ class LotteryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        callRequest(lottoRound)
         configureUI()
         setHierachy()
         setConstraints()
@@ -193,20 +213,33 @@ class LotteryViewController: UIViewController {
         }
     }
     
-    func dateForLottoRound(_ round: Int) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        
-        guard let startDate = dateFormatter.date(from: "2002-12-07"),
-              let date = Calendar.current.date(byAdding: .weekOfYear, value: round - 1, to: startDate) else { return "" }
-        
-        let dateString = dateFormatter.string(from: date)
-        
-        return dateString
-    }
-    
-    func callRequest() {
-        
+    func callRequest(_ round: Int) {
+        let url = APIURL.lottoURL + "\(round)"
+        AF.request(url).responseDecodable(of: Lotto.self) { [weak self] response in
+            guard let self else { return }
+            
+            switch response.result {
+            case .success(let value):
+                textField.text = "\(value.drwNo)"
+                roundLabel.text = "\(value.drwNo)회 당첨 결과"
+                dateLabel.text = value.drwNoDate + " 추첨"
+                firstNumberLabel.text = value.drwtNo1.formatted()
+                secondNumberLabel.text = value.drwtNo2.formatted()
+                thirdNumberLabel.text = value.drwtNo3.formatted()
+                fourthNumberLabel.text = value.drwtNo4.formatted()
+                fifthNumberLabel.text = value.drwtNo5.formatted()
+                sixthNumberLabel.text = value.drwtNo6.formatted()
+                bonusNumberLabel.text = value.bnusNo.formatted()
+                
+                [firstNumberLabel, secondNumberLabel, thirdNumberLabel, fourthNumberLabel, fifthNumberLabel, sixthNumberLabel, bonusNumberLabel].forEach {
+                    guard let num = Int($0.text!) else { return }
+                    
+                    $0.backgroundColor = self.lottoColor[num/10]
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }
 
@@ -226,7 +259,6 @@ extension LotteryViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let round = lottoRound - row
-        roundLabel.text = "\(round)회 당첨 결과"
-        dateLabel.text = dateForLottoRound(round) + "추첨"
+        callRequest(round)
     }
 }

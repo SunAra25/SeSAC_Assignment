@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C04940122C103BAC009E404C /* LotteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04940112C103BAC009E404C /* LotteryViewController.swift */; };
+		C04940142C10BE09009E404C /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04940132C10BE09009E404C /* APIKey.swift */; };
+		C04940172C10BE54009E404C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C04940162C10BE54009E404C /* Alamofire */; };
 		C09CC3A02C10375800D5BCE1 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = C09CC39F2C10375800D5BCE1 /* .gitignore */; };
 		C0A417E72C0F5CB000E1ECFF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A417E62C0F5CB000E1ECFF /* AppDelegate.swift */; };
 		C0A417E92C0F5CB000E1ECFF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A417E82C0F5CB000E1ECFF /* SceneDelegate.swift */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		C04940112C103BAC009E404C /* LotteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LotteryViewController.swift; sourceTree = "<group>"; };
+		C04940132C10BE09009E404C /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		C09CC39F2C10375800D5BCE1 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		C0A417E32C0F5CB000E1ECFF /* Movie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A417E62C0F5CB000E1ECFF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +42,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A417FC2C0F5D4700E1ECFF /* SnapKit in Frameworks */,
+				C04940172C10BE54009E404C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,6 +78,7 @@
 				C0A417FF2C0F655700E1ECFF /* MainViewController.swift */,
 				C0A418012C0F67C300E1ECFF /* UIImageView+.swift */,
 				C04940112C103BAC009E404C /* LotteryViewController.swift */,
+				C04940132C10BE09009E404C /* APIKey.swift */,
 			);
 			path = Movie;
 			sourceTree = "<group>";
@@ -96,6 +101,7 @@
 			name = Movie;
 			packageProductDependencies = (
 				C0A417FB2C0F5D4700E1ECFF /* SnapKit */,
+				C04940162C10BE54009E404C /* Alamofire */,
 			);
 			productName = Movie;
 			productReference = C0A417E32C0F5CB000E1ECFF /* Movie.app */;
@@ -127,6 +133,7 @@
 			mainGroup = C0A417DA2C0F5CB000E1ECFF;
 			packageReferences = (
 				C0A417FA2C0F5D4700E1ECFF /* XCRemoteSwiftPackageReference "SnapKit" */,
+				C04940152C10BE54009E404C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = C0A417E42C0F5CB000E1ECFF /* Products */;
 			projectDirPath = "";
@@ -156,6 +163,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0A418022C0F67C300E1ECFF /* UIImageView+.swift in Sources */,
+				C04940142C10BE09009E404C /* APIKey.swift in Sources */,
 				C0A417E72C0F5CB000E1ECFF /* AppDelegate.swift in Sources */,
 				C0A417E92C0F5CB000E1ECFF /* SceneDelegate.swift in Sources */,
 				C0A417FE2C0F60F200E1ECFF /* SignViewController.swift in Sources */,
@@ -387,6 +395,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C04940152C10BE54009E404C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
 		C0A417FA2C0F5D4700E1ECFF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -398,6 +414,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C04940162C10BE54009E404C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C04940152C10BE54009E404C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
 		C0A417FB2C0F5D4700E1ECFF /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0A417FA2C0F5D4700E1ECFF /* XCRemoteSwiftPackageReference "SnapKit" */;

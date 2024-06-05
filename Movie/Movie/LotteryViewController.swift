@@ -26,6 +26,7 @@ class LotteryViewController: UIViewController {
     let plusLabel = UILabel()
     let bonusTextLabel = UILabel()
     
+    let lottoColor: [UIColor] = [.yellow, .blue, .red, .gray, .green]
     var lottoRound: Int {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -99,11 +100,106 @@ class LotteryViewController: UIViewController {
     }
     
     func setHierachy() {
+        [textField, guideLabel, dateLabel, underlineView, roundLabel, resultView, plusLabel, bonusTextLabel].forEach {
+            view.addSubview($0)
+        }
         
+        [firstNumberLabel, secondNumberLabel, thirdNumberLabel, fourthNumberLabel, fifthNumberLabel, sixthNumberLabel, bonusNumberLabel].forEach {
+            resultView.addSubview($0)
+        }
     }
     
     func setConstraints() {
+        textField.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.height.equalTo(48)
+        }
         
+        guideLabel.snp.makeConstraints { make in
+            make.top.equalTo(textField.snp.bottom).offset(16)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        dateLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(guideLabel)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        underlineView.snp.makeConstraints { make in
+            make.top.equalTo(guideLabel.snp.bottom).offset(12)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.height.equalTo(1)
+        }
+        
+        roundLabel.snp.makeConstraints { make in
+            make.top.equalTo(underlineView.snp.bottom).offset(28)
+            make.centerX.equalToSuperview()
+        }
+        
+        resultView.snp.makeConstraints { make in
+            make.top.equalTo(roundLabel.snp.bottom).offset(12)
+            make.centerX.equalTo(view.snp.centerX)
+            make.width.equalTo(340)
+            make.height.equalTo(40)
+        }
+        
+        firstNumberLabel.snp.makeConstraints { make in
+            make.leading.equalToSuperview()
+            make.size.equalTo(40)
+        }
+        
+        secondNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(firstNumberLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        thirdNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(secondNumberLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        fourthNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(thirdNumberLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        fifthNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(fourthNumberLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        sixthNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(fifthNumberLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        plusLabel.snp.makeConstraints { make in
+            make.leading.equalTo(sixthNumberLabel.snp.trailing).offset(4)
+            make.centerY.equalTo(sixthNumberLabel.snp.centerY)
+            make.size.equalTo(32)
+        }
+        
+        bonusNumberLabel.snp.makeConstraints { make in
+            make.leading.equalTo(plusLabel.snp.trailing).offset(4)
+            make.size.equalTo(40)
+        }
+        
+        bonusTextLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(bonusNumberLabel.snp.centerX)
+            make.top.equalTo(bonusNumberLabel.snp.bottom).offset(4)
+        }
+    }
+    
+    func dateForLottoRound(_ round: Int) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        guard let startDate = dateFormatter.date(from: "2002-12-07"),
+              let date = Calendar.current.date(byAdding: .weekOfYear, value: round - 1, to: startDate) else { return "" }
+        
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
     }
     
     func callRequest() {

@@ -6,7 +6,22 @@
 //
 
 import UIKit
+import Alamofire
 import SnapKit
+
+struct FilmCouncil: Decodable {
+    let boxOfficeResult: BoxOfficeResult
+}
+
+struct BoxOfficeResult: Decodable {
+    let dailyBoxOfficeList: [Film]
+}
+
+struct Film: Decodable {
+    let rank: String
+    let movieNm: String
+    let openDt: String
+}
 
 class FilmCouncilViewController: UIViewController {
     let textField = UITextField()
@@ -14,9 +29,16 @@ class FilmCouncilViewController: UIViewController {
     let searchButton = UIButton()
     let tableView = UITableView()
     
+    var list: [Film] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        callRequest(getYesterDay())
         configureUI()
         setHierachy()
         setConstraints()
@@ -75,6 +97,28 @@ class FilmCouncilViewController: UIViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    func callRequest(_ date: String) {
+        let url = APIURL.filmURL + date
+        
+        AF.request(url).responseDecodable(of: FilmCouncil.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                list = value.boxOfficeResult.dailyBoxOfficeList
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func getYesterDay() -> String {
+        guard let yesterDay = Calendar.current.date(byAdding: .day, value: -1, to: Date()) else { return "" }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let date = dateFormatter.string(from: yesterDay)
+        return date
+    }
 }
 
 extension FilmCouncilViewController: UITableViewDelegate, UITableViewDataSource {
@@ -82,14 +126,12 @@ extension FilmCouncilViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath) as! FilmTableViewCell
         
-        cell.nameLabel.text = "주디"
-        cell.dateLabel.text = "2020-01-08"
-        cell.rankingLabel.text = "1"
+        cell.configureUI(list[indexPath.row])
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return list.count
     }
 }

@@ -27,6 +27,12 @@ class FilmTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureUI(_ data: Film) {
+        rankingLabel.text = data.rank
+        nameLabel.text = data.movieNm
+        dateLabel.text = data.openDt
+    }
+    
     func configure() {
         contentView.backgroundColor = .black
         

@@ -23,13 +23,19 @@ class FilmCouncilViewController: UIViewController {
     }
     
     func configureUI() {
-        textField.backgroundColor = .green
+        view.backgroundColor = .black
         
-        underlineView.backgroundColor = .red
+        textField.textColor = .white
+        textField.font = .boldSystemFont(ofSize: 16)
+        textField.keyboardType = .numberPad
         
-        searchButton.backgroundColor = .blue
+        underlineView.backgroundColor = .white
         
-        tableView.backgroundColor = .yellow
+        searchButton.backgroundColor = .white
+        searchButton.setTitle("검색", for: .normal)
+        searchButton.setTitleColor(.black, for: .normal)
+        
+        tableView.backgroundColor = .clear
     }
     
     func setHierachy() {

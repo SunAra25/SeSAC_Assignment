@@ -35,7 +35,12 @@ class FilmCouncilViewController: UIViewController {
         searchButton.setTitle("검색", for: .normal)
         searchButton.setTitleColor(.black, for: .normal)
         
+        tableView.delegate = self
+        tableView.dataSource = self
         tableView.backgroundColor = .clear
+        
+        tableView.register(FilmTableViewCell.self, forCellReuseIdentifier: FilmTableViewCell.identifier)
+        tableView.rowHeight = 60
     }
     
     func setHierachy() {
@@ -69,5 +74,22 @@ class FilmCouncilViewController: UIViewController {
             make.top.equalTo(underlineView.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+}
+
+extension FilmCouncilViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: FilmTableViewCell.identifier, for: indexPath) as! FilmTableViewCell
+        
+        cell.nameLabel.text = "주디"
+        cell.dateLabel.text = "2020-01-08"
+        cell.rankingLabel.text = "1"
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
 }

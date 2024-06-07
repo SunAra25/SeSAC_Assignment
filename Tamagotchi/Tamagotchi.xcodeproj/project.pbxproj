@@ -16,6 +16,8 @@
 		C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA90D2C12ADC600404BF7 /* UIColor+.swift */; };
 		C00CA9102C12AEFA00404BF7 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA90F2C12AEFA00404BF7 /* UIFont+.swift */; };
 		C00CA9122C12B0C500404BF7 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9112C12B0C500404BF7 /* UIImage+.swift */; };
+		C00CA9172C12B6A600404BF7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9162C12B6A600404BF7 /* BaseViewController.swift */; };
+		C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,8 @@
 		C00CA90D2C12ADC600404BF7 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		C00CA90F2C12AEFA00404BF7 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		C00CA9112C12B0C500404BF7 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
+		C00CA9162C12B6A600404BF7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 		C00CA8F42C12A47300404BF7 /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
+				C00CA9152C12B58600404BF7 /* Base */,
 				C00CA90C2C12ADB500404BF7 /* Extension */,
 				C00CA8F52C12A47300404BF7 /* AppDelegate.swift */,
 				C00CA8F72C12A47300404BF7 /* SceneDelegate.swift */,
@@ -81,6 +86,15 @@
 				C00CA9112C12B0C500404BF7 /* UIImage+.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		C00CA9152C12B58600404BF7 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C00CA9162C12B6A600404BF7 /* BaseViewController.swift */,
+				C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,8 +176,10 @@
 				C00CA8FA2C12A47300404BF7 /* ViewController.swift in Sources */,
 				C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */,
 				C00CA9102C12AEFA00404BF7 /* UIFont+.swift in Sources */,
+				C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */,
 				C00CA9122C12B0C500404BF7 /* UIImage+.swift in Sources */,
 				C00CA8F62C12A47300404BF7 /* AppDelegate.swift in Sources */,
+				C00CA9172C12B6A600404BF7 /* BaseViewController.swift in Sources */,
 				C00CA8F82C12A47300404BF7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

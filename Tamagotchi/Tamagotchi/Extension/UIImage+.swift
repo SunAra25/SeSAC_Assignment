@@ -10,6 +10,7 @@ import UIKit
 extension UIImage {
     class var feedingWater: UIImage { return UIImage(systemName: "drop.circle")! }
     class var feedingFood: UIImage { return UIImage(systemName: "leaf.circle")! }
+    class var setting: UIImage { return UIImage(systemName: "person.circle")! }
     class var edit: UIImage { return UIImage(systemName: "pencil")! }
     class var chage: UIImage { return UIImage(systemName: "moon.fil")! }
     class var reset: UIImage { return UIImage(systemName: "arrow.clockwise")! }

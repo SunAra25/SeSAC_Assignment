@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C00CA8F62C12A47300404BF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA8F52C12A47300404BF7 /* AppDelegate.swift */; };
 		C00CA8F82C12A47300404BF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA8F72C12A47300404BF7 /* SceneDelegate.swift */; };
-		C00CA8FA2C12A47300404BF7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA8F92C12A47300404BF7 /* ViewController.swift */; };
+		C00CA8FA2C12A47300404BF7 /* SelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA8F92C12A47300404BF7 /* SelectViewController.swift */; };
 		C00CA8FF2C12A47400404BF7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C00CA8FE2C12A47400404BF7 /* Assets.xcassets */; };
 		C00CA9022C12A47400404BF7 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C00CA9012C12A47400404BF7 /* Base */; };
 		C00CA90B2C12A53300404BF7 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C00CA90A2C12A53300404BF7 /* SnapKit */; };
@@ -24,7 +24,7 @@
 		C00CA8F22C12A47300404BF7 /* Tamagotchi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tamagotchi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C00CA8F52C12A47300404BF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C00CA8F72C12A47300404BF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C00CA8F92C12A47300404BF7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C00CA8F92C12A47300404BF7 /* SelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		C00CA8FE2C12A47400404BF7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C00CA9012C12A47400404BF7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C00CA9032C12A47400404BF7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 				C00CA90C2C12ADB500404BF7 /* Extension */,
 				C00CA8F52C12A47300404BF7 /* AppDelegate.swift */,
 				C00CA8F72C12A47300404BF7 /* SceneDelegate.swift */,
-				C00CA8F92C12A47300404BF7 /* ViewController.swift */,
+				C00CA91A2C149DA100404BF7 /* View */,
 				C00CA8FE2C12A47400404BF7 /* Assets.xcassets */,
 				C00CA9002C12A47400404BF7 /* LaunchScreen.storyboard */,
 				C00CA9032C12A47400404BF7 /* Info.plist */,
@@ -95,6 +95,14 @@
 				C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C00CA91A2C149DA100404BF7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C00CA8F92C12A47300404BF7 /* SelectViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -173,7 +181,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C00CA8FA2C12A47300404BF7 /* ViewController.swift in Sources */,
+				C00CA8FA2C12A47300404BF7 /* SelectViewController.swift in Sources */,
 				C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */,
 				C00CA9102C12AEFA00404BF7 /* UIFont+.swift in Sources */,
 				C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */,

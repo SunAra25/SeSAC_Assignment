@@ -11,6 +11,8 @@ import SnapKit
 class SelectViewController: BaseViewController {
     let titleLabel = UILabel()
     let tamagoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let backgroundView = UIView()
+    let alertView = SelectAlertView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,11 +34,18 @@ class SelectViewController: BaseViewController {
         tamagoCollectionView.dataSource = self
         tamagoCollectionView.register(TamagotchiCollectionViewCell.self, forCellWithReuseIdentifier: TamagotchiCollectionViewCell.identifier)
         tamagoCollectionView.backgroundColor = .clear
+        
+        backgroundView.backgroundColor = .black.withAlphaComponent(0.3)
+        backgroundView.isHidden = true
+        
+        alertView.cancelButton.addTarget(self, action: #selector(cancelButtonDidTap), for: .touchUpInside)
+        alertView.isHidden = true
     }
     
     func setHierarchy() {
-        view.addSubview(titleLabel)
-        view.addSubview(tamagoCollectionView)
+        [titleLabel, tamagoCollectionView, backgroundView, alertView].forEach {
+            view.addSubview($0)
+        }
     }
     
     func setConstraints() {
@@ -50,6 +59,20 @@ class SelectViewController: BaseViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+        
+        backgroundView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        alertView.snp.makeConstraints { make in
+            make.centerY.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(20)
+        }
+    }
+    
+    @objc func cancelButtonDidTap() {
+        backgroundView.isHidden = true
+        alertView.isHidden = true
     }
 }
 
@@ -68,6 +91,22 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
         default: cell.configureCell(Tamagotchi.none)
         }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        var tamagotchi: Tamagotchi = .none
+        
+        switch indexPath.row {
+        case 0: tamagotchi = .thorn
+        case 1: tamagotchi = .float
+        case 2:  tamagotchi = .twinkle
+        default: return
+        }
+        
+        backgroundView.isHidden = false
+        alertView.isHidden = false
+        
+        alertView.configureTamagotchi(type: .start, tamagotchi)
     }
 }
 

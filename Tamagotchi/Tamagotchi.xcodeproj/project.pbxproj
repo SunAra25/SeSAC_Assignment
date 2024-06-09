@@ -20,6 +20,8 @@
 		C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */; };
 		C00CA91E2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */; };
 		C0FA1D412C156601005D4B74 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D402C156601005D4B74 /* Tamagotchi.swift */; };
+		C0FA1D432C15A650005D4B74 /* SelectAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D422C15A650005D4B74 /* SelectAlertView.swift */; };
+		C0FA1D452C15B4B7005D4B74 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D442C15B4B7005D4B74 /* SelectButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0FA1D402C156601005D4B74 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
+		C0FA1D422C15A650005D4B74 /* SelectAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectAlertView.swift; sourceTree = "<group>"; };
+		C0FA1D442C15B4B7005D4B74 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,7 @@
 		C00CA8F42C12A47300404BF7 /* Tamagotchi */ = {
 			isa = PBXGroup;
 			children = (
+				C0FA1D462C15B4BE005D4B74 /* Enum */,
 				C00CA9152C12B58600404BF7 /* Base */,
 				C00CA90C2C12ADB500404BF7 /* Extension */,
 				C00CA8F52C12A47300404BF7 /* AppDelegate.swift */,
@@ -78,7 +83,6 @@
 				C00CA8FE2C12A47400404BF7 /* Assets.xcassets */,
 				C00CA9002C12A47400404BF7 /* LaunchScreen.storyboard */,
 				C00CA9032C12A47400404BF7 /* Info.plist */,
-				C0FA1D402C156601005D4B74 /* Tamagotchi.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -107,8 +111,18 @@
 			children = (
 				C00CA8F92C12A47300404BF7 /* SelectViewController.swift */,
 				C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */,
+				C0FA1D422C15A650005D4B74 /* SelectAlertView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C0FA1D462C15B4BE005D4B74 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				C0FA1D402C156601005D4B74 /* Tamagotchi.swift */,
+				C0FA1D442C15B4B7005D4B74 /* SelectButton.swift */,
+			);
+			path = Enum;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,7 +210,9 @@
 				C00CA9122C12B0C500404BF7 /* UIImage+.swift in Sources */,
 				C00CA8F62C12A47300404BF7 /* AppDelegate.swift in Sources */,
 				C00CA9172C12B6A600404BF7 /* BaseViewController.swift in Sources */,
+				C0FA1D452C15B4B7005D4B74 /* SelectButton.swift in Sources */,
 				C00CA8F82C12A47300404BF7 /* SceneDelegate.swift in Sources */,
+				C0FA1D432C15A650005D4B74 /* SelectAlertView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

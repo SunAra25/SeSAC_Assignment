@@ -17,4 +17,34 @@ class UserDefaultsManager {
             UserDefaults.standard.set(newValue, forKey: "nickname")
         }
     }
+    
+    var level: Int {
+        get {
+            UserDefaults.standard.integer(forKey: "level")
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "level")
+        }
+    }
+    
+    var food: Int {
+        get {
+            UserDefaults.standard.integer(forKey: "food")
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "food")
+        }
+    }
+    
+    var water: Int {
+        get {
+            UserDefaults.standard.integer(forKey: "water")
+        }
+        
+        set {
+            UserDefaults.standard.set(newValue, forKey: "water")
+        }
+    }
 }

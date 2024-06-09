@@ -24,6 +24,7 @@
 		C0FA1D452C15B4B7005D4B74 /* SelectButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D442C15B4B7005D4B74 /* SelectButton.swift */; };
 		C0FA1D4B2C15B7F6005D4B74 /* UserDefaultManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D4A2C15B7F6005D4B74 /* UserDefaultManager.swift */; };
 		C0FA1D4E2C15BA03005D4B74 /* TamagotchiNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D4D2C15BA03005D4B74 /* TamagotchiNameView.swift */; };
+		C0FA1D502C15BB65005D4B74 /* MainViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D4F2C15BB65005D4B74 /* MainViewViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		C0FA1D442C15B4B7005D4B74 /* SelectButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectButton.swift; sourceTree = "<group>"; };
 		C0FA1D4A2C15B7F6005D4B74 /* UserDefaultManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultManager.swift; sourceTree = "<group>"; };
 		C0FA1D4D2C15BA03005D4B74 /* TamagotchiNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiNameView.swift; sourceTree = "<group>"; };
+		C0FA1D4F2C15BB65005D4B74 /* MainViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 			children = (
 				C00CA8F92C12A47300404BF7 /* SelectViewController.swift */,
 				C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */,
+				C0FA1D4F2C15BB65005D4B74 /* MainViewViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -216,6 +219,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C00CA91E2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift in Sources */,
+				C0FA1D502C15BB65005D4B74 /* MainViewViewController.swift in Sources */,
 				C0FA1D4E2C15BA03005D4B74 /* TamagotchiNameView.swift in Sources */,
 				C00CA8FA2C12A47300404BF7 /* SelectViewController.swift in Sources */,
 				C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */,

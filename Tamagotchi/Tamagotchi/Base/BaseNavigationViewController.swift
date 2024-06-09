@@ -31,8 +31,8 @@ class BaseNavigationViewController: BaseViewController {
     
     func setRightBarButtonItemAsSetting() {
         let barButtonItem = UIBarButtonItem(image: .setting, style: .plain, target: self, action: #selector(pushSettingView))
-        
-        navigationItem.leftBarButtonItem = barButtonItem
+        barButtonItem.tintColor = .font
+        navigationItem.rightBarButtonItem = barButtonItem
     }
     
     @objc func saveUserInfo() {

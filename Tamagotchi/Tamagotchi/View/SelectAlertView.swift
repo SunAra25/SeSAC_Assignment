@@ -18,6 +18,8 @@ class SelectAlertView: UIView {
     let startButton = UIButton()
     let changeButton = UIButton()
     
+    var tamagotchi: Tamagotchi?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -137,13 +139,23 @@ class SelectAlertView: UIView {
         case .change: changeButton.isHidden = false
         }
         
+        tamagotchi = data
+        
         tamagotchiImageView.image = data.tamagoImage
         nameView.nameLabel.text = data.rawValue
         contentLabel.text = data.tamagoInfo
     }
     
     @objc func startButtonDidTap() {
-        // TODO: 다마고치 선택 후 화면 전환
+        let mvc = MainViewController()
+        mvc.tamagotchi = tamagotchi
+        
+        let nav = UINavigationController(rootViewController: mvc)
+        
+        DispatchQueue.main.async {
+            self.window?.rootViewController = nav
+            self.window?.makeKeyAndVisible()
+        }
     }
     
     @objc func changeButtonDidTap() {

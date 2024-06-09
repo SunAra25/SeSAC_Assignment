@@ -8,8 +8,14 @@
 import UIKit
 
 extension UIImage {
-    class var feedingWater: UIImage { return UIImage(systemName: "drop.circle")! }
-    class var feedingFood: UIImage { return UIImage(systemName: "leaf.circle")! }
+    class var feedingWater: UIImage {
+        let config = UIImage.SymbolConfiguration(scale: .medium)
+        return UIImage(systemName: "drop.circle", withConfiguration: config)!
+    }
+    class var feedingFood: UIImage {
+        let config = UIImage.SymbolConfiguration(scale: .medium)
+        return UIImage(systemName: "leaf.circle", withConfiguration: config)!
+    }
     class var setting: UIImage { return UIImage(systemName: "person.circle")! }
     class var edit: UIImage { return UIImage(systemName: "pencil")! }
     class var chage: UIImage { return UIImage(systemName: "moon.fil")! }

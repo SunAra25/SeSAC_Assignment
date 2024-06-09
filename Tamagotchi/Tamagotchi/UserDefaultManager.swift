@@ -10,7 +10,7 @@ import Foundation
 class UserDefaultsManager {
     var nickname: String {
         get {
-            UserDefaults.standard.string(forKey: "nickname") ?? "대장님"
+            UserDefaults.standard.string(forKey: "nickname") ?? "대장"
         }
         
         set {
@@ -20,7 +20,8 @@ class UserDefaultsManager {
     
     var level: Int {
         get {
-            UserDefaults.standard.integer(forKey: "level")
+            let level = UserDefaults.standard.integer(forKey: "level")
+            return level == 0 ? 1 : level
         }
         
         set {

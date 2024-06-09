@@ -55,14 +55,18 @@ class SelectViewController: BaseViewController {
 
 extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        5
+        20
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as! TamagotchiCollectionViewCell
         
-        cell.imageView.image = UIImage.no
-        cell.nameLabel.text = "반짝반짝 다마고치"
+        switch indexPath.row {
+        case 0: cell.configureCell(Tamagotchi.thorn)
+        case 1: cell.configureCell(Tamagotchi.float)
+        case 2: cell.configureCell(Tamagotchi.twinkle)
+        default: cell.configureCell(Tamagotchi.none)
+        }
         return cell
     }
 }

@@ -24,6 +24,11 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func configureCell(_ data: Tamagotchi) {
+        nameLabel.text = data.rawValue
+        imageView.image = data.tamagoImage
+    }
+    
     func configureView() {
         nameView.layer.cornerRadius = 5
         nameView.layer.borderWidth = 1

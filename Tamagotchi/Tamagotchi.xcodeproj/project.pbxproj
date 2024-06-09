@@ -19,6 +19,7 @@
 		C00CA9172C12B6A600404BF7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9162C12B6A600404BF7 /* BaseViewController.swift */; };
 		C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */; };
 		C00CA91E2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */; };
+		C0FA1D412C156601005D4B74 /* Tamagotchi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FA1D402C156601005D4B74 /* Tamagotchi.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		C00CA9162C12B6A600404BF7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
 		C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0FA1D402C156601005D4B74 /* Tamagotchi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tamagotchi.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				C00CA8FE2C12A47400404BF7 /* Assets.xcassets */,
 				C00CA9002C12A47400404BF7 /* LaunchScreen.storyboard */,
 				C00CA9032C12A47400404BF7 /* Info.plist */,
+				C0FA1D402C156601005D4B74 /* Tamagotchi.swift */,
 			);
 			path = Tamagotchi;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				C00CA8FA2C12A47300404BF7 /* SelectViewController.swift in Sources */,
 				C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */,
 				C00CA9102C12AEFA00404BF7 /* UIFont+.swift in Sources */,
+				C0FA1D412C156601005D4B74 /* Tamagotchi.swift in Sources */,
 				C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */,
 				C00CA9122C12B0C500404BF7 /* UIImage+.swift in Sources */,
 				C00CA8F62C12A47300404BF7 /* AppDelegate.swift in Sources */,

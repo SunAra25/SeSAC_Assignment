@@ -11,8 +11,7 @@ import SnapKit
 class TamagotchiCollectionViewCell: UICollectionViewCell {
     static let identifier = "TamagotchiCollectionViewCell"
     let imageView = UIImageView()
-    let nameView = UIView()
-    let nameLabel = UILabel()
+    let nameView = TamagotchiNameView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -25,24 +24,19 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(_ data: Tamagotchi) {
-        nameLabel.text = data.rawValue
+        nameView.nameLabel.text = data.rawValue
         imageView.image = data.tamagoImage
     }
     
     func configureView() {
-        nameView.layer.cornerRadius = 5
-        nameView.layer.borderWidth = 1
-        nameView.layer.borderColor = UIColor.border?.cgColor
-        
-        nameLabel.textColor = .font
-        nameLabel.textAlignment = .center
-        nameLabel.font = .capB
+        nameView.nameLabel.textColor = .font
+        nameView.nameLabel.textAlignment = .center
+        nameView.nameLabel.font = .capB
     }
     
     func setLayout() {
         contentView.addSubview(imageView)
         contentView.addSubview(nameView)
-        nameView.addSubview(nameLabel)
         
         imageView.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(4)
@@ -54,11 +48,6 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
             make.top.equalTo(imageView.snp.bottom).offset(4)
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview().inset(4)
-        }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(2)
-            make.horizontalEdges.equalToSuperview().inset(4)
         }
     }
 }

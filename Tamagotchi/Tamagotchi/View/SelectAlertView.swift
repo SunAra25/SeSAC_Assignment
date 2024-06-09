@@ -10,8 +10,7 @@ import SnapKit
 
 class SelectAlertView: UIView {
     let tamagotchiImageView = UIImageView()
-    let nameView = UIView()
-    let nameLabel = UILabel()
+    let nameView = TamagotchiNameView()
     let dividerView = UIView()
     let contentLabel = UILabel()
     let buttonView = UIView()
@@ -34,14 +33,6 @@ class SelectAlertView: UIView {
         self.backgroundColor = .back
         self.layer.cornerRadius = 10
         self.clipsToBounds = true
-        
-        nameView.layer.cornerRadius = 5
-        nameView.layer.borderWidth = 1
-        nameView.layer.borderColor = UIColor.border?.withAlphaComponent(0.5).cgColor
-        
-        nameLabel.textColor = .font
-        nameLabel.textAlignment = .center
-        nameLabel.font = .subB
         
         contentLabel.textColor = .font
         contentLabel.textAlignment = .center
@@ -90,8 +81,6 @@ class SelectAlertView: UIView {
             self.addSubview($0)
         }
         
-        nameView.addSubview(nameLabel)
-        
         [cancelButton, startButton, changeButton].forEach {
             buttonView.addSubview($0)
         }
@@ -105,11 +94,6 @@ class SelectAlertView: UIView {
         nameView.snp.makeConstraints { make in
             make.top.equalTo(tamagotchiImageView.snp.bottom).offset(12)
             make.centerX.equalToSuperview()
-        }
-        
-        nameLabel.snp.makeConstraints { make in
-            make.verticalEdges.equalToSuperview().inset(4)
-            make.horizontalEdges.equalToSuperview().inset(8)
         }
         
         dividerView.snp.makeConstraints { make in
@@ -154,7 +138,7 @@ class SelectAlertView: UIView {
         }
         
         tamagotchiImageView.image = data.tamagoImage
-        nameLabel.text = data.rawValue
+        nameView.nameLabel.text = data.rawValue
         contentLabel.text = data.tamagoInfo
     }
     

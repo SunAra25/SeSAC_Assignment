@@ -18,6 +18,7 @@
 		C00CA9122C12B0C500404BF7 /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9112C12B0C500404BF7 /* UIImage+.swift */; };
 		C00CA9172C12B6A600404BF7 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9162C12B6A600404BF7 /* BaseViewController.swift */; };
 		C00CA9192C12B84C00404BF7 /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */; };
+		C00CA91E2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		C00CA9112C12B0C500404BF7 /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 		C00CA9162C12B6A600404BF7 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C00CA9182C12B84C00404BF7 /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
+		C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TamagotchiCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				C00CA8F92C12A47300404BF7 /* SelectViewController.swift */,
+				C00CA91D2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C00CA91E2C14A9EF00404BF7 /* TamagotchiCollectionViewCell.swift in Sources */,
 				C00CA8FA2C12A47300404BF7 /* SelectViewController.swift in Sources */,
 				C00CA90E2C12ADC600404BF7 /* UIColor+.swift in Sources */,
 				C00CA9102C12AEFA00404BF7 /* UIFont+.swift in Sources */,

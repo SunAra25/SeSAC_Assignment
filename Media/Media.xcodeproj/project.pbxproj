@@ -14,6 +14,7 @@
 		C0FCA7212C16DC68002CCADA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C0FCA7202C16DC68002CCADA /* Base */; };
 		C0FCA72A2C16DCAF002CCADA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C0FCA7292C16DCAF002CCADA /* SnapKit */; };
 		C0FCA72D2C16DCBC002CCADA /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C0FCA72C2C16DCBC002CCADA /* Alamofire */; };
+		C0FCA72F2C16E01A002CCADA /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		C0FCA71D2C16DC68002CCADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0FCA7202C16DC68002CCADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0FCA7222C16DC68002CCADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				C0FCA7142C16DC66002CCADA /* AppDelegate.swift */,
 				C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */,
 				C0FCA7182C16DC66002CCADA /* ViewController.swift */,
+				C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */,
 				C0FCA71D2C16DC68002CCADA /* Assets.xcassets */,
 				C0FCA71F2C16DC68002CCADA /* LaunchScreen.storyboard */,
 				C0FCA7222C16DC68002CCADA /* Info.plist */,
@@ -148,6 +151,7 @@
 			files = (
 				C0FCA7192C16DC66002CCADA /* ViewController.swift in Sources */,
 				C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */,
+				C0FCA72F2C16E01A002CCADA /* MediaTableViewCell.swift in Sources */,
 				C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

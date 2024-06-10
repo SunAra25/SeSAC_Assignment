@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         
         configureView()
         configureLayout()
+        callRequest()
     }
 
     func configureView() {
@@ -39,6 +40,20 @@ class ViewController: UIViewController {
         tableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    func callRequest() {
+        let url = APIURL.trendURL
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        AF.request(
+            url,
+            headers: headers)
+            .responseString() { response in
+                print(response)
+            }
     }
     
     @objc func listBtnDidTap() {

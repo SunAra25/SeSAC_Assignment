@@ -22,7 +22,7 @@ class MainViewController: BaseNavigationViewController {
     let waterButton = UIButton()
     
     let userDefaults = UserDefaultsManager()
-    var tamagotchi: Tamagotchi?
+    
     lazy var messages = [
         "\(userDefaults.nickname)님~\n오늘 깃허브 푸시는 하셨나요?",
         "과제 끝내고 가셔야죠 \(userDefaults.nickname)님^ㅡ^",
@@ -39,7 +39,7 @@ class MainViewController: BaseNavigationViewController {
     }
     
     override func configureView() {
-        guard let tamagotchi = tamagotchi else { return }
+        guard let tamagotchi = userDefaults.myTamagotchi else { return }
         
         super.configureView()
         
@@ -48,7 +48,7 @@ class MainViewController: BaseNavigationViewController {
         
         bubbleImageView.image = UIImage.bubble
         
-        tamagotchiImageView.image = UIImage(named: "\(tamagotchi.index!)-\(userDefaults.level)")
+        tamagotchiImageView.image = UIImage(named: "\(tamagotchi.rawValue)-\(userDefaults.level)")
         
         let randomIdx = Int.random(in: 0...100)
         messageLabel.text = messages[randomIdx % 4]
@@ -57,7 +57,7 @@ class MainViewController: BaseNavigationViewController {
         messageLabel.font = .bodyM
         messageLabel.numberOfLines = 0
         
-        nameView.nameLabel.text = tamagotchi.rawValue
+        nameView.nameLabel.text = tamagotchi.name
         
         infoLabel.text = "LV\(userDefaults.level) • 밥알 \(userDefaults.food)개 • 물방울 \(userDefaults.water)개"
         infoLabel.textColor = .font
@@ -118,7 +118,7 @@ class MainViewController: BaseNavigationViewController {
     func setConstraints() {
         bubbleImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(48)
-            make.centerX.equalToSuperview()
+            make.horizontalEdges.equalToSuperview().inset(56)
         }
         
         messageLabel.snp.makeConstraints { make in

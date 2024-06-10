@@ -23,8 +23,10 @@ class TamagotchiCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(_ data: Tamagotchi) {
-        nameView.nameLabel.text = data.rawValue
+    func configureCell(_ data: Tamagotchi?) {
+        guard let data else { return }
+        
+        nameView.nameLabel.text = data.name
         imageView.image = data.tamagoImage
     }
     

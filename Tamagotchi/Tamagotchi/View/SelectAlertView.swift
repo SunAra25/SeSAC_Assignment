@@ -142,15 +142,12 @@ class SelectAlertView: UIView {
         tamagotchi = data
         
         tamagotchiImageView.image = data.tamagoImage
-        nameView.nameLabel.text = data.rawValue
+        nameView.nameLabel.text = data.name
         contentLabel.text = data.tamagoInfo
     }
     
     @objc func startButtonDidTap() {
-        let mvc = MainViewController()
-        mvc.tamagotchi = tamagotchi
-        
-        let nav = UINavigationController(rootViewController: mvc)
+        let nav = UINavigationController(rootViewController: MainViewController())
         
         DispatchQueue.main.async {
             self.window?.rootViewController = nav

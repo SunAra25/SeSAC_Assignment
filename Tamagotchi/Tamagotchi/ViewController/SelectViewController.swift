@@ -13,6 +13,7 @@ class SelectViewController: BaseViewController {
     let tamagoCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let backgroundView = UIView()
     let alertView = SelectAlertView()
+    let userDefaults = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,28 +85,22 @@ extension SelectViewController: UICollectionViewDelegate, UICollectionViewDataSo
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TamagotchiCollectionViewCell.identifier, for: indexPath) as! TamagotchiCollectionViewCell
         
-        switch indexPath.row {
-        case 0: cell.configureCell(Tamagotchi.thorn)
-        case 1: cell.configureCell(Tamagotchi.float)
-        case 2: cell.configureCell(Tamagotchi.twinkle)
-        default: cell.configureCell(Tamagotchi.none)
-        }
+        let tamagotchi = indexPath.row < Tamagotchi.allCases.count - 1 ? Tamagotchi(rawValue: indexPath.row) : Tamagotchi.none
+        
+        cell.configureCell(tamagotchi)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        var tamagotchi: Tamagotchi = .none
+        guard indexPath.row < Tamagotchi.allCases.count - 1 else { return }
         
-        switch indexPath.row {
-        case 0: tamagotchi = .thorn
-        case 1: tamagotchi = .float
-        case 2:  tamagotchi = .twinkle
-        default: return
-        }
+        userDefaults.myTamagotchi = Tamagotchi(rawValue: indexPath.row)
         
         backgroundView.isHidden = false
         alertView.isHidden = false
         
+        guard let tamagotchi = userDefaults.myTamagotchi else { return }
         alertView.configureTamagotchi(type: .start, tamagotchi)
     }
 }

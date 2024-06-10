@@ -8,44 +8,57 @@
 import Foundation
 
 class UserDefaultsManager {
-    var nickname: String {
+    private let userDefaults = UserDefaults.standard
+    
+    var myTamagotchi: Tamagotchi? {
         get {
-            UserDefaults.standard.string(forKey: "nickname") ?? "대장"
+            guard let rawValue = userDefaults.object(forKey: "tamagotchi") as? Int else { return nil }
+            return Tamagotchi(rawValue: rawValue)
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: "nickname")
+            userDefaults.setValue(newValue?.rawValue, forKey: "tamagotchi")
+        }
+    }
+    
+    var nickname: String {
+        get {
+            userDefaults.string(forKey: "nickname") ?? "대장"
+        }
+        
+        set {
+            userDefaults.set(newValue, forKey: "nickname")
         }
     }
     
     var level: Int {
         get {
-            let level = UserDefaults.standard.integer(forKey: "level")
+            let level = userDefaults.integer(forKey: "level")
             return level == 0 ? 1 : level
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: "level")
+            userDefaults.set(newValue, forKey: "level")
         }
     }
     
     var food: Int {
         get {
-            UserDefaults.standard.integer(forKey: "food")
+            userDefaults.integer(forKey: "food")
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: "food")
+            userDefaults.set(newValue, forKey: "food")
         }
     }
     
     var water: Int {
         get {
-            UserDefaults.standard.integer(forKey: "water")
+            userDefaults.integer(forKey: "water")
         }
         
         set {
-            UserDefaults.standard.set(newValue, forKey: "water")
+            userDefaults.set(newValue, forKey: "water")
         }
     }
 }

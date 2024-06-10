@@ -7,14 +7,19 @@
 
 import UIKit
 
-enum Tamagotchi: String, CaseIterable {
-    case none = "준비중이에요"
-    case thorn = "따끔따끔 다마고치"
-    case float = "방실방실 다마고치"
-    case twinkle = "반짝반짝 다마고치"
+enum Tamagotchi: Int, CaseIterable {
+    case thorn
+    case float
+    case twinkle
+    case none
     
-    var index: Int? {
-        return Tamagotchi.allCases.firstIndex(of: self)
+    var name: String {
+        switch self {
+        case .thorn: "따끔따끔 다마고치"
+        case .float: "방실방실 다마고치"
+        case .twinkle: "반짝반짝 다마고치"
+        case .none: "준비중이에요"
+        }
     }
     
     var tamagoImage: UIImage {

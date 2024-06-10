@@ -23,11 +23,31 @@ class MediaTableViewCell: UITableViewCell {
     let detailLabel = UILabel()
     let detailImageView = UIImageView()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
         configureView()
         setHierachy()
         setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureCell(_ data: MediaDetailResponse) {
+        dateLabel.text = data.releaseDate
+        
+        var category = ""
+        for genre in data.genres {
+            category += "#\(genre.name) "
+        }
+        
+        categoryLabel.text = category
+        
+        gradeScoreLabel.text = data.voteAverage.formatted()
+        
+        titleLabel.text = data.title
     }
     
     func configureView() {
@@ -43,7 +63,6 @@ class MediaTableViewCell: UITableViewCell {
         mediaView.clipsToBounds = true
         
         mediaImageView.contentMode = .scaleAspectFill
-        mediaImageView.backgroundColor = .red
         
         gradeTitleLabel.text = "평점"
         gradeTitleLabel.textColor = .white
@@ -98,15 +117,17 @@ class MediaTableViewCell: UITableViewCell {
             make.top.equalTo(categoryLabel.snp.bottom).offset(4)
             make.horizontalEdges.equalToSuperview().inset(16)
             make.height.equalTo(mediaView.snp.width)
+            make.bottom.equalToSuperview().inset(16)
         }
         
         mediaImageView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(5 / 3)
+            make.height.equalTo(mediaView).multipliedBy(0.7)
         }
         
         gradeTitleLabel.snp.makeConstraints { make in
-            make.leading.bottom.equalTo(mediaImageView).inset(16)
+            make.leading.equalTo(mediaImageView).inset(16)
+            make.bottom.equalTo(mediaImageView).offset(-16)
             make.width.equalTo(36)
             make.height.equalTo(32)
         }
@@ -139,7 +160,7 @@ class MediaTableViewCell: UITableViewCell {
         detailImageView.snp.makeConstraints { make in
             make.centerY.equalTo(detailLabel)
             make.trailing.equalToSuperview().inset(16)
-            make.size.equalTo(35)
+            make.size.equalTo(25)
         }
     }
 }

@@ -12,12 +12,20 @@ import SnapKit
 class ViewController: UIViewController {
     let tableView = UITableView()
     
+    var mediaList: [MediaDetailResponse] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureLayout()
-        callRequest()
+        callMediaRequest()
     }
 
     func configureView() {
@@ -42,18 +50,50 @@ class ViewController: UIViewController {
         }
     }
     
-    func callRequest() {
-        let url = APIURL.trendURL
+    func callMediaRequest() {
+        let url = APIURL.movieURL
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
             "accept" : "application/json"
         ]
+        
         AF.request(
             url,
             headers: headers)
-            .responseString() { response in
-                print(response)
+        .responseDecodable(of: MediaResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                mediaList = []
+                
+                for result in value.results {
+                    callMediaDetailRequest(result.id)
+                }
+            case .failure(let error):
+                print(error)
             }
+        }
+    }
+    
+    func callMediaDetailRequest(_ id: Int) {
+        let url = APIURL.movieDetailURL + "/\(id)"
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        
+        AF.request(
+            url,
+            headers: headers)
+        .responseDecodable(of: MediaDetailResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                mediaList.append(value)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     @objc func listBtnDidTap() {
@@ -67,12 +107,15 @@ class ViewController: UIViewController {
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        return mediaList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
+        let data = mediaList[indexPath.row]
         
+        cell.configureCell(data)
+        //print(mediaList.count)
         return cell
     }
 }

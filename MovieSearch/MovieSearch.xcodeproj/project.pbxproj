@@ -15,6 +15,8 @@
 		C03A7E7A2C18A50F0003676E /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C03A7E792C18A50F0003676E /* Kingfisher */; };
 		C03A7E7D2C18A51F0003676E /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C03A7E7C2C18A51F0003676E /* Alamofire */; };
 		C03A7E802C18A52C0003676E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C03A7E7F2C18A52C0003676E /* SnapKit */; };
+		C03A7E822C18A8300003676E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03A7E812C18A8300003676E /* Movie.swift */; };
+		C03A7E842C18A9A40003676E /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03A7E832C18A9A40003676E /* MovieCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C03A7E6D2C18A4F30003676E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C03A7E702C18A4F30003676E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C03A7E722C18A4F30003676E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C03A7E812C18A8300003676E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C03A7E832C18A9A40003676E /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 				C03A7E6D2C18A4F30003676E /* Assets.xcassets */,
 				C03A7E6F2C18A4F30003676E /* LaunchScreen.storyboard */,
 				C03A7E722C18A4F30003676E /* Info.plist */,
+				C03A7E812C18A8300003676E /* Movie.swift */,
+				C03A7E832C18A9A40003676E /* MovieCollectionViewCell.swift */,
 			);
 			path = MovieSearch;
 			sourceTree = "<group>";
@@ -152,6 +158,8 @@
 			files = (
 				C03A7E692C18A4F10003676E /* ViewController.swift in Sources */,
 				C03A7E652C18A4F10003676E /* AppDelegate.swift in Sources */,
+				C03A7E842C18A9A40003676E /* MovieCollectionViewCell.swift in Sources */,
+				C03A7E822C18A8300003676E /* Movie.swift in Sources */,
 				C03A7E672C18A4F10003676E /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

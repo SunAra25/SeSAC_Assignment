@@ -14,11 +14,19 @@ class ViewController: UIViewController {
     
     var mediaList: [MediaDetailResponse] = [] {
         didSet {
-            tableView.reloadData()
+            if mediaList.count == cast.count {
+                tableView.reloadData()
+            }
         }
     }
     
-    
+    var cast: [[Cast]] = [[]] {
+        didSet {
+            if mediaList.count == cast.count {
+                tableView.reloadData()
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +76,7 @@ class ViewController: UIViewController {
                 
                 for result in value.results {
                     callMediaDetailRequest(result.id)
+                    callCreditsRequest(result.id)
                 }
             case .failure(let error):
                 print(error)
@@ -96,6 +105,27 @@ class ViewController: UIViewController {
         }
     }
     
+    func callCreditsRequest(_ movieId: Int) {
+        let url = "\(APIURL.creditsURL)/\(movieId)/credits"
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        
+        AF.request(
+            url,
+            headers: headers)
+        .responseDecodable(of: Credits.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                cast.append(value.cast)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     @objc func listBtnDidTap() {
         
     }
@@ -112,10 +142,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
-        let data = mediaList[indexPath.row]
-        
-        cell.configureCell(data)
-        //print(mediaList.count)
+        let media = mediaList[indexPath.row]
+        let cast = cast[indexPath.row]
+       
+        cell.configureCell(media: media, casts: cast)
         return cell
     }
 }

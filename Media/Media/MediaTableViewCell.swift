@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class MediaTableViewCell: UITableViewCell {
     static let identifier = "MediaTableViewCell"
@@ -35,19 +36,31 @@ class MediaTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureCell(_ data: MediaDetailResponse) {
-        dateLabel.text = data.releaseDate
+    func configureCell(media: MediaDetailResponse, casts: [Cast]) {
+        dateLabel.text = media.releaseDate
         
         var category = ""
-        for genre in data.genres {
+        for genre in media.genres {
             category += "#\(genre.name) "
         }
         
+        var castString = ""
+        
+        for cast in casts {
+            castString += cast.name + ", "
+        }
+        
+        charactersLabel.text = castString
+        
+        let imageString = "https://image.tmdb.org/t/p/w500/" + media.backdropPath
+        guard let url = URL(string: imageString) else { return }
+        mediaImageView.kf.setImage(with: url)
+        
         categoryLabel.text = category
         
-        gradeScoreLabel.text = data.voteAverage.formatted()
+        gradeScoreLabel.text = media.voteAverage.formatted()
         
-        titleLabel.text = data.title
+        titleLabel.text = media.title
     }
     
     func configureView() {
@@ -91,6 +104,7 @@ class MediaTableViewCell: UITableViewCell {
         detailLabel.font = .systemFont(ofSize: 12)
         
         detailImageView.image = UIImage(systemName: "chevron.right")
+        detailImageView.tintColor = .black
     }
     
     func setHierachy() {
@@ -143,7 +157,7 @@ class MediaTableViewCell: UITableViewCell {
         }
         
         charactersLabel.snp.makeConstraints { make in
-            make.top.equalTo(mediaImageView.snp.bottom).offset(16)
+            make.top.equalTo(titleLabel.snp.bottom).offset(16)
             make.horizontalEdges.equalToSuperview().inset(16)
         }
         
@@ -153,14 +167,14 @@ class MediaTableViewCell: UITableViewCell {
         }
         
         detailLabel.snp.makeConstraints { make in
-            make.top.equalTo(dividerView.snp.bottom).offset(15)
+            make.top.equalTo(dividerView.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(16)
         }
         
         detailImageView.snp.makeConstraints { make in
             make.centerY.equalTo(detailLabel)
             make.trailing.equalToSuperview().inset(16)
-            make.size.equalTo(25)
+            make.size.equalTo(20)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 import SnapKit
 
 class ViewController: UIViewController {
@@ -26,12 +27,7 @@ class ViewController: UIViewController {
     
     var list = MovieResponse(page: 0, results: [], totalPages: 0, totalResults: 0)
     var page = 1
-    
-    var movieList: [Movie] = [] {
-        didSet {
-            collectionView.reloadData()
-        }
-    }
+    var totalPages = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +57,49 @@ class ViewController: UIViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
     }
+    
+    func callRequest(_ target: String) {
+        let url = APIURL.searchURL
+        let parameters: Parameters = [
+            "query" : target
+        ]
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth
+        ]
+        
+        AF.request(url,
+                   parameters: parameters,
+                   headers: headers).responseDecodable(of: MovieResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                totalPages = value.totalPages
+                
+                if page == 1 {
+                    list = value
+                } else {
+                    list.results.append(contentsOf: value.results)
+                }
+                    
+                collectionView.reloadData()
+                
+                if page == 1 {
+                    collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)
+                }
+                
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
 }
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for item in indexPaths {
-            if list.results.count - 2 == item.row && list.totalPages != page {
+            if list.results.count - 6 == item.row && list.totalPages > page {
                 page += 1
-                // TODO: 네트워킹
+                callRequest(searchBar.text!)
             }
         }
     }
@@ -78,19 +109,20 @@ extension ViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let target = searchBar.text else { return }
         page = 1
-        // TODO: 네트워킹
+        callRequest(target)
         view.endEditing(true)
     }
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 100
+        return list.results.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
-        
+        let data = list.results[indexPath.row]
+        cell.configureCell(data)
         return cell
     }
 }

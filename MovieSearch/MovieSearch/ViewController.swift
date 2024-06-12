@@ -42,7 +42,10 @@ class ViewController: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.prefetchDataSource = self
         collectionView.register(MovieCollectionViewCell.self, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        
+        collectionView.isPrefetchingEnabled = true
         
         view.addSubview(searchBar)
         view.addSubview(collectionView)
@@ -61,7 +64,8 @@ class ViewController: UIViewController {
     func callRequest(_ target: String) {
         let url = APIURL.searchURL
         let parameters: Parameters = [
-            "query" : target
+            "query" : target,
+            "page" : page
         ]
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth
@@ -96,11 +100,12 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        for item in indexPaths {
-            if list.results.count - 6 == item.row && list.totalPages > page {
-                page += 1
-                callRequest(searchBar.text!)
-            }
+        print(indexPaths, list.results.count)
+        let count = list.results.count
+        
+        if list.totalPages > page && count - 10 < indexPaths[0].row {
+            page += 1
+            callRequest(searchBar.text!)
         }
     }
 }
@@ -121,6 +126,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as! MovieCollectionViewCell
+        
         let data = list.results[indexPath.row]
         cell.configureCell(data)
         return cell

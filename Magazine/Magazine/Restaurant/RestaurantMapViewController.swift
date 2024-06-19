@@ -31,7 +31,12 @@ class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
         
         setSegmentedControl()
         
-        checkDeviceLocationAuthorization()
+        setNavigation()
+    }
+    
+    func setNavigation() {
+        let item = UIBarButtonItem(title: "위치", style: .plain, target: self, action: #selector(checkDeviceLocationAuthorization))
+        navigationItem.rightBarButtonItem = item
     }
     
     func setSegmentedControl() {
@@ -79,10 +84,10 @@ class RestaurantMapViewController: UIViewController, MKMapViewDelegate {
 
 extension RestaurantMapViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print(#function)
         if let coordinate = locations.last?.coordinate {
             setRegionAndAnnotation(center: coordinate)
         }
+        
         locationManager.stopUpdatingLocation()
     }
     
@@ -103,11 +108,12 @@ extension RestaurantMapViewController {
         mapView.setRegion(region, animated: true)
     }
     
-    func checkDeviceLocationAuthorization() {
+    @objc func checkDeviceLocationAuthorization() {
         if CLLocationManager.locationServicesEnabled() {
             checkCurrentLocationAuthorization()
         } else {
-            // TODO: 설정 유도
+            let center = CLLocationCoordinate2D(latitude: 37.517768794428, longitude: 126.88578560648)
+            setRegionAndAnnotation(center: center)
         }
     }
     
@@ -119,7 +125,7 @@ extension RestaurantMapViewController {
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.requestWhenInUseAuthorization()
         case .denied:
-            // TODO: 설정 유도
+            presentSetting()
             break
         case .authorizedWhenInUse:
             locationManager.startUpdatingLocation()
@@ -127,4 +133,25 @@ extension RestaurantMapViewController {
         }
     }
 
+    func presentSetting() {
+        let alertController = UIAlertController(title: "위치 접근 권한이 없습니다.", message: "설정으로 이동하여 권한 설정을 해주세요.", preferredStyle: UIAlertController.Style.alert)
+
+        let okAction = UIAlertAction(title: "확인", style: .default) { (action) in
+            guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                return
+            }
+
+            if UIApplication.shared.canOpenURL(settingsUrl) {
+                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                    print("Settings opened: \(success)")
+                })
+            }
+        }
+        let cancelAction = UIAlertAction(title: "취소", style: .cancel, handler: nil)
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+
+        self.present(alertController, animated: false, completion: nil)
+    }
 }

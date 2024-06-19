@@ -503,6 +503,7 @@
 				DEVELOPMENT_TEAM = X3SZJ2WYSU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magazine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = " ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -536,6 +537,7 @@
 				DEVELOPMENT_TEAM = X3SZJ2WYSU;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Magazine/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = " ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

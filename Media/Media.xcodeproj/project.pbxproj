@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C061D0F32C296474007E9961 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F22C296474007E9961 /* DetailViewController.swift */; };
 		C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7142C16DC66002CCADA /* AppDelegate.swift */; };
 		C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */; };
 		C0FCA7192C16DC66002CCADA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7182C16DC66002CCADA /* ViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C061D0F22C296474007E9961 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C0FCA7112C16DC66002CCADA /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FCA7142C16DC66002CCADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */,
 				C0FCA7182C16DC66002CCADA /* ViewController.swift */,
 				C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */,
+				C061D0F22C296474007E9961 /* DetailViewController.swift */,
 				C0FCA71D2C16DC68002CCADA /* Assets.xcassets */,
 				C0FCA71F2C16DC68002CCADA /* LaunchScreen.storyboard */,
 				C0FCA7222C16DC68002CCADA /* Info.plist */,
@@ -169,6 +172,7 @@
 				C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */,
 				C0FCA7312C16F74E002CCADA /* APIKey.swift in Sources */,
 				C0FCA73A2C17E0A7002CCADA /* Credits.swift in Sources */,
+				C061D0F32C296474007E9961 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

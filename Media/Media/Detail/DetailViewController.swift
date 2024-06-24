@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class DetailViewController: UIViewController {
     let titleLabel = UILabel()
@@ -46,12 +47,29 @@ class DetailViewController: UIViewController {
         
         return layout
     }()
+    var movieId = 0
+    var similarList: [Movie] = [] {
+        didSet {
+            similarCollectionView.reloadData()
+        }
+    }
+    var recommendList: [Movie] = [] {
+        didSet {
+            recommendCollectionView.reloadData()
+        }
+    }
+    var posterList: [Poster] = [] {
+        didSet {
+            posterCollectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         setLayout()
+        callRequest()
     }
     
     func configureView() {
@@ -132,5 +150,58 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as! PosterCollectionViewCell
         
         return cell
+    }
+}
+
+extension DetailViewController {
+    func callRequest() {
+        let base = APIURL.poster
+        let similarURL = "\(movieId)/similar"
+        let recommendURL = "\(movieId)/recommendations"
+        let posterURL = "\(movieId)/images"
+        
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        
+        AF.request(
+            base + similarURL,
+            headers: headers)
+        .responseDecodable(of: MovieResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                similarList = value.results
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        AF.request(
+            base + recommendURL,
+            headers: headers)
+        .responseDecodable(of: MovieResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                recommendList = value.results
+            case .failure(let error):
+                print(error)
+            }
+        }
+        
+        AF.request(
+            base + posterURL,
+            headers: headers)
+        .responseDecodable(of: PosterResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                posterList = value.posters
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
 }

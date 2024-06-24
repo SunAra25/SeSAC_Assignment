@@ -12,6 +12,8 @@ import SnapKit
 class ViewController: UIViewController {
     let tableView = UITableView()
     
+    var movieIdList: [Int] = []
+    
     var mediaList: [MediaDetailResponse] = [] {
         didSet {
             if mediaList.count == cast.count {
@@ -72,6 +74,7 @@ class ViewController: UIViewController {
             guard let self else { return }
             switch response.result {
             case .success(let value):
+                movieIdList = value.results.map { $0.id }
                 mediaList = []
                 
                 for result in value.results {
@@ -147,5 +150,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
        
         cell.configureCell(media: media, casts: cast)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let nextVC = DetailViewController()
+        nextVC.movieId = movieIdList[indexPath.row]
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }

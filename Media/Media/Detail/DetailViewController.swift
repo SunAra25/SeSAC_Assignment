@@ -143,11 +143,29 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        switch collectionView {
+        case similarCollectionView: 
+            return similarList.count
+        case recommendCollectionView: 
+            return recommendList.count
+        case posterCollectionView:
+            return posterList.count
+        default: return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as! PosterCollectionViewCell
+        
+        switch collectionView {
+        case similarCollectionView:
+            cell.configureCell(data: similarList[indexPath.row])
+        case recommendCollectionView:
+            cell.configureCell(data: recommendList[indexPath.row])
+        case posterCollectionView:
+            cell.configureCell(data: posterList[indexPath.row])
+        default: break
+        }
         
         return cell
     }

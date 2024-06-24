@@ -7,12 +7,14 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class PosterCollectionViewCell: UICollectionViewCell {
     static let identifier = "PosterCollectionViewCell"
     let imageView = {
         let view = UIImageView()
-        view.layer.cornerRadius = 2
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
         view.contentMode = .scaleAspectFill
         view.backgroundColor = .lightGray
         return view
@@ -39,5 +41,17 @@ class PosterCollectionViewCell: UICollectionViewCell {
         imageView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+    }
+    
+    func configureCell(data: Movie) {
+        let imageString = "https://image.tmdb.org/t/p/original/" + data.posterPath
+        guard let url = URL(string: imageString) else { return }
+        imageView.kf.setImage(with: url)
+    }
+    
+    func configureCell(data: Poster) {
+        let imageString = "https://image.tmdb.org/t/p/original/" + data.filePath
+        guard let url = URL(string: imageString) else { return }
+        imageView.kf.setImage(with: url)
     }
 }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C061D0F32C296474007E9961 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F22C296474007E9961 /* DetailViewController.swift */; };
+		C061D0F62C298725007E9961 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */; };
 		C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7142C16DC66002CCADA /* AppDelegate.swift */; };
 		C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */; };
 		C0FCA7192C16DC66002CCADA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7182C16DC66002CCADA /* ViewController.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		C061D0F22C296474007E9961 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0FCA7112C16DC66002CCADA /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FCA7142C16DC66002CCADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C061D0F42C29870E007E9961 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				C061D0F22C296474007E9961 /* DetailViewController.swift */,
+				C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */,
+			);
+			path = Detail;
+			sourceTree = "<group>";
+		};
 		C0FCA7082C16DC66002CCADA = {
 			isa = PBXGroup;
 			children = (
@@ -74,7 +85,7 @@
 				C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */,
 				C0FCA7182C16DC66002CCADA /* ViewController.swift */,
 				C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */,
-				C061D0F22C296474007E9961 /* DetailViewController.swift */,
+				C061D0F42C29870E007E9961 /* Detail */,
 				C0FCA71D2C16DC68002CCADA /* Assets.xcassets */,
 				C0FCA71F2C16DC68002CCADA /* LaunchScreen.storyboard */,
 				C0FCA7222C16DC68002CCADA /* Info.plist */,
@@ -172,6 +183,7 @@
 				C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */,
 				C0FCA7312C16F74E002CCADA /* APIKey.swift in Sources */,
 				C0FCA73A2C17E0A7002CCADA /* Credits.swift in Sources */,
+				C061D0F62C298725007E9961 /* PosterCollectionViewCell.swift in Sources */,
 				C061D0F32C296474007E9961 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

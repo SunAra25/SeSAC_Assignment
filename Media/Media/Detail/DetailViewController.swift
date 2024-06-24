@@ -11,19 +11,40 @@ import SnapKit
 class DetailViewController: UIViewController {
     let titleLabel = UILabel()
     let similarLabel = UILabel()
-    let similarCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    lazy var similarCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.delegate = self
+        view.dataSource = self
+        view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         return view
     }()
     let recommendLabel = UILabel()
-    let recommendCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    lazy var recommendCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.delegate = self
+        view.dataSource = self
+        view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         return view
     }()
     let posterLabel = UILabel()
-    let posterCollectionView: UICollectionView = {
-        let view = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    lazy var posterCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.delegate = self
+        view.dataSource = self
+        view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         return view
+    }()
+    let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = 8
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        
+        let height: CGFloat = 160
+        let width = 160 * 0.7
+        layout.itemSize = CGSize(width: width, height: height)
+        
+        return layout
     }()
     
     override func viewDidLoad() {
@@ -46,21 +67,15 @@ class DetailViewController: UIViewController {
         similarLabel.textAlignment = .left
         similarLabel.font = .boldSystemFont(ofSize: 14)
         
-        similarCollectionView.backgroundColor = .lightGray
-        
         recommendLabel.text = "추천 영화"
         recommendLabel.textColor = .black
         recommendLabel.textAlignment = .left
         recommendLabel.font = .boldSystemFont(ofSize: 14)
         
-        recommendCollectionView.backgroundColor = .lightGray
-        
         posterLabel.text = "포스터"
         posterLabel.textColor = .black
         posterLabel.textAlignment = .left
         posterLabel.font = .boldSystemFont(ofSize: 14)
-        
-        posterCollectionView.backgroundColor = .lightGray
     }
     
     func setLayout() {
@@ -105,5 +120,17 @@ class DetailViewController: UIViewController {
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(160)
         }
+    }
+}
+
+extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as! PosterCollectionViewCell
+        
+        return cell
     }
 }

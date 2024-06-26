@@ -105,29 +105,15 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension DetailViewController {
     func callRequest() {
-        let base = APIURL.poster
-        let similarURL = "\(movieId)/similar"
-        let recommendURL = "\(movieId)/recommendations"
-        let posterURL = "\(movieId)/images"
-        
-        let headers: HTTPHeaders = [
-            "Authorization" : APIKey.auth,
-            "accept" : "application/json"
-        ]
-        
         let group = DispatchGroup()
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            AF.request(
-                base + similarURL,
-                headers: headers)
-            .responseDecodable(of: MovieResponse.self) { [weak self] response in
+            NetworkManager.shared.movieRequest(api: .similar(id: self.movieId)) { [weak self] result, error in
                 guard let self else { return }
-                switch response.result {
-                case .success(let value):
-                    movieList[0] = value.results
-                case .failure(let error):
+                if let result = result {
+                    movieList[0] = result
+                } else if let error = error {
                     print(error)
                 }
                 group.leave()
@@ -136,15 +122,11 @@ extension DetailViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            AF.request(
-                base + recommendURL,
-                headers: headers)
-            .responseDecodable(of: MovieResponse.self) { [weak self] response in
+            NetworkManager.shared.movieRequest(api: .recommend(id: self.movieId)) { [weak self] result, error in
                 guard let self else { return }
-                switch response.result {
-                case .success(let value):
-                    movieList[1] = value.results
-                case .failure(let error):
+                if let result = result {
+                    movieList[1] = result
+                } else if let error = error {
                     print(error)
                 }
                 group.leave()
@@ -153,15 +135,11 @@ extension DetailViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            AF.request(
-                base + posterURL,
-                headers: headers)
-            .responseDecodable(of: PosterResponse.self) { [weak self] response in
+            NetworkManager.shared.posterRequest(api: .poster(id: self.movieId)) { [weak self] result, error in
                 guard let self else { return }
-                switch response.result {
-                case .success(let value):
-                    posterList = value.posters
-                case .failure(let error):
+                if let result = result {
+                    posterList = result
+                } else if let error = error {
                     print(error)
                 }
                 group.leave()
@@ -171,9 +149,6 @@ extension DetailViewController {
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             tableView.reloadData()
-            
-            dump(movieList)
-            dump(posterList)
         }
     }
 }

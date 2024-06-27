@@ -9,10 +9,10 @@ import UIKit
 import Alamofire
 import SnapKit
 
-class ViewController: UIViewController {
+class ResultViewController: UIViewController {
     let tableView = UITableView()
     
-    var movieIdList: [Int] = []
+    let movieIdList: [Int]
     
     var mediaList: [MediaDetailResponse] = [] {
         didSet {
@@ -35,9 +35,18 @@ class ViewController: UIViewController {
         
         configureView()
         configureLayout()
-        callMediaRequest()
+        callRequest()
     }
 
+    init(movieIdList: [Int]) {
+        self.movieIdList = movieIdList
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func configureView() {
         view.backgroundColor = .white
         
@@ -60,30 +69,10 @@ class ViewController: UIViewController {
         }
     }
     
-    func callMediaRequest() {
-        let url = APIURL.movieURL
-        let headers: HTTPHeaders = [
-            "Authorization" : APIKey.auth,
-            "accept" : "application/json"
-        ]
-        
-        AF.request(
-            url,
-            headers: headers)
-        .responseDecodable(of: MediaResponse.self) { [weak self] response in
-            guard let self else { return }
-            switch response.result {
-            case .success(let value):
-                movieIdList = value.results.map { $0.id }
-                mediaList = []
-                
-                for result in value.results {
-                    callMediaDetailRequest(result.id)
-                    callCreditsRequest(result.id)
-                }
-            case .failure(let error):
-                print(error)
-            }
+    func callRequest() {
+        for id in movieIdList {
+            callMediaDetailRequest(id)
+            callCreditsRequest(id)
         }
     }
     
@@ -138,7 +127,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return mediaList.count
     }

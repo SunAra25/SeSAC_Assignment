@@ -52,9 +52,13 @@ class MediaTableViewCell: UITableViewCell {
         
         charactersLabel.text = castString
         
-        let imageString = "https://image.tmdb.org/t/p/w500/" + media.backdropPath
-        guard let url = URL(string: imageString) else { return }
-        mediaImageView.kf.setImage(with: url)
+        if let imageString = media.backdropPath {
+            let urlString = "https://image.tmdb.org/t/p/w500/" + imageString
+            guard let url = URL(string: urlString) else { return }
+            mediaImageView.kf.setImage(with: url)
+        } else {
+            mediaImageView.backgroundColor = .lightGray
+        }
         
         categoryLabel.text = category
         

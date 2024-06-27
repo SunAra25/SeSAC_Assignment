@@ -12,35 +12,33 @@ import SnapKit
 class ResultViewController: UIViewController {
     let tableView = UITableView()
     
-    let movieIdList: [Int]
-    
-    var mediaList: [MediaDetailResponse] = [] {
+    var movieIdList: [Int] = [] {
         didSet {
-            if mediaList.count == cast.count {
-                tableView.reloadData()
-            }
+            callDetailRequest()
+            print(movieIdList)
         }
     }
     
-    var cast: [[Cast]] = [[]] {
-        didSet {
-            if mediaList.count == cast.count {
-                tableView.reloadData()
-            }
-        }
-    }
+    var mediaList: [MediaDetailResponse] = []
+    var cast: [[Cast]] = []
+    
+    let target: String
+    let group = DispatchGroup()
+    let movieGroup = DispatchGroup()
+    let castGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureView()
         configureLayout()
-        callRequest()
+        callMediaRequest()
     }
 
-    init(movieIdList: [Int]) {
-        self.movieIdList = movieIdList
+    init(_ target: String) {
+        self.target = target
         super.init(nibName: nil, bundle: nil)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -69,14 +67,51 @@ class ResultViewController: UIViewController {
         }
     }
     
-    func callRequest() {
-        for id in movieIdList {
-            callMediaDetailRequest(id)
-            callCreditsRequest(id)
+    func callMediaRequest() {
+        let url = APIURL.search
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        let parameters: Parameters = [
+            "query" : target
+        ]
+        
+        AF.request(
+            url,
+            parameters: parameters,
+            headers: headers)
+        .responseDecodable(of: MediaResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                let list = value.results.map { $0.id }
+                movieIdList = list
+            case .failure(let error):
+                print(error)
+            }
         }
     }
     
-    func callMediaDetailRequest(_ id: Int) {
+    func callDetailRequest() {
+        for id in movieIdList {
+            group.enter()
+            callMediaDetailRequest(id) {
+                self.group.leave()
+            }
+            
+            group.enter()
+            callCreditsRequest(id) {
+                self.group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
+    }
+    
+    func callMediaDetailRequest(_ id: Int, completionHandler: @escaping () -> Void) {
         let url = APIURL.movieDetailURL + "/\(id)"
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
@@ -94,11 +129,12 @@ class ResultViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            completionHandler()
         }
     }
     
-    func callCreditsRequest(_ movieId: Int) {
-        let url = "\(APIURL.creditsURL)/\(movieId)/credits"
+    func callCreditsRequest(_ id: Int, completionHandler: @escaping () -> Void) {
+        let url = "\(APIURL.creditsURL)/\(id)/credits"
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
             "accept" : "application/json"
@@ -115,6 +151,7 @@ class ResultViewController: UIViewController {
             case .failure(let error):
                 print(error)
             }
+            completionHandler()
         }
     }
     
@@ -129,15 +166,17 @@ class ResultViewController: UIViewController {
 
 extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mediaList.count
+        return movieIdList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MediaTableViewCell.identifier, for: indexPath) as! MediaTableViewCell
+        
         let media = mediaList[indexPath.row]
         let cast = cast[indexPath.row]
-       
+        
         cell.configureCell(media: media, casts: cast)
+        
         return cell
     }
     

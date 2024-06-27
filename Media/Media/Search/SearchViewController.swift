@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Alamofire
 
 class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
@@ -45,7 +46,9 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        // TODO: 네트워크
+        guard let target = searchBar.text else { return }
+        let nextVC = ResultViewController(target)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

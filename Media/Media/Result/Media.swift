@@ -24,7 +24,7 @@ struct Media: Codable {
 }
 
 struct MediaDetailResponse: Codable {
-    let backdropPath, posterPath: String
+    let backdropPath, posterPath: String?
     let genres: [Genre]
     let overview: String
     let releaseDate: String

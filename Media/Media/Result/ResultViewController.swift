@@ -15,7 +15,6 @@ class ResultViewController: UIViewController {
     var movieIdList: [Int] = [] {
         didSet {
             callDetailRequest()
-            print(movieIdList)
         }
     }
     
@@ -24,8 +23,11 @@ class ResultViewController: UIViewController {
     
     let target: String
     let group = DispatchGroup()
-    let movieGroup = DispatchGroup()
-    let castGroup = DispatchGroup()
+    var page = 1 {
+        didSet {
+            callMediaRequest()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,14 +50,9 @@ class ResultViewController: UIViewController {
     func configureView() {
         view.backgroundColor = .white
         
-        let left = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listBtnDidTap))
-        let right = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(magnifyinngBtnDidTap))
-        
-        navigationItem.leftBarButtonItem = left
-        navigationItem.rightBarButtonItem = right
-        
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.prefetchDataSource = self
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
     }
 
@@ -74,7 +71,8 @@ class ResultViewController: UIViewController {
             "accept" : "application/json"
         ]
         let parameters: Parameters = [
-            "query" : target
+            "query" : target,
+            "page" : "\(page)"
         ]
         
         AF.request(
@@ -86,7 +84,11 @@ class ResultViewController: UIViewController {
             switch response.result {
             case .success(let value):
                 let list = value.results.map { $0.id }
-                movieIdList = list
+                if page > 1 {
+                    movieIdList += list
+                } else {
+                    movieIdList = list
+                }
             case .failure(let error):
                 print(error)
             }
@@ -184,5 +186,16 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
         let nextVC = DetailViewController()
         nextVC.movieId = movieIdList[indexPath.row]
         navigationController?.pushViewController(nextVC, animated: true)
+    }
+}
+
+extension ResultViewController: UITableViewDataSourcePrefetching {
+    func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
+        
+        for item in indexPaths {
+            if movieIdList.count - 8 == item.row {
+                page += 1
+            }
+        }
     }
 }

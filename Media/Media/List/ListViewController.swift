@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import SnapKit
 
-class ResultViewController: UIViewController {
+class ListViewController: UIViewController {
     let tableView = UITableView()
     
     var movieIdList: [Int] = [] {
@@ -21,7 +21,6 @@ class ResultViewController: UIViewController {
     var mediaList: [MediaDetailResponse] = []
     var cast: [[Cast]] = []
     
-    let target: String
     let group = DispatchGroup()
     var page = 1 {
         didSet {
@@ -35,16 +34,6 @@ class ResultViewController: UIViewController {
         configureView()
         configureLayout()
         callMediaRequest()
-    }
-
-    init(_ target: String) {
-        self.target = target
-        super.init(nibName: nil, bundle: nil)
-        
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     func configureView() {
@@ -65,7 +54,7 @@ class ResultViewController: UIViewController {
     }
     
     func callMediaRequest() {
-        let url = APIURL.search
+        let url = APIURL.movieURL
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
             "accept" : "application/json"
@@ -166,7 +155,7 @@ class ResultViewController: UIViewController {
     }
 }
 
-extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
+extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return movieIdList.count
     }
@@ -189,7 +178,7 @@ extension ResultViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ResultViewController: UITableViewDataSourcePrefetching {
+extension ListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         
         for item in indexPaths {

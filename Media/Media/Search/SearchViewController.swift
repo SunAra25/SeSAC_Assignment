@@ -16,6 +16,19 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        configureView() 
+        setNavigation()
+        setLayout()
+    }
+    
+    func setNavigation() {
+        navigationItem.title = "영화 검색"
+        let barItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listBtnDidTap))
+        barItem.tintColor = .black
+        navigationItem.leftBarButtonItem = barItem
+    }
+    
+    func configureView() {
         view.backgroundColor = .white
         
         searchBar.delegate = self
@@ -25,14 +38,6 @@ class SearchViewController: UIViewController {
         tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
         tableView.rowHeight = 60
         
-        setLayout()
-    }
-    
-    func setNavigation() {
-        navigationItem.title = "영화 검색"
-        let barItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listBtnDidTap))
-        barItem.tintColor = .black
-        navigationItem.leftBarButtonItem = barItem
     }
     
     func setLayout() {
@@ -51,15 +56,14 @@ class SearchViewController: UIViewController {
     }
     
     @objc func listBtnDidTap() {
-        
+        let nextVC = ListViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let target = searchBar.text else { return }
-        let nextVC = ResultViewController(target)
-        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

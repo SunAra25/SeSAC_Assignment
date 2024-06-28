@@ -11,12 +11,31 @@ import Alamofire
 
 class SearchViewController: UIViewController {
     let searchBar = UISearchBar()
-    let tableView = UITableView()
+    lazy var collectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        view.delegate = self
+        view.dataSource = self
+        view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
+        return view
+    }()
+    let flowLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 16, bottom: 20, right: 16)
+        
+        let screenWidth = UIScreen.main.bounds.width
+        let inset: CGFloat = 16
+        let padding: CGFloat = 10
+        let width: CGFloat = (screenWidth - inset * 2 - padding * 2) / 3
+        layout.itemSize = CGSize(width: width, height: 160)
+        return layout
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureView() 
+        configureView()
         setNavigation()
         setLayout()
     }
@@ -32,24 +51,18 @@ class SearchViewController: UIViewController {
         view.backgroundColor = .white
         
         searchBar.delegate = self
-        
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SearchTableViewCell.self, forCellReuseIdentifier: SearchTableViewCell.identifier)
-        tableView.rowHeight = 60
-        
     }
     
     func setLayout() {
         view.addSubview(searchBar)
-        view.addSubview(tableView)
+        view.addSubview(collectionView)
         
         searchBar.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.height.equalTo(40)
         }
         
-        tableView.snp.makeConstraints { make in
+        collectionView.snp.makeConstraints { make in
             make.top.equalTo(searchBar.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -67,13 +80,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
-extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        10
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as! PosterCollectionViewCell
         
         return cell
     }

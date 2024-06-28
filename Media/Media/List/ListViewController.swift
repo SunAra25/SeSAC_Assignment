@@ -172,9 +172,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let nextVC = DetailViewController()
-        nextVC.movieId = movieIdList[indexPath.row]
-        navigationController?.pushViewController(nextVC, animated: true)
+        
     }
 }
 

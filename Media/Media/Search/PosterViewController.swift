@@ -1,5 +1,5 @@
 //
-//  DetailViewController.swift
+//  PosterViewController.swift
 //  Media
 //
 //  Created by 아라 on 6/24/24.
@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class DetailViewController: UIViewController {
+class PosterViewController: UIViewController {
     let titleLabel = UILabel()
     lazy var tableView = {
         let view = UITableView()
@@ -59,7 +59,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+extension PosterViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return section == 0 ? movieList.count : 1
     }
@@ -83,7 +83,7 @@ extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionView.tag < movieList.count ? movieList[collectionView.tag].count : posterList.count
     }
@@ -103,7 +103,7 @@ extension DetailViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
 }
 
-extension DetailViewController {
+extension PosterViewController {
     func callRequest() {
         let group = DispatchGroup()
         

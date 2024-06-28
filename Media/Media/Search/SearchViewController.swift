@@ -28,6 +28,13 @@ class SearchViewController: UIViewController {
         setLayout()
     }
     
+    func setNavigation() {
+        navigationItem.title = "영화 검색"
+        let barItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listBtnDidTap))
+        barItem.tintColor = .black
+        navigationItem.leftBarButtonItem = barItem
+    }
+    
     func setLayout() {
         view.addSubview(searchBar)
         view.addSubview(tableView)
@@ -41,6 +48,10 @@ class SearchViewController: UIViewController {
             make.top.equalTo(searchBar.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc func listBtnDidTap() {
+        
     }
 }
 

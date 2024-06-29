@@ -140,6 +140,12 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
         cell.configureCell(data: data)
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = movieList[indexPath.row].id
+        let nextVC = PosterViewController(movieId: data)
+        navigationController?.pushViewController(nextVC, animated: true)
+    }
 }
 
 

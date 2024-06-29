@@ -19,7 +19,7 @@ class PosterViewController: UIViewController {
         view.rowHeight = 200
         return view
     }()
-    var movieId = 0
+    var movieId: Int
 
     var movieList: [[Movie]] = [[], []]
     var posterList: [Poster] = []
@@ -31,6 +31,15 @@ class PosterViewController: UIViewController {
         configureView()
         setLayout()
         callRequest()
+    }
+    
+    init(movieId: Int) {
+        self.movieId = movieId
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     func configureView() {

@@ -44,7 +44,8 @@ class PosterCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(data: Movie) {
-        let imageString = "https://image.tmdb.org/t/p/original/" + data.posterPath
+        guard let posterPath = data.posterPath else { return }
+        let imageString = "https://image.tmdb.org/t/p/original/" + posterPath
         guard let url = URL(string: imageString) else { return }
         imageView.kf.setImage(with: url)
     }

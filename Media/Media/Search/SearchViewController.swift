@@ -15,6 +15,7 @@ class SearchViewController: UIViewController {
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.delegate = self
         view.dataSource = self
+        view.prefetchDataSource = self
         view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         return view
     }()
@@ -31,6 +32,22 @@ class SearchViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: 160)
         return layout
     }()
+    var movieList: [Movie] = [] {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    var target = "" {
+        didSet {
+            callRequest()
+        }
+    }
+    
+    var page = 1 {
+        didSet {
+            callRequest()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,6 +85,37 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func callRequest() {
+        let url = APIURL.search
+        let headers: HTTPHeaders = [
+            "Authorization" : APIKey.auth,
+            "accept" : "application/json"
+        ]
+        let parameters: Parameters = [
+            "query" : target,
+            "page" : "\(page)"
+        ]
+        
+        AF.request(
+            url,
+            parameters: parameters,
+            headers: headers)
+        .responseDecodable(of: MovieResponse.self) { [weak self] response in
+            guard let self else { return }
+            switch response.result {
+            case .success(let value):
+                let list = value.results
+                if page > 1 {
+                    movieList += list
+                } else {
+                    movieList = list
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     @objc func listBtnDidTap() {
         let nextVC = ListViewController()
         navigationController?.pushViewController(nextVC, animated: true)
@@ -77,17 +125,29 @@ class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let target = searchBar.text else { return }
+        self.target = target
     }
 }
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        return movieList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PosterCollectionViewCell.identifier, for: indexPath) as! PosterCollectionViewCell
-        
+        let data = movieList[indexPath.row]
+        cell.configureCell(data: data)
         return cell
+    }
+}
+
+
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        let standard = movieList.count - 9
+        if indexPaths.contains(where: { $0.row > standard }) {
+            page += 1
+        }
     }
 }

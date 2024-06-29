@@ -20,7 +20,7 @@ struct MovieResponse: Codable {
 }
 
 struct Movie: Codable {
-    let posterPath: String
+    let posterPath: String?
     
     enum CodingKeys: String, CodingKey {
         case posterPath = "poster_path"

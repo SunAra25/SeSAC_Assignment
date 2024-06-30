@@ -10,6 +10,7 @@
 		C01DD9A52C2D4A6D008FB1A2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9A42C2D4A6D008FB1A2 /* SearchViewController.swift */; };
 		C01DD9AC2C2FD53A008FB1A2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9AB2C2FD53A008FB1A2 /* DetailViewController.swift */; };
 		C01DD9AE2C312B2E008FB1A2 /* CastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9AD2C312B2E008FB1A2 /* CastTableViewCell.swift */; };
+		C01DD9B02C3181D7008FB1A2 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9AF2C3181D7008FB1A2 /* ListViewController.swift */; };
 		C061D0F32C296474007E9961 /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F22C296474007E9961 /* PosterViewController.swift */; };
 		C061D0F62C298725007E9961 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */; };
 		C061D0F82C29939F007E9961 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F72C29939F007E9961 /* Poster.swift */; };
@@ -19,7 +20,6 @@
 		C069BEBD2C2C05AC00B007FB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069BEBC2C2C05AC00B007FB /* NetworkManager.swift */; };
 		C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7142C16DC66002CCADA /* AppDelegate.swift */; };
 		C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */; };
-		C0FCA7192C16DC66002CCADA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7182C16DC66002CCADA /* ListViewController.swift */; };
 		C0FCA71E2C16DC68002CCADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FCA71D2C16DC68002CCADA /* Assets.xcassets */; };
 		C0FCA7212C16DC68002CCADA /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C0FCA7202C16DC68002CCADA /* Base */; };
 		C0FCA72A2C16DCAF002CCADA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C0FCA7292C16DCAF002CCADA /* SnapKit */; };
@@ -35,6 +35,7 @@
 		C01DD9A42C2D4A6D008FB1A2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		C01DD9AB2C2FD53A008FB1A2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C01DD9AD2C312B2E008FB1A2 /* CastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastTableViewCell.swift; sourceTree = "<group>"; };
+		C01DD9AF2C3181D7008FB1A2 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C061D0F22C296474007E9961 /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		C061D0F72C29939F007E9961 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
@@ -45,7 +46,6 @@
 		C0FCA7112C16DC66002CCADA /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FCA7142C16DC66002CCADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C0FCA7182C16DC66002CCADA /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		C0FCA71D2C16DC68002CCADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C0FCA7202C16DC68002CCADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0FCA7222C16DC68002CCADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 				C0FCA7392C17E0A7002CCADA /* Credits.swift */,
 				C0FCA7322C16FB1C002CCADA /* Media.swift */,
 				C0FCA72E2C16E01A002CCADA /* MediaTableViewCell.swift */,
-				C0FCA7182C16DC66002CCADA /* ListViewController.swift */,
+				C01DD9AF2C3181D7008FB1A2 /* ListViewController.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -216,12 +216,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C01DD9B02C3181D7008FB1A2 /* ListViewController.swift in Sources */,
 				C01DD9A52C2D4A6D008FB1A2 /* SearchViewController.swift in Sources */,
 				C069BEBB2C2BFCBA00B007FB /* TMDBAPI.swift in Sources */,
 				C067A34E2C2AA87C0034FF2E /* PosterTableViewCell.swift in Sources */,
 				C01DD9AE2C312B2E008FB1A2 /* CastTableViewCell.swift in Sources */,
 				C061D0F82C29939F007E9961 /* Poster.swift in Sources */,
-				C0FCA7192C16DC66002CCADA /* ListViewController.swift in Sources */,
 				C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */,
 				C0FCA7332C16FB1C002CCADA /* Media.swift in Sources */,
 				C01DD9AC2C2FD53A008FB1A2 /* DetailViewController.swift in Sources */,

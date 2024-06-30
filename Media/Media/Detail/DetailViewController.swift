@@ -48,8 +48,12 @@ class DetailViewController: UIViewController {
         label.textColor = .systemGray3
         return label
     }()
-    let castTableView: UITableView = {
-        let view = UITableView()        
+    lazy var castTableView: UITableView = {
+        let view = UITableView()
+        view.delegate = self
+        view.dataSource = self
+        view.register(CastTableViewCell.self, forCellReuseIdentifier: CastTableViewCell.identifier)
+        view.rowHeight = 80
         return view
     }()
     var casts: [Cast] {
@@ -124,5 +128,18 @@ class DetailViewController: UIViewController {
             make.top.equalTo(castTitleLabel.snp.bottom).offset(8)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+}
+
+extension DetailViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return casts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: CastTableViewCell.identifier, for: indexPath) as! CastTableViewCell
+        
+        cell.configureCell(casts[indexPath.row])
+        return cell
     }
 }

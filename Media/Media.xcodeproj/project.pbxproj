@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C01DD9A52C2D4A6D008FB1A2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9A42C2D4A6D008FB1A2 /* SearchViewController.swift */; };
+		C01DD9AC2C2FD53A008FB1A2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C01DD9AB2C2FD53A008FB1A2 /* DetailViewController.swift */; };
 		C061D0F32C296474007E9961 /* PosterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F22C296474007E9961 /* PosterViewController.swift */; };
 		C061D0F62C298725007E9961 /* PosterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */; };
 		C061D0F82C29939F007E9961 /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = C061D0F72C29939F007E9961 /* Poster.swift */; };
@@ -31,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		C01DD9A42C2D4A6D008FB1A2 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		C01DD9AB2C2FD53A008FB1A2 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C061D0F22C296474007E9961 /* PosterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewController.swift; sourceTree = "<group>"; };
 		C061D0F52C298725007E9961 /* PosterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCollectionViewCell.swift; sourceTree = "<group>"; };
 		C061D0F72C29939F007E9961 /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		C061D0F42C29870E007E9961 /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				C01DD9AB2C2FD53A008FB1A2 /* DetailViewController.swift */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				C0FCA7192C16DC66002CCADA /* ListViewController.swift in Sources */,
 				C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */,
 				C0FCA7332C16FB1C002CCADA /* Media.swift in Sources */,
+				C01DD9AC2C2FD53A008FB1A2 /* DetailViewController.swift in Sources */,
 				C0FCA72F2C16E01A002CCADA /* MediaTableViewCell.swift in Sources */,
 				C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */,
 				C0FCA7312C16F74E002CCADA /* APIKey.swift in Sources */,

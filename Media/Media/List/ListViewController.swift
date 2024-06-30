@@ -172,7 +172,11 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let index = indexPath.row
+        let detail = mediaList[index]
+        let casts = cast[index]
+        let nextVC = DetailViewController(detail: detail, casts: casts)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

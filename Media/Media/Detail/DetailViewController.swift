@@ -1,0 +1,128 @@
+//
+//  DetailViewController.swift
+//  Media
+//
+//  Created by 아라 on 6/29/24.
+//
+
+import UIKit
+import SnapKit
+import Kingfisher
+
+class DetailViewController: UIViewController {
+    let backPosterImageView: UIImageView = {
+        let view = UIImageView()
+        return view
+    }()
+    let movieTitleLabel: UILabel = {
+        let label = UILabel()
+        label.font = .boldSystemFont(ofSize: 18)
+        label.textColor = .white
+        return label
+    }()
+    let posterImageView: UIImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
+        return view
+    }()
+    let overviewTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "OverView"
+        label.font = .boldSystemFont(ofSize: 15)
+        label.textColor = .systemGray3
+        return label
+    }()
+    let overviewContentLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 14)
+        label.textColor = .black
+        label.textAlignment = .center
+        label.numberOfLines = 0
+        return label
+    }()
+    let castTitleLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Cast"
+        label.font = .boldSystemFont(ofSize: 15)
+        label.textColor = .systemGray3
+        return label
+    }()
+    let castTableView: UITableView = {
+        let view = UITableView()        
+        return view
+    }()
+    var casts: [Cast] {
+        didSet {
+            castTableView.reloadData()
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .white
+        setLayout()
+    }
+    
+    init(detail: MediaDetailResponse, casts: [Cast]) {
+        self.casts = casts
+        movieTitleLabel.text = detail.title
+        overviewContentLabel.text = detail.overview
+        
+        super.init(nibName: nil, bundle: nil)
+        
+        if let backPath = detail.backdropPath, let posterPath = detail.posterPath {
+            let backURL = URL(string: "https://image.tmdb.org/t/p/original/" + backPath)
+            let posterURL = URL(string: "https://image.tmdb.org/t/p/original/" + posterPath)
+            backPosterImageView.kf.setImage(with: backURL)
+            posterImageView.kf.setImage(with: posterURL)
+        }
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setLayout() {
+        [backPosterImageView, movieTitleLabel, posterImageView, overviewTitleLabel, overviewContentLabel, castTitleLabel, castTableView].forEach {
+            view.addSubview($0)
+        }
+        
+        backPosterImageView.snp.makeConstraints { make in
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(260)
+        }
+        
+        movieTitleLabel.snp.makeConstraints { make in
+            make.top.leading.equalTo(backPosterImageView).inset(16)
+            make.height.equalTo(20)
+        }
+        
+        posterImageView.snp.makeConstraints { make in
+            make.top.equalTo(movieTitleLabel.snp.bottom)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(20)
+            make.bottom.equalTo(backPosterImageView).inset(16)
+            make.width.equalTo(posterImageView.snp.height).multipliedBy(0.6)
+        }
+        
+        overviewTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(backPosterImageView.snp.bottom).offset(20)
+            make.leading.equalTo(view.safeAreaLayoutGuide).inset(16)
+        }
+        
+        overviewContentLabel.snp.makeConstraints { make in
+            make.top.equalTo(overviewTitleLabel.snp.bottom).offset(12)
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
+        }
+        
+        castTitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(overviewContentLabel.snp.bottom).offset(20)
+            make.leading.equalTo(view.safeAreaLayoutGuide).offset(16)
+        }
+        
+        castTableView.snp.makeConstraints { make in
+            make.top.equalTo(castTitleLabel.snp.bottom).offset(8)
+            make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
+        }
+    }
+}

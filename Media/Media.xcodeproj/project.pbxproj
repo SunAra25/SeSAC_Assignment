@@ -19,6 +19,8 @@
 		C069BEBB2C2BFCBA00B007FB /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069BEBA2C2BFCBA00B007FB /* TMDBAPI.swift */; };
 		C069BEBD2C2C05AC00B007FB /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C069BEBC2C2C05AC00B007FB /* NetworkManager.swift */; };
 		C0EBF6B12C3279780078C3F7 /* NasaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBF6B02C3279780078C3F7 /* NasaViewController.swift */; };
+		C0EBF6B42C32806B0078C3F7 /* YoutubeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBF6B32C32806B0078C3F7 /* YoutubeViewController.swift */; };
+		C0EBF6B62C3283590078C3F7 /* YoutubResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EBF6B52C3283590078C3F7 /* YoutubResponse.swift */; };
 		C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7142C16DC66002CCADA /* AppDelegate.swift */; };
 		C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */; };
 		C0FCA71E2C16DC68002CCADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0FCA71D2C16DC68002CCADA /* Assets.xcassets */; };
@@ -45,6 +47,8 @@
 		C069BEBA2C2BFCBA00B007FB /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
 		C069BEBC2C2C05AC00B007FB /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		C0EBF6B02C3279780078C3F7 /* NasaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaViewController.swift; sourceTree = "<group>"; };
+		C0EBF6B32C32806B0078C3F7 /* YoutubeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeViewController.swift; sourceTree = "<group>"; };
+		C0EBF6B52C3283590078C3F7 /* YoutubResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubResponse.swift; sourceTree = "<group>"; };
 		C0FCA7112C16DC66002CCADA /* Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Media.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FCA7142C16DC66002CCADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0FCA7162C16DC66002CCADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -113,6 +117,15 @@
 			path = Nasa;
 			sourceTree = "<group>";
 		};
+		C0EBF6B22C32805B0078C3F7 /* Youtube */ = {
+			isa = PBXGroup;
+			children = (
+				C0EBF6B32C32806B0078C3F7 /* YoutubeViewController.swift */,
+				C0EBF6B52C3283590078C3F7 /* YoutubResponse.swift */,
+			);
+			path = Youtube;
+			sourceTree = "<group>";
+		};
 		C0FCA7082C16DC66002CCADA = {
 			isa = PBXGroup;
 			children = (
@@ -138,6 +151,7 @@
 				C061D0F42C29870E007E9961 /* Detail */,
 				C01DD9AA2C2D5865008FB1A2 /* List */,
 				C0EBF6AF2C3279640078C3F7 /* Nasa */,
+				C0EBF6B22C32805B0078C3F7 /* Youtube */,
 				C0FCA71D2C16DC68002CCADA /* Assets.xcassets */,
 				C0FCA71F2C16DC68002CCADA /* LaunchScreen.storyboard */,
 				C0FCA7222C16DC68002CCADA /* Info.plist */,
@@ -233,8 +247,10 @@
 				C067A34E2C2AA87C0034FF2E /* PosterTableViewCell.swift in Sources */,
 				C01DD9AE2C312B2E008FB1A2 /* CastTableViewCell.swift in Sources */,
 				C061D0F82C29939F007E9961 /* Poster.swift in Sources */,
+				C0EBF6B62C3283590078C3F7 /* YoutubResponse.swift in Sources */,
 				C0FCA7152C16DC66002CCADA /* AppDelegate.swift in Sources */,
 				C0FCA7332C16FB1C002CCADA /* Media.swift in Sources */,
+				C0EBF6B42C32806B0078C3F7 /* YoutubeViewController.swift in Sources */,
 				C01DD9AC2C2FD53A008FB1A2 /* DetailViewController.swift in Sources */,
 				C0FCA72F2C16E01A002CCADA /* MediaTableViewCell.swift in Sources */,
 				C0FCA7172C16DC66002CCADA /* SceneDelegate.swift in Sources */,

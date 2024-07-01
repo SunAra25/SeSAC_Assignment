@@ -143,7 +143,7 @@ extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSo
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = movieList[indexPath.row].id
-        let nextVC = PosterViewController(movieId: data)
+        let nextVC = YoutubeViewController(movieId: data)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

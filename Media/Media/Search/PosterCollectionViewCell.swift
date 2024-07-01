@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class PosterCollectionViewCell: UICollectionViewCell {
+final class PosterCollectionViewCell: UICollectionViewCell {
     static let identifier = "PosterCollectionViewCell"
-    let imageView = {
+    private let imageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
@@ -30,12 +30,12 @@ class PosterCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
+    private func configureView() {
         contentView.addSubview(imageView)
         
     }
     
-    func setLayout() {
+    private func setLayout() {
         contentView.addSubview(imageView)
         
         imageView.snp.makeConstraints { make in

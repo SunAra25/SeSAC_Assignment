@@ -8,13 +8,13 @@
 import UIKit
 import SnapKit
 
-class NasaViewController: UIViewController {
-    let nasaImageView = UIImageView()
-    let progressLabel = UILabel()
-    let requestButton = UIButton()
-    var session = URLSession()
-    var total: Double = 0.0
-    var buffer: Data? {
+final class NasaViewController: UIViewController {
+    private let nasaImageView = UIImageView()
+    private let progressLabel = UILabel()
+    private let requestButton = UIButton()
+    private var session = URLSession()
+    private var total: Double = 0.0
+    private var buffer: Data? {
         didSet {
             let result = Double(buffer?.count ?? 0) / total
             let present = result * 100
@@ -43,20 +43,20 @@ class NasaViewController: UIViewController {
         session.finishTasksAndInvalidate()
     }
     
-    func configureView() {
+    private func configureView() {
         view.backgroundColor = .white
         requestButton.backgroundColor = .red
         nasaImageView.backgroundColor = .lightGray
         requestButton.addTarget(self, action: #selector(requestBtnDidTap), for: .touchUpInside)
     }
     
-    func configureHierarchy() {
+    private func configureHierarchy() {
         view.addSubview(nasaImageView)
         view.addSubview(progressLabel)
         view.addSubview(requestButton)
     }
     
-    func configureLayout() {
+    private func configureLayout() {
         requestButton.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(20)
             make.height.equalTo(50)
@@ -74,14 +74,14 @@ class NasaViewController: UIViewController {
         }
     }
 
-    @objc func requestBtnDidTap() {
+    @objc private func requestBtnDidTap() {
         buffer = Data()
         nasaImageView.image = nil
         requestButton.isEnabled = false
         callRequest()
     }
     
-    func callRequest() {
+    private func callRequest() {
         let request = URLRequest(url: Nasa.photo)
         session = URLSession(configuration: .default, delegate: self, delegateQueue: .main)
             

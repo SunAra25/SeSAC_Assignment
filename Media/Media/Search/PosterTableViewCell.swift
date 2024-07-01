@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class PosterTableViewCell: UITableViewCell {
+final class PosterTableViewCell: UITableViewCell {
     static let identifier = "PosterTableViewCell"
     
     let titleLabel = {
@@ -24,7 +24,7 @@ class PosterTableViewCell: UITableViewCell {
         
         return view
     }()
-    let flowLayout: UICollectionViewFlowLayout = {
+    private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.minimumLineSpacing = 8
@@ -48,7 +48,7 @@ class PosterTableViewCell: UITableViewCell {
     }
     
     
-    func setLayout() {
+    private func setLayout() {
         contentView.addSubview(titleLabel)
         contentView.addSubview(collectionView)
         

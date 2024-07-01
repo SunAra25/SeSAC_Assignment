@@ -9,20 +9,20 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class MediaTableViewCell: UITableViewCell {
+final class MediaTableViewCell: UITableViewCell {
     static let identifier = "MediaTableViewCell"
     
-    let dateLabel = UILabel()
-    let categoryLabel = UILabel()
-    let mediaView = UIView()
-    let mediaImageView = UIImageView()
-    let gradeTitleLabel = UILabel()
-    let gradeScoreLabel = UILabel()
-    let titleLabel = UILabel()
-    let charactersLabel = UILabel()
-    let dividerView = UIView()
-    let detailLabel = UILabel()
-    let detailImageView = UIImageView()
+    private let dateLabel = UILabel()
+    private let categoryLabel = UILabel()
+    private let mediaView = UIView()
+    private let mediaImageView = UIImageView()
+    private let gradeTitleLabel = UILabel()
+    private let gradeScoreLabel = UILabel()
+    private let titleLabel = UILabel()
+    private let charactersLabel = UILabel()
+    private let dividerView = UIView()
+    private let detailLabel = UILabel()
+    private let detailImageView = UIImageView()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -67,7 +67,7 @@ class MediaTableViewCell: UITableViewCell {
         titleLabel.text = media.title
     }
     
-    func configureView() {
+    private func configureView() {
         dateLabel.textColor = .darkGray
         dateLabel.textAlignment = .left
         dateLabel.font = .systemFont(ofSize: 12)
@@ -111,7 +111,7 @@ class MediaTableViewCell: UITableViewCell {
         detailImageView.tintColor = .black
     }
     
-    func setHierachy() {
+    private func setHierachy() {
         [dateLabel, categoryLabel, mediaView].forEach {
             contentView.addSubview($0)
         }
@@ -121,7 +121,7 @@ class MediaTableViewCell: UITableViewCell {
         }
     }
     
-    func setConstraints() {
+    private func setConstraints() {
         dateLabel.snp.makeConstraints { make in
             make.top.leading.equalToSuperview().inset(16)
         }

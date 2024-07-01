@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class PosterViewController: UIViewController {
-    let titleLabel = UILabel()
-    lazy var tableView = {
+final class PosterViewController: UIViewController {
+    private let titleLabel = UILabel()
+    private lazy var tableView = {
         let view = UITableView()
         view.delegate = self
         view.dataSource = self
@@ -19,11 +19,11 @@ class PosterViewController: UIViewController {
         view.rowHeight = 200
         return view
     }()
-    var movieId: Int
+    private var movieId: Int
 
-    var movieList: [[Movie]] = [[], []]
-    var posterList: [Poster] = []
-    let titleList = ["비슷한 영화", "추천 영화", "포스터"]
+    private var movieList: [[Movie]] = [[], []]
+    private var posterList: [Poster] = []
+    private let titleList = ["비슷한 영화", "추천 영화", "포스터"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class PosterViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureView() {
+    private func configureView() {
         view.backgroundColor = .white
         
         titleLabel.text = "영화 제목"
@@ -51,7 +51,7 @@ class PosterViewController: UIViewController {
         titleLabel.font = .boldSystemFont(ofSize: 16)
     }
     
-    func setLayout() {
+    private func setLayout() {
         [titleLabel, tableView].forEach {
             view.addSubview($0)
         }
@@ -113,7 +113,7 @@ extension PosterViewController: UICollectionViewDelegate, UICollectionViewDataSo
 }
 
 extension PosterViewController {
-    func callRequest() {
+    private func callRequest() {
         let group = DispatchGroup()
         
         group.enter()

@@ -9,9 +9,9 @@ import UIKit
 import SnapKit
 import Alamofire
 
-class SearchViewController: UIViewController {
-    let searchBar = UISearchBar()
-    lazy var collectionView: UICollectionView = {
+final class SearchViewController: UIViewController {
+    private let searchBar = UISearchBar()
+    private lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
         view.delegate = self
         view.dataSource = self
@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
         view.register(PosterCollectionViewCell.self, forCellWithReuseIdentifier: PosterCollectionViewCell.identifier)
         return view
     }()
-    let flowLayout: UICollectionViewFlowLayout = {
+    private let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
@@ -32,18 +32,18 @@ class SearchViewController: UIViewController {
         layout.itemSize = CGSize(width: width, height: 160)
         return layout
     }()
-    var movieList: [Movie] = [] {
+    private var movieList: [Movie] = [] {
         didSet {
             collectionView.reloadData()
         }
     }
-    var target = "" {
+    private var target = "" {
         didSet {
             callRequest()
         }
     }
     
-    var page = 1 {
+    private var page = 1 {
         didSet {
             callRequest()
         }
@@ -57,20 +57,20 @@ class SearchViewController: UIViewController {
         setLayout()
     }
     
-    func setNavigation() {
+    private func setNavigation() {
         navigationItem.title = "영화 검색"
         let barItem = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(listBtnDidTap))
         barItem.tintColor = .black
         navigationItem.leftBarButtonItem = barItem
     }
     
-    func configureView() {
+    private func configureView() {
         view.backgroundColor = .white
         
         searchBar.delegate = self
     }
     
-    func setLayout() {
+    private func setLayout() {
         view.addSubview(searchBar)
         view.addSubview(collectionView)
         
@@ -85,7 +85,7 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func callRequest() {
+    private func callRequest() {
         let url = APIURL.search
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,

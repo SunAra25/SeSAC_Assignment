@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class CastTableViewCell: UITableViewCell {
+final class CastTableViewCell: UITableViewCell {
     static let identifier = "CastTableViewCell"
     
-    let profileImageView = {
+    private let profileImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
@@ -20,14 +20,14 @@ class CastTableViewCell: UITableViewCell {
         view.backgroundColor = .lightGray
         return view
     }()
-    let nameLabel = {
+    private let nameLabel = {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
         label.font = .boldSystemFont(ofSize: 16)
         return label
     }()
-    let characterLabel = {
+    private let characterLabel = {
         let label = UILabel()
         label.textColor = .gray
         label.textAlignment = .left
@@ -45,7 +45,7 @@ class CastTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setLayout() {
+    private func setLayout() {
         [profileImageView, nameLabel, characterLabel].forEach {
             contentView.addSubview($0)
         }

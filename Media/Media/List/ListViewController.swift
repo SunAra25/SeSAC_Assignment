@@ -9,20 +9,20 @@ import UIKit
 import Alamofire
 import SnapKit
 
-class ListViewController: UIViewController {
-    let tableView = UITableView()
+final class ListViewController: UIViewController {
+    private let tableView = UITableView()
     
-    var movieIdList: [Int] = [] {
+    private var movieIdList: [Int] = [] {
         didSet {
             callDetailRequest()
         }
     }
     
-    var mediaList: [MediaDetailResponse] = []
-    var cast: [[Cast]] = []
+    private var mediaList: [MediaDetailResponse] = []
+    private var cast: [[Cast]] = []
     
-    let group = DispatchGroup()
-    var page = 1 {
+    private let group = DispatchGroup()
+    private var page = 1 {
         didSet {
             callMediaRequest()
         }
@@ -36,7 +36,7 @@ class ListViewController: UIViewController {
         callMediaRequest()
     }
     
-    func configureView() {
+    private func configureView() {
         view.backgroundColor = .white
         
         tableView.delegate = self
@@ -45,7 +45,7 @@ class ListViewController: UIViewController {
         tableView.register(MediaTableViewCell.self, forCellReuseIdentifier: MediaTableViewCell.identifier)
     }
 
-    func configureLayout() {
+    private func configureLayout() {
         view.addSubview(tableView)
         
         tableView.snp.makeConstraints { make in
@@ -53,7 +53,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    func callMediaRequest() {
+    private func callMediaRequest() {
         let url = APIURL.movieURL
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
@@ -84,7 +84,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    func callDetailRequest() {
+    private func callDetailRequest() {
         for id in movieIdList {
             group.enter()
             callMediaDetailRequest(id) {
@@ -102,7 +102,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    func callMediaDetailRequest(_ id: Int, completionHandler: @escaping () -> Void) {
+    private func callMediaDetailRequest(_ id: Int, completionHandler: @escaping () -> Void) {
         let url = APIURL.movieDetailURL + "/\(id)"
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,
@@ -124,7 +124,7 @@ class ListViewController: UIViewController {
         }
     }
     
-    func callCreditsRequest(_ id: Int, completionHandler: @escaping () -> Void) {
+    private func callCreditsRequest(_ id: Int, completionHandler: @escaping () -> Void) {
         let url = "\(APIURL.creditsURL)/\(id)/credits"
         let headers: HTTPHeaders = [
             "Authorization" : APIKey.auth,

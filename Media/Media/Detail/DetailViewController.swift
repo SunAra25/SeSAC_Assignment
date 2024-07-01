@@ -9,31 +9,31 @@ import UIKit
 import SnapKit
 import Kingfisher
 
-class DetailViewController: UIViewController {
-    let backPosterImageView: UIImageView = {
+final class DetailViewController: UIViewController {
+    private let backPosterImageView: UIImageView = {
         let view = UIImageView()
         return view
     }()
-    let movieTitleLabel: UILabel = {
+    private let movieTitleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 18)
         label.textColor = .white
         return label
     }()
-    let posterImageView: UIImageView = {
+    private let posterImageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.clipsToBounds = true
         return view
     }()
-    let overviewTitleLabel: UILabel = {
+    private let overviewTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "OverView"
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .systemGray3
         return label
     }()
-    let overviewContentLabel: UILabel = {
+    private let overviewContentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textColor = .black
@@ -41,14 +41,14 @@ class DetailViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
-    let castTitleLabel: UILabel = {
+    private let castTitleLabel: UILabel = {
         let label = UILabel()
         label.text = "Cast"
         label.font = .boldSystemFont(ofSize: 15)
         label.textColor = .systemGray3
         return label
     }()
-    lazy var castTableView: UITableView = {
+    private lazy var castTableView: UITableView = {
         let view = UITableView()
         view.delegate = self
         view.dataSource = self
@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
         view.rowHeight = 80
         return view
     }()
-    var casts: [Cast] {
+    private var casts: [Cast] {
         didSet {
             castTableView.reloadData()
         }
@@ -87,7 +87,7 @@ class DetailViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setLayout() {
+    private func setLayout() {
         [backPosterImageView, movieTitleLabel, posterImageView, overviewTitleLabel, overviewContentLabel, castTitleLabel, castTableView].forEach {
             view.addSubview($0)
         }

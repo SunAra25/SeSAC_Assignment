@@ -8,13 +8,21 @@
 import UIKit
 import SnapKit
 
-class MemoInputTableViewCell: BaseTableViewCell {
+final class MemoInputTableViewCell: BaseTableViewCell {
+    private let backView = {
+        let view = UIView()
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
+        view.backgroundColor = .systemGray4
+        return view
+    }()
     private let titleTextField = {
         let field = UITextField()
         field.placeholder = "제목"
         field.font = .systemFont(ofSize: 14)
         field.textAlignment = .left
         field.textColor = .label
+        field.tintColor = .label
         return field
     }()
     private let dividerView = {
@@ -28,13 +36,21 @@ class MemoInputTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 14)
         view.textAlignment = .left
         view.textColor = .systemGray2
+        view.tintColor = .label
         view.textContainer.lineBreakMode = .byTruncatingTail
+        view.backgroundColor = .clear
         return view
     }()
     
     override func setLayout() {
+        contentView.addSubview(backView)
+        
         [titleTextField, dividerView, memoTextView].forEach {
-            contentView.addSubview($0)
+            backView.addSubview($0)
+        }
+        
+        backView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
         }
         
         titleTextField.snp.makeConstraints { make in

@@ -8,7 +8,14 @@
 import UIKit
 import SnapKit
 
-class OtherInputTableViewCell: BaseTableViewCell {
+final class OtherInputTableViewCell: BaseTableViewCell {
+    private let backView = {
+        let view = UIView()
+        view.layer.cornerRadius = 16
+        view.clipsToBounds = true
+        view.backgroundColor = .systemGray4
+        return view
+    }()
     private let titleLabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 14)
@@ -19,22 +26,32 @@ class OtherInputTableViewCell: BaseTableViewCell {
     private let nextImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "chevron.right")
-        view.tintColor = .systemGray3
+        view.tintColor = .systemGray2
         return view
     }()
     
     override func setLayout() {
+        contentView.addSubview(backView)
+        
         [titleLabel, nextImageView].forEach {
-            contentView.addSubview($0)
+            backView.addSubview($0)
+        }
+        
+        backView.snp.makeConstraints { make in
+            make.edges.equalToSuperview().inset(8)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.verticalEdges.leading.equalToSuperview().offset(16)
+            make.verticalEdges.leading.equalToSuperview().inset(16)
         }
         
         nextImageView.snp.makeConstraints { make in
-            make.verticalEdges.leading.equalToSuperview().offset(16)
-            make.size.equalTo(18)
+            make.verticalEdges.trailing.equalToSuperview().inset(16)
+            make.size.equalTo(16)
         }
+    }
+    
+    func configureCell(_ data: String) {
+        titleLabel.text = data
     }
 }

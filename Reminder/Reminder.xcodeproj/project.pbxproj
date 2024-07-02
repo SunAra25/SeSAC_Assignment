@@ -20,6 +20,9 @@
 		C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */; };
 		C0E0C1402C33F682000517CF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0E0C13F2C33F682000517CF /* RealmSwift */; };
 		C0E0C1422C33F71D000517CF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1412C33F71D000517CF /* Todo.swift */; };
+		C0E0C1452C3403FE000517CF /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1442C3403FE000517CF /* AddViewController.swift */; };
+		C0E0C1472C341BEC000517CF /* MemoInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */; };
+		C0E0C1492C341C6F000517CF /* OtherInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		C0E0C13A2C33EBAF000517CF /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C0E0C1412C33F71D000517CF /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
+		C0E0C1442C3403FE000517CF /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoInputTableViewCell.swift; sourceTree = "<group>"; };
+		C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInputTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E0C1312C33E494000517CF /* Base */,
+				C0E0C1432C340303000517CF /* Add */,
 				C0E0C12E2C33E46D000517CF /* List */,
 				C0E0C11A2C33E26B000517CF /* AppDelegate.swift */,
 				C0E0C11C2C33E26B000517CF /* SceneDelegate.swift */,
@@ -99,6 +106,16 @@
 				C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		C0E0C1432C340303000517CF /* Add */ = {
+			isa = PBXGroup;
+			children = (
+				C0E0C1442C3403FE000517CF /* AddViewController.swift */,
+				C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */,
+				C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */,
+			);
+			path = Add;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,13 +198,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E0C1472C341BEC000517CF /* MemoInputTableViewCell.swift in Sources */,
 				C0E0C1332C33E49D000517CF /* BaseViewController.swift in Sources */,
 				C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */,
+				C0E0C1452C3403FE000517CF /* AddViewController.swift in Sources */,
 				C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */,
 				C0E0C1422C33F71D000517CF /* Todo.swift in Sources */,
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
 				C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */,
+				C0E0C1492C341C6F000517CF /* OtherInputTableViewCell.swift in Sources */,
 				C0E0C1302C33E48E000517CF /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

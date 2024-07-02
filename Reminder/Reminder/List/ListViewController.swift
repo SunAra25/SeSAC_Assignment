@@ -51,7 +51,9 @@ final class ListViewController: BaseViewController {
     }
     
     @objc func leftBarBtnDidTap() {
-        // TODO: 등록화면으로 전환
+        let nextVC = AddViewController()
+        
+        present(nextVC, animated: true)
     }
 }
 

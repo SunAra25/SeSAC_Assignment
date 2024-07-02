@@ -16,7 +16,7 @@ final class MemoInputTableViewCell: BaseTableViewCell {
         view.backgroundColor = .systemGray4
         return view
     }()
-    private let titleTextField = {
+    let titleTextField = {
         let field = UITextField()
         field.placeholder = "제목"
         field.font = .systemFont(ofSize: 14)
@@ -30,7 +30,7 @@ final class MemoInputTableViewCell: BaseTableViewCell {
         view.backgroundColor = .systemGray2
         return view
     }()
-    private let memoTextView = {
+    let memoTextView = {
         let view = UITextView()
         view.text = "메모"
         view.font = .systemFont(ofSize: 14)
@@ -54,7 +54,7 @@ final class MemoInputTableViewCell: BaseTableViewCell {
         }
         
         titleTextField.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
+            make.top.horizontalEdges.equalToSuperview().inset(16)
         }
         
         dividerView.snp.makeConstraints { make in

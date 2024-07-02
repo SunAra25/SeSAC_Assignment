@@ -28,6 +28,8 @@ final class AddViewController: BaseViewController {
         config.attributedTitle = attr
         button.configuration = config
         button.isEnabled = false
+        
+        button.addTarget(self, action: #selector(addBtnDidTap), for: .touchUpInside)
         return button
     }()
     private let naviTitleLabel = {
@@ -49,6 +51,12 @@ final class AddViewController: BaseViewController {
     }()
     
     private let inputs = ["마감일", "태그"]
+    private var memoTitle = ""
+    
+    override func viewWillDisappear(_ animated: Bool) {
+         super.viewWillDisappear(animated)
+         NotificationCenter.default.post(name:NSNotification.Name("DismissAddView"), object: nil, userInfo: nil)
+    }
     
     override func setHierarchy() {
         [cancleButton, addButton, naviTitleLabel, tableView].forEach {
@@ -77,6 +85,15 @@ final class AddViewController: BaseViewController {
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide).inset(12)
         }
     }
+    
+    @objc func addBtnDidTap() {
+        let data = TodoTable(title: memoTitle)
+        
+        try! realm.write {
+            realm.add(data)
+            dismiss(animated: true)
+        }
+    }
 }
 
 extension AddViewController: UITableViewDelegate, UITableViewDataSource {
@@ -92,6 +109,10 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: MemoInputTableViewCell.identifer, for: indexPath) as? MemoInputTableViewCell else { return UITableViewCell() }
             cell.selectionStyle = .none
+            
+            cell.titleTextField.delegate = self
+            cell.memoTextView.delegate = self
+            
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherInputTableViewCell.identifer, for: indexPath) as? OtherInputTableViewCell else { return UITableViewCell() }
@@ -104,5 +125,22 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return indexPath.section == 0 ? 180 : 72
+    }
+}
+
+extension AddViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        guard let input = textField.text else { return }
+        addButton.isEnabled = !input.isEmpty
+        memoTitle = input
+    }
+}
+
+extension AddViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .systemGray2 {
+            textView.text = ""
+            textView.textColor = .label
+        }
     }
 }

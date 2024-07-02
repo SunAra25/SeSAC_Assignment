@@ -29,6 +29,17 @@ final class ListViewController: BaseViewController {
         return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
     }()
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.dismissAddViewNotification(_:)),
+            name: NSNotification.Name("DismissAddView"),
+            object: nil
+        )
+    }
+    
     override func setNavigation() {
         let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(leftBarBtnDidTap))
         navigationItem.leftBarButtonItem = barButtonItem
@@ -54,6 +65,12 @@ final class ListViewController: BaseViewController {
         let nextVC = AddViewController()
         
         present(nextVC, animated: true)
+    }
+    
+    @objc func dismissAddViewNotification(_ notification: Notification) {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
 }
 

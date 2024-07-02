@@ -18,6 +18,8 @@
 		C0E0C1392C33E875000517CF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = C0E0C1382C33E875000517CF /* Kingfisher */; };
 		C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C13A2C33EBAF000517CF /* TodoTableViewCell.swift */; };
 		C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */; };
+		C0E0C1402C33F682000517CF /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C0E0C13F2C33F682000517CF /* RealmSwift */; };
+		C0E0C1422C33F71D000517CF /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1412C33F71D000517CF /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,7 @@
 		C0E0C1322C33E49D000517CF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C0E0C13A2C33EBAF000517CF /* TodoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
 		C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		C0E0C1412C33F71D000517CF /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0E0C1402C33F682000517CF /* RealmSwift in Frameworks */,
 				C0E0C1392C33E875000517CF /* Kingfisher in Frameworks */,
 				C0E0C1362C33E869000517CF /* SnapKit in Frameworks */,
 			);
@@ -74,6 +78,7 @@
 				C0E0C1232C33E26D000517CF /* Assets.xcassets */,
 				C0E0C1252C33E26D000517CF /* LaunchScreen.storyboard */,
 				C0E0C1282C33E26D000517CF /* Info.plist */,
+				C0E0C1412C33F71D000517CF /* Todo.swift */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 			packageProductDependencies = (
 				C0E0C1352C33E869000517CF /* SnapKit */,
 				C0E0C1382C33E875000517CF /* Kingfisher */,
+				C0E0C13F2C33F682000517CF /* RealmSwift */,
 			);
 			productName = Reminder;
 			productReference = C0E0C1172C33E26B000517CF /* Reminder.app */;
@@ -147,6 +153,7 @@
 			packageReferences = (
 				C0E0C1342C33E869000517CF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C0E0C1372C33E875000517CF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				C0E0C13E2C33F682000517CF /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = C0E0C1182C33E26B000517CF /* Products */;
 			projectDirPath = "";
@@ -177,6 +184,7 @@
 				C0E0C1332C33E49D000517CF /* BaseViewController.swift in Sources */,
 				C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */,
 				C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */,
+				C0E0C1422C33F71D000517CF /* Todo.swift in Sources */,
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
 				C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */,
@@ -423,6 +431,14 @@
 				minimumVersion = 7.12.0;
 			};
 		};
+		C0E0C13E2C33F682000517CF /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -435,6 +451,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C0E0C1372C33E875000517CF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		C0E0C13F2C33F682000517CF /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0E0C13E2C33F682000517CF /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

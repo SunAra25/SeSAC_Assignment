@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class ListViewController: BaseViewController {
     private let itemTitleLabel: UILabel = {
@@ -23,6 +24,10 @@ final class ListViewController: BaseViewController {
         view.dataSource = self
         view.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifer)
         return view
+    }()
+    private lazy var list: Results<TodoTable> = {
+        print(realm.configuration.fileURL)
+        return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
     }()
     
     override func setNavigation() {
@@ -53,12 +58,12 @@ final class ListViewController: BaseViewController {
 
 extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.identifer, for: indexPath) as? TodoTableViewCell else { return TodoTableViewCell() }
-        
+        cell.configureCell(list[indexPath.row])
         return cell
     }
 }

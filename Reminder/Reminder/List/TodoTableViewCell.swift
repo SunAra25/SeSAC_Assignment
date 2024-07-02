@@ -77,4 +77,13 @@ final class TodoTableViewCell: BaseTableViewCell {
             make.bottom.equalToSuperview().inset(8)
         }
     }
+    
+    func configureCell(_ data: TodoTable) {
+        titleLabel.text = data.title
+        contentLabel.text = data.content
+        dateLabel.text = data.deadline
+        radioButton.configuration?.image = UIImage(systemName: data.isDone ? "circle.fill" : "circle")
+        guard let tag = data.tag?.title else { return }
+        tagLabel.text = "#\(tag)"
+    }
 }

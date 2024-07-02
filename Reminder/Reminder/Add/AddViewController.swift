@@ -52,6 +52,7 @@ final class AddViewController: BaseViewController {
     
     private let inputs = ["마감일", "태그"]
     private var memoTitle = ""
+    private var content: String?
     
     override func viewWillDisappear(_ animated: Bool) {
          super.viewWillDisappear(animated)
@@ -87,7 +88,7 @@ final class AddViewController: BaseViewController {
     }
     
     @objc func addBtnDidTap() {
-        let data = TodoTable(title: memoTitle)
+        let data = TodoTable(title: memoTitle, content: content)
         
         try! realm.write {
             realm.add(data)
@@ -142,5 +143,11 @@ extension AddViewController: UITextViewDelegate {
             textView.text = ""
             textView.textColor = .label
         }
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        guard let input = textView.text else { return }
+        
+        content = input
     }
 }

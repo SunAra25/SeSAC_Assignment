@@ -9,13 +9,11 @@ import UIKit
 import SnapKit
 
 final class TodoTableViewCell: BaseTableViewCell {
-    private let radioButton: UIButton = {
-        let button = UIButton()
-        var config = UIButton.Configuration.plain()
-        config.image = UIImage(systemName: "circle")
-        config.baseForegroundColor = .systemGray3
-        button.configuration = config
-        return button
+    let doneImageView: UIImageView = {
+        let view = UIImageView()
+        view.image = UIImage(systemName: "circle")
+        view.tintColor = .systemGray2
+        return view
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -28,14 +26,14 @@ final class TodoTableViewCell: BaseTableViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .left
-        label.textColor = .systemGray3
+        label.textColor = .systemGray2
         return label
     }()
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
         label.textAlignment = .left
-        label.textColor = .systemGray3
+        label.textColor = .systemGray2
         return label
     }()
     private let tagLabel: UILabel = {
@@ -47,18 +45,18 @@ final class TodoTableViewCell: BaseTableViewCell {
     }()
     
     override func setLayout() {
-        [radioButton, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
+        [doneImageView, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
             contentView.addSubview($0)
         }
         
-        radioButton.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(8)
-            make.width.height.equalTo(40)
+        doneImageView.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(16)
+            make.width.height.equalTo(28)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(radioButton)
-            make.leading.equalTo(radioButton.snp.trailing).offset(6)
+            make.centerY.equalTo(doneImageView)
+            make.leading.equalTo(doneImageView.snp.trailing).offset(11)
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -82,7 +80,7 @@ final class TodoTableViewCell: BaseTableViewCell {
         titleLabel.text = data.title
         contentLabel.text = data.content
         dateLabel.text = data.deadline
-        radioButton.configuration?.image = UIImage(systemName: data.isDone ? "circle.fill" : "circle")
+        doneImageView.image = UIImage(systemName: data.isDone ? "circle.inset.filled" : "circle")
         guard let tag = data.tag?.title else { return }
         tagLabel.text = "#\(tag)"
     }

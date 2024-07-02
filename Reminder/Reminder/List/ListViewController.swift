@@ -26,7 +26,6 @@ final class ListViewController: BaseViewController {
         return view
     }()
     private lazy var list: Results<TodoTable> = {
-        print(realm.configuration.fileURL)
         return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
     }()
     
@@ -64,6 +63,16 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.identifer, for: indexPath) as? TodoTableViewCell else { return TodoTableViewCell() }
         cell.configureCell(list[indexPath.row])
+        cell.selectionStyle = .none
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = list[indexPath.row]
+        
+        try! realm.write {
+            data.isDone.toggle()
+        }
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

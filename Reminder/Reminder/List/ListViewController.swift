@@ -94,4 +94,23 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         }
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
+            guard let self else { return }
+            let data = list[indexPath.row]
+            
+            try! realm.write {
+                self.realm.delete(data)
+            }
+            tableView.reloadData()
+            success(true)
+        }
+        
+        delete.backgroundColor = .systemRed
+        delete.image = UIImage(systemName: "trash.fill")
+        
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
 }

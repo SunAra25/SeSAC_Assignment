@@ -9,11 +9,13 @@ import UIKit
 import SnapKit
 
 final class TodoTableViewCell: BaseTableViewCell {
-    let doneImageView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(systemName: "circle")
-        view.tintColor = .systemGray2
-        return view
+    let radiouButton: UIButton = {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(systemName: "circle")
+        config.baseForegroundColor = .systemGray2
+        button.configuration = config
+        return button
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -45,18 +47,18 @@ final class TodoTableViewCell: BaseTableViewCell {
     }()
     
     override func setLayout() {
-        [doneImageView, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
+        [radiouButton, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
             contentView.addSubview($0)
         }
         
-        doneImageView.snp.makeConstraints { make in
-            make.top.leading.equalToSuperview().inset(16)
+        radiouButton.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview().inset(12)
             make.width.height.equalTo(28)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalTo(doneImageView)
-            make.leading.equalTo(doneImageView.snp.trailing).offset(11)
+            make.centerY.equalTo(radiouButton)
+            make.leading.equalTo(radiouButton.snp.trailing).offset(11)
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -80,7 +82,7 @@ final class TodoTableViewCell: BaseTableViewCell {
         titleLabel.text = data.title
         contentLabel.text = data.content
         dateLabel.text = data.deadline
-        doneImageView.image = UIImage(systemName: data.isDone ? "circle.inset.filled" : "circle")
+        radiouButton.configuration?.image = UIImage(systemName: data.isDone ? "circle.inset.filled" : "circle")
         guard let tag = data.tag?.title else { return }
         tagLabel.text = "#\(tag)"
     }

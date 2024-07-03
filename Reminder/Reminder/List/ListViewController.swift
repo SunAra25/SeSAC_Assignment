@@ -71,6 +71,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.identifer, for: indexPath) as? TodoTableViewCell else { return TodoTableViewCell() }
         cell.configureCell(list[indexPath.row])
+        cell.radiouButton.tag = indexPath.row
+        cell.radiouButton.addTarget(self, action: #selector(radioBtnDidTap), for: .touchUpInside)
         cell.selectionStyle = .none
         return cell
     }
@@ -99,5 +101,15 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         delete.image = UIImage(systemName: "trash.fill")
         
         return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    @objc func radioBtnDidTap(_ sender: UIButton) {
+        let index = sender.tag
+        let data = list[index]
+        
+        try! realm.write {
+            data.isDone.toggle()
+        }
+        tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
     }
 }

@@ -30,7 +30,7 @@ final class MainViewController: BaseViewController {
         layout.sectionInset = UIEdgeInsets.init(top: 0, left: 12, bottom: 0, right: 12)
         return layout
     }()
-    private let addButton = {
+    private lazy var addButton = {
         let button = UIButton()
         var config = UIButton.Configuration.plain()
         var attr = AttributedString.init("새로운 할 일")
@@ -41,6 +41,8 @@ final class MainViewController: BaseViewController {
         config.imagePlacement = .leading
         config.imagePadding = 12
         button.configuration = config
+        
+        button.addTarget(self, action: #selector(addBtnDidTap), for: .touchUpInside)
         return button
     }()
     
@@ -61,6 +63,11 @@ final class MainViewController: BaseViewController {
             make.bottom.equalTo(addButton.snp.top).offset(8)
         }
     }
+    
+    @objc func addBtnDidTap() {
+        let nextVC = AddViewController()
+        present(nextVC, animated: true)
+    }
 }
 
 extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -73,6 +80,11 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
         let data = Category.allCases[indexPath.row]
         cell.configureCell(data)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let nextVC = ListViewController()
+        navigationController?.pushViewController(nextVC, animated: true)
     }
 }
 

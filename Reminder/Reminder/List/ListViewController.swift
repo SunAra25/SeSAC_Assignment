@@ -40,11 +40,6 @@ final class ListViewController: BaseViewController {
         )
     }
     
-    override func setNavigation() {
-        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "chevron.left"), style: .plain, target: self, action: #selector(leftBarBtnDidTap))
-        navigationItem.leftBarButtonItem = barButtonItem
-    }
-    
     override func setHierarchy() {
         view.addSubview(itemTitleLabel)
         view.addSubview(tableView)
@@ -59,12 +54,6 @@ final class ListViewController: BaseViewController {
             make.top.equalTo(itemTitleLabel.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
-    }
-    
-    @objc func leftBarBtnDidTap() {
-        let nextVC = AddViewController()
-        
-        present(nextVC, animated: true)
     }
     
     @objc func dismissAddViewNotification(_ notification: Notification) {
@@ -89,10 +78,8 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let data = list[indexPath.row]
         
-        try! realm.write {
-            data.isDone.toggle()
-        }
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        let nextVC = DetailViewController(data)
+        navigationController?.pushViewController(nextVC, animated: true)
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {

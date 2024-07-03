@@ -23,6 +23,13 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         label.textColor = .label
         return label
     }()
+    private let dataLabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 13)
+        label.textAlignment = .right
+        label.textColor = .systemGray2
+        return label
+    }()
     private let nextImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "chevron.right")

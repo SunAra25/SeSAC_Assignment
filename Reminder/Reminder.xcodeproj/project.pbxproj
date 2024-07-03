@@ -23,6 +23,11 @@
 		C0E0C1452C3403FE000517CF /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1442C3403FE000517CF /* AddViewController.swift */; };
 		C0E0C1472C341BEC000517CF /* MemoInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */; };
 		C0E0C1492C341C6F000517CF /* OtherInputTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */; };
+		C0E2A4B22C3522EE00E5EC8F /* OtherInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4B12C3522EE00E5EC8F /* OtherInputViewController.swift */; };
+		C0E2A4B72C35233200E5EC8F /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4B62C35233200E5EC8F /* DeadlineView.swift */; };
+		C0E2A4B92C35234700E5EC8F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4B82C35234700E5EC8F /* BaseView.swift */; };
+		C0E2A4BB2C352CCA00E5EC8F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4BA2C352CCA00E5EC8F /* TagView.swift */; };
+		C0E2A4BD2C3534A500E5EC8F /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,11 @@
 		C0E0C1442C3403FE000517CF /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoInputTableViewCell.swift; sourceTree = "<group>"; };
 		C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInputTableViewCell.swift; sourceTree = "<group>"; };
+		C0E2A4B12C3522EE00E5EC8F /* OtherInputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherInputViewController.swift; sourceTree = "<group>"; };
+		C0E2A4B62C35233200E5EC8F /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		C0E2A4B82C35234700E5EC8F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
+		C0E2A4BA2C352CCA00E5EC8F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
+		C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +114,7 @@
 			children = (
 				C0E0C1322C33E49D000517CF /* BaseViewController.swift */,
 				C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */,
+				C0E2A4B82C35234700E5EC8F /* BaseView.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -111,11 +122,39 @@
 		C0E0C1432C340303000517CF /* Add */ = {
 			isa = PBXGroup;
 			children = (
+				C0E2A4B32C3522F200E5EC8F /* ViewController */,
+				C0E2A4B42C35230000E5EC8F /* Cell */,
+				C0E2A4B52C35230C00E5EC8F /* View */,
+			);
+			path = Add;
+			sourceTree = "<group>";
+		};
+		C0E2A4B32C3522F200E5EC8F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
 				C0E0C1442C3403FE000517CF /* AddViewController.swift */,
+				C0E2A4B12C3522EE00E5EC8F /* OtherInputViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C0E2A4B42C35230000E5EC8F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
 				C0E0C1462C341BEC000517CF /* MemoInputTableViewCell.swift */,
 				C0E0C1482C341C6F000517CF /* OtherInputTableViewCell.swift */,
 			);
-			path = Add;
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		C0E2A4B52C35230C00E5EC8F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C0E2A4B62C35233200E5EC8F /* DeadlineView.swift */,
+				C0E2A4BA2C352CCA00E5EC8F /* TagView.swift */,
+				C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,8 +245,13 @@
 				C0E0C1422C33F71D000517CF /* Todo.swift in Sources */,
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
+				C0E2A4B72C35233200E5EC8F /* DeadlineView.swift in Sources */,
 				C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */,
+				C0E2A4BD2C3534A500E5EC8F /* PriorityView.swift in Sources */,
 				C0E0C1492C341C6F000517CF /* OtherInputTableViewCell.swift in Sources */,
+				C0E2A4BB2C352CCA00E5EC8F /* TagView.swift in Sources */,
+				C0E2A4B92C35234700E5EC8F /* BaseView.swift in Sources */,
+				C0E2A4B22C3522EE00E5EC8F /* OtherInputViewController.swift in Sources */,
 				C0E0C1302C33E48E000517CF /* ListViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

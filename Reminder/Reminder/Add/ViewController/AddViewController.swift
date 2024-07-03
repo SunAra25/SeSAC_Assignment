@@ -50,7 +50,7 @@ final class AddViewController: BaseViewController {
         return view
     }()
     
-    private let inputs = ["마감일", "태그"]
+    private let inputs = ["마감일", "태그", "우선순위"]
     private var memoTitle = ""
     private var content: String?
     
@@ -149,5 +149,12 @@ extension AddViewController: UITextViewDelegate {
         guard let input = textView.text else { return }
         
         content = input
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 1 {
+            let nextVC = OtherInputViewController(indexPath.row)
+            present(nextVC, animated: true)
+        }
     }
 }

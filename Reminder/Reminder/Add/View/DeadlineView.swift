@@ -14,11 +14,11 @@ final class DeadlineView: BaseView {
         picker.datePickerMode = .date
         picker.preferredDatePickerStyle = .wheels
         picker.addTarget(self, action: #selector(datePickerDidChanged), for: [.valueChanged])
-        picker.date = Date()
         return picker
     }()
-    private lazy var textField = {
+    lazy var textField = {
         let field = UITextField()
+        field.text = dateToString(Date())
         field.textColor = .label
         field.tintColor = .label
         field.textAlignment = .center
@@ -40,10 +40,14 @@ final class DeadlineView: BaseView {
         }
     }
     
-    @objc func datePickerDidChanged(_ datePicker: UIDatePicker) {
-        let date = datePicker.date
+    private func dateToString(_ date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy.MM.dd"
-        textField.text = formatter.string(from: date)
+        return formatter.string(from: date)
+    }
+    
+    @objc private func datePickerDidChanged(_ datePicker: UIDatePicker) {
+        let date = datePicker.date
+        textField.text = dateToString(date)
     }
 }

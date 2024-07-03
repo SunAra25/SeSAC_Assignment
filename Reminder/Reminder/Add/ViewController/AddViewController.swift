@@ -8,6 +8,10 @@
 import UIKit
 import SnapKit
 
+protocol SelectedDataDelegate {
+    func sendData(_ view: Input, value: String)
+}
+
 final class AddViewController: BaseViewController {
     private let cancleButton = {
         let button = UIButton()
@@ -51,6 +55,7 @@ final class AddViewController: BaseViewController {
     }()
     
     private let inputs = ["마감일", "태그", "우선순위"]
+    private var selectedValue = ["", "", ""]
     private var memoTitle = ""
     private var content: String?
     
@@ -117,9 +122,10 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             return cell
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherInputTableViewCell.identifer, for: indexPath) as? OtherInputTableViewCell else { return UITableViewCell() }
-            let data = inputs[indexPath.row]
+            let title = inputs[indexPath.row]
+            let value = selectedValue[indexPath.row]
             cell.selectionStyle = .none
-            cell.configureCell(data)
+            cell.configureCell((title, value))
             return cell
         }
     }
@@ -154,7 +160,16 @@ extension AddViewController: UITextViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
             let nextVC = OtherInputViewController(indexPath.row)
+            nextVC.selectedDelegate = self
             present(nextVC, animated: true)
         }
+    }
+}
+
+extension AddViewController: SelectedDataDelegate {
+    func sendData(_ input: Input, value: String) {
+        let index = input.rawValue
+        selectedValue[index] = value
+        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
     }
 }

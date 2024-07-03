@@ -8,12 +8,13 @@
 import UIKit
 
 class PriorityView: BaseView {
-    private let segmentControl = {
+    private lazy var segmentControl = {
         let view = UISegmentedControl()
         Priority.allCases.forEach {
             view.insertSegment(withTitle: $0.title, at: $0.rawValue, animated: true)
         }
         view.backgroundColor = .systemGray4
+        view.addTarget(self, action: #selector(priorityDidChanged), for: .valueChanged)
         return view
     }()
     var priority: Priority = .normal

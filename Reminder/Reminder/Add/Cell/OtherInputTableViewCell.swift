@@ -25,9 +25,9 @@ final class OtherInputTableViewCell: BaseTableViewCell {
     }()
     private let dataLabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 13)
+        label.font = .boldSystemFont(ofSize: 14)
         label.textAlignment = .right
-        label.textColor = .systemGray2
+        label.textColor = .systemGray
         return label
     }()
     private let nextImageView = {
@@ -40,7 +40,7 @@ final class OtherInputTableViewCell: BaseTableViewCell {
     override func setLayout() {
         contentView.addSubview(backView)
         
-        [titleLabel, nextImageView].forEach {
+        [titleLabel, dataLabel, nextImageView].forEach {
             backView.addSubview($0)
         }
         
@@ -56,9 +56,15 @@ final class OtherInputTableViewCell: BaseTableViewCell {
             make.verticalEdges.trailing.equalToSuperview().inset(16)
             make.size.equalTo(16)
         }
+        
+        dataLabel.snp.makeConstraints { make in
+            make.trailing.equalTo(nextImageView.snp.leading)
+            make.centerY.equalTo(titleLabel)
+        }
     }
     
-    func configureCell(_ data: String) {
-        titleLabel.text = data
+    func configureCell(_ data: (title: String, value: String)) {
+        titleLabel.text = data.title
+        dataLabel.text = data.value
     }
 }

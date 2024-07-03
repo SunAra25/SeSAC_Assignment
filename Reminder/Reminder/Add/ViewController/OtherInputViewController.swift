@@ -13,12 +13,13 @@ final class OtherInputViewController: BaseViewController {
     private let tagView = TagView()
     private let priorityView = PriorityView()
     
-    private var currentView: UIView?
+    private var currentInput: Input?
+    var selectedDelegate: SelectedDataDelegate?
     
     init(_ num: Int) {
         super.init(nibName: nil, bundle: nil)
-        guard let inputView = Input(rawValue: num)?.view else { return }
-        currentView = inputView
+        guard let input = Input(rawValue: num) else { return }
+        currentInput = input
     }
     
     required init?(coder: NSCoder) {
@@ -26,12 +27,26 @@ final class OtherInputViewController: BaseViewController {
     }
     
     override func loadView() {
-        view = currentView
+        view = currentInput?.view
     }
-}
-
-extension OtherInputViewController: UITextFieldDelegate {
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        guard let currentInput else { return }
+        var value: String = ""
+        switch currentInput {
+        case .deadline:
+            guard let view = view as? DeadlineView, let text = view.textField.text else { return }
+            value = text
+        case .tag:
+            guard let view = view as? TagView, let text = view.textField.text else { return }
+            value = text
+        case .priority:
+            guard let view = view as? PriorityView else { return }
+            value = view.priority.title
+        }
+        selectedDelegate?.sendData(currentInput, value: value)
+    }
 }
 
 enum Input: Int {

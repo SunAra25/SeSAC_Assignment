@@ -27,7 +27,11 @@ final class ListViewController: BaseViewController {
     }()
     private lazy var list: Results<TodoTable> = {
         return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
-    }()
+    }() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +42,29 @@ final class ListViewController: BaseViewController {
             name: NSNotification.Name("DismissAddView"),
             object: nil
         )
+    }
+    
+    override func setNavigation() {
+        let button = UIButton()
+        var config = UIButton.Configuration.plain()
+        config.image = UIImage(systemName: "ellipsis.circle")
+        button.configuration = config
+        button.showsMenuAsPrimaryAction = true
+        let deadline = UIAction(title: "마감일 순") { [weak self] _ in
+            guard let self else { return }
+            list = realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
+        }
+        let title = UIAction(title: "제목 순") { [weak self] _ in
+            guard let self else { return }
+            list = realm.objects(TodoTable.self).sorted(byKeyPath: "title", ascending: true)
+        }
+        let higherPriority = UIAction(title: "우선순위 낮음만") { [weak self] _ in
+            guard let self else { return }
+            list = realm.objects(TodoTable.self).where { $0.priority == "낮음" }
+        }
+        let menu = UIMenu(title: "", children: [title, deadline, higherPriority])
+        button.menu = menu
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: button)
     }
     
     override func setHierarchy() {
@@ -54,6 +81,10 @@ final class ListViewController: BaseViewController {
             make.top.equalTo(itemTitleLabel.snp.bottom)
             make.horizontalEdges.bottom.equalTo(view.safeAreaLayoutGuide)
         }
+    }
+    
+    @objc func moreBtnDidTap() {
+        
     }
     
     @objc func dismissAddViewNotification(_ notification: Notification) {

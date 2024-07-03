@@ -40,13 +40,26 @@ class PriorityView: BaseView {
 enum Priority: Int, CaseIterable {
     case low = 0
     case normal
-    case hight
+    case high
     
     var title: String {
         switch self {
         case .low: "낮음"
         case .normal: "보통"
-        case .hight: "높음"
+        case .high: "높음"
+        }
+    }
+    
+    init?(title: String) {
+        switch title {
+        case "낮음":
+            self = .low
+        case "보통":
+            self = .normal
+        case "높음":
+            self = .high
+        default:
+            return nil
         }
     }
 }

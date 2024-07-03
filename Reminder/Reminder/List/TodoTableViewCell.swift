@@ -46,6 +46,10 @@ final class TodoTableViewCell: BaseTableViewCell {
         return label
     }()
     
+    override func prepareForReuse() {
+        tagLabel.text = nil
+    }
+    
     override func setLayout() {
         [radiouButton, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
             contentView.addSubview($0)

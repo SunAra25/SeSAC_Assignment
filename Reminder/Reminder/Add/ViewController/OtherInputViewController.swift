@@ -33,17 +33,17 @@ final class OtherInputViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         guard let currentInput else { return }
-        var value: String = ""
+        var value: String?
         switch currentInput {
         case .deadline:
-            guard let view = view as? DeadlineView, let text = view.textField.text else { return }
-            value = text
+            guard let view = view as? DeadlineView else { return }
+            value = view.textField.text
         case .tag:
-            guard let view = view as? TagView, let text = view.textField.text else { return }
-            value = text
+            guard let view = view as? TagView else { return }
+            value = view.textField.text 
         case .priority:
             guard let view = view as? PriorityView else { return }
-            value = view.priority.title
+            value = view.priority?.title
         }
         selectedDelegate?.sendData(currentInput, value: value)
     }

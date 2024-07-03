@@ -63,7 +63,7 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configureCell(_ data: (title: String, value: String)) {
+    func configureCell(_ data: (title: String, value: String?)) {
         titleLabel.text = data.title
         dataLabel.text = data.value
     }

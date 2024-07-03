@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 protocol SelectedDataDelegate {
-    func sendData(_ view: Input, value: String)
+    func sendData(_ view: Input, value: String?)
 }
 
 final class AddViewController: BaseViewController {
@@ -55,7 +55,7 @@ final class AddViewController: BaseViewController {
     }()
     
     private let inputs = ["마감일", "태그", "우선순위"]
-    private var selectedValue = ["", "", ""]
+    private var selectedValue: [String?] = [nil, nil, nil]
     private var memoTitle = ""
     private var content: String?
     
@@ -93,7 +93,23 @@ final class AddViewController: BaseViewController {
     }
     
     @objc func addBtnDidTap() {
-        let data = TodoTable(title: memoTitle, content: content)
+        let title = memoTitle
+        let content = content
+        let tag = selectedValue[1]
+        let deadline = selectedValue[0]
+        let priority = selectedValue[2]
+        
+        var tagTable: TagTable?
+        
+        if let tag = tag {
+            if realm.objects(TagTable.self).contains(where: { $0.title == tag }) {
+                tagTable = realm.objects(TagTable.self).first(where: {$0.title == tag})
+            } else {
+                tagTable = TagTable(title: tag)
+            }
+        }
+        
+        let data = TodoTable(title: title, content: content, tag: tagTable, deadline: deadline, priority: priority)
         
         try! realm.write {
             realm.add(data)
@@ -167,7 +183,7 @@ extension AddViewController: UITextViewDelegate {
 }
 
 extension AddViewController: SelectedDataDelegate {
-    func sendData(_ input: Input, value: String) {
+    func sendData(_ input: Input, value: String?) {
         let index = input.rawValue
         selectedValue[index] = value
         tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)

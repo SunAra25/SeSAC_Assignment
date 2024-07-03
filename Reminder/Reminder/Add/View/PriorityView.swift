@@ -17,7 +17,7 @@ class PriorityView: BaseView {
         view.addTarget(self, action: #selector(priorityDidChanged), for: .valueChanged)
         return view
     }()
-    var priority: Priority = .normal
+    var priority: Priority?
     
     override func setHierarchy() {
         addSubview(segmentControl)
@@ -33,8 +33,7 @@ class PriorityView: BaseView {
     
     @objc func priorityDidChanged(_ segment: UISegmentedControl) {
         let index = segment.selectedSegmentIndex
-        guard let value = Priority(rawValue: index) else { return }
-        priority = value
+        priority = Priority(rawValue: index)
     }
 }
 

@@ -16,8 +16,9 @@ class TodoTable: Object {
     @Persisted var isDone: Bool
     @Persisted var isImportant: Bool
     @Persisted var deadline: String?
+    @Persisted var priority: String?
     
-    convenience init(title: String, content: String? = nil, tag: TagTable? = nil, deadline: String? = nil) {
+    convenience init(title: String, content: String? = nil, tag: TagTable? = nil, deadline: String? = nil, priority: String? = nil) {
         self.init()
         self.title = title
         self.content = content
@@ -25,6 +26,7 @@ class TodoTable: Object {
         self.isDone = false
         self.isImportant = false
         self.deadline = deadline
+        self.priority = priority
     }
 }
 

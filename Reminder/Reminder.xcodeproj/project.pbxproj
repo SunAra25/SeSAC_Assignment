@@ -28,6 +28,9 @@
 		C0E2A4B92C35234700E5EC8F /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4B82C35234700E5EC8F /* BaseView.swift */; };
 		C0E2A4BB2C352CCA00E5EC8F /* TagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4BA2C352CCA00E5EC8F /* TagView.swift */; };
 		C0E2A4BD2C3534A500E5EC8F /* PriorityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */; };
+		C0E2A4C02C35508C00E5EC8F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4BF2C35508C00E5EC8F /* MainViewController.swift */; };
+		C0E2A4C22C3554CD00E5EC8F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */; };
+		C0E2A4C42C3554E500E5EC8F /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4C32C3554E500E5EC8F /* BaseCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +54,9 @@
 		C0E2A4B82C35234700E5EC8F /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C0E2A4BA2C352CCA00E5EC8F /* TagView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagView.swift; sourceTree = "<group>"; };
 		C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriorityView.swift; sourceTree = "<group>"; };
+		C0E2A4BF2C35508C00E5EC8F /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		C0E2A4C32C3554E500E5EC8F /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E0C1312C33E494000517CF /* Base */,
+				C0E2A4BE2C35507500E5EC8F /* Main */,
 				C0E0C1432C340303000517CF /* Add */,
 				C0E0C12E2C33E46D000517CF /* List */,
 				C0E0C11A2C33E26B000517CF /* AppDelegate.swift */,
@@ -114,6 +121,7 @@
 			children = (
 				C0E0C1322C33E49D000517CF /* BaseViewController.swift */,
 				C0E0C13C2C33EBBB000517CF /* BaseTableViewCell.swift */,
+				C0E2A4C32C3554E500E5EC8F /* BaseCollectionViewCell.swift */,
 				C0E2A4B82C35234700E5EC8F /* BaseView.swift */,
 			);
 			path = Base;
@@ -155,6 +163,15 @@
 				C0E2A4BC2C3534A500E5EC8F /* PriorityView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		C0E2A4BE2C35507500E5EC8F /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				C0E2A4BF2C35508C00E5EC8F /* MainViewController.swift */,
+				C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,10 +258,13 @@
 				C0E0C1332C33E49D000517CF /* BaseViewController.swift in Sources */,
 				C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */,
 				C0E0C1452C3403FE000517CF /* AddViewController.swift in Sources */,
+				C0E2A4C22C3554CD00E5EC8F /* CategoryCollectionViewCell.swift in Sources */,
 				C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */,
 				C0E0C1422C33F71D000517CF /* Todo.swift in Sources */,
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
+				C0E2A4C02C35508C00E5EC8F /* MainViewController.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
+				C0E2A4C42C3554E500E5EC8F /* BaseCollectionViewCell.swift in Sources */,
 				C0E2A4B72C35233200E5EC8F /* DeadlineView.swift in Sources */,
 				C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */,
 				C0E2A4BD2C3534A500E5EC8F /* PriorityView.swift in Sources */,

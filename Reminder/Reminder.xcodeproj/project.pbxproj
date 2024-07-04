@@ -32,6 +32,8 @@
 		C0E2A4C22C3554CD00E5EC8F /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */; };
 		C0E2A4C42C3554E500E5EC8F /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4C32C3554E500E5EC8F /* BaseCollectionViewCell.swift */; };
 		C0E2A4C62C3574D700E5EC8F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4C52C3574D700E5EC8F /* DetailViewController.swift */; };
+		C0E2A4D02C3687F200E5EC8F /* TodoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4CF2C3687F200E5EC8F /* TodoRepository.swift */; };
+		C0E2A4D32C36892A00E5EC8F /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E2A4D22C36892A00E5EC8F /* Date+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +61,8 @@
 		C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0E2A4C32C3554E500E5EC8F /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C0E2A4C52C3574D700E5EC8F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C0E2A4CF2C3687F200E5EC8F /* TodoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoRepository.swift; sourceTree = "<group>"; };
+		C0E2A4D22C36892A00E5EC8F /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +98,9 @@
 		C0E0C1192C33E26B000517CF /* Reminder */ = {
 			isa = PBXGroup;
 			children = (
+				C0E2A4CE2C3687D400E5EC8F /* Realm */,
 				C0E0C1312C33E494000517CF /* Base */,
+				C0E2A4D12C36891E00E5EC8F /* Extension */,
 				C0E2A4BE2C35507500E5EC8F /* Main */,
 				C0E0C1432C340303000517CF /* Add */,
 				C0E0C12E2C33E46D000517CF /* List */,
@@ -105,7 +111,6 @@
 				C0E0C1232C33E26D000517CF /* Assets.xcassets */,
 				C0E0C1252C33E26D000517CF /* LaunchScreen.storyboard */,
 				C0E0C1282C33E26D000517CF /* Info.plist */,
-				C0E0C1412C33F71D000517CF /* Todo.swift */,
 			);
 			path = Reminder;
 			sourceTree = "<group>";
@@ -183,6 +188,23 @@
 				C0E2A4C52C3574D700E5EC8F /* DetailViewController.swift */,
 			);
 			path = Detail;
+			sourceTree = "<group>";
+		};
+		C0E2A4CE2C3687D400E5EC8F /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				C0E0C1412C33F71D000517CF /* Todo.swift */,
+				C0E2A4CF2C3687F200E5EC8F /* TodoRepository.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		C0E2A4D12C36891E00E5EC8F /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C0E2A4D22C36892A00E5EC8F /* Date+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -276,12 +298,14 @@
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
 				C0E2A4C02C35508C00E5EC8F /* MainViewController.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
+				C0E2A4D32C36892A00E5EC8F /* Date+.swift in Sources */,
 				C0E2A4C42C3554E500E5EC8F /* BaseCollectionViewCell.swift in Sources */,
 				C0E2A4B72C35233200E5EC8F /* DeadlineView.swift in Sources */,
 				C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */,
 				C0E2A4BD2C3534A500E5EC8F /* PriorityView.swift in Sources */,
 				C0E0C1492C341C6F000517CF /* OtherInputTableViewCell.swift in Sources */,
 				C0E2A4BB2C352CCA00E5EC8F /* TagView.swift in Sources */,
+				C0E2A4D02C3687F200E5EC8F /* TodoRepository.swift in Sources */,
 				C0E2A4B92C35234700E5EC8F /* BaseView.swift in Sources */,
 				C0E2A4B22C3522EE00E5EC8F /* OtherInputViewController.swift in Sources */,
 				C0E0C1302C33E48E000517CF /* ListViewController.swift in Sources */,

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import RealmSwift
 
 final class MainViewController: BaseViewController {
     private lazy var collectionView = {
@@ -46,6 +47,8 @@ final class MainViewController: BaseViewController {
         return button
     }()
     
+    private let repository = TodoRepository()
+    
     override func setHierarchy() {
         [collectionView, addButton].forEach {
             view.addSubview($0)
@@ -77,13 +80,25 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifer, for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        let data = Category.allCases[indexPath.row]
+
+        let rawValue = Category.allCases[indexPath.row].rawValue
+        guard let category = Category(rawValue: rawValue) else { return cell }
+        var data: (Category, Int) = (category, -1)
+        switch category {
+        case .today: data.1 = repository.fetchTodayTodo().count
+        case .expected: data.1 = repository.fetchScheduledTodo().count
+        case .all: data.1 = repository.fetchAllTodo().count
+        case .flag: data.1 = repository.fetchFlaggedTodo().count
+        case .done: data.1 = repository.fetchCompletedTodo().count
+        }
+        
         cell.configureCell(data)
+        
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextVC = ListViewController()
+        let nextVC = ListViewController(realm.objects(TodoTable.self))
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

@@ -25,12 +25,19 @@ final class ListViewController: BaseViewController {
         view.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifer)
         return view
     }()
-    private lazy var list: Results<TodoTable> = {
-        return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
-    }() {
+    private var list: Results<TodoTable> {
         didSet {
             tableView.reloadData()
         }
+    }
+    
+    init(_ list: Results<TodoTable>) {
+        self.list = list
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {

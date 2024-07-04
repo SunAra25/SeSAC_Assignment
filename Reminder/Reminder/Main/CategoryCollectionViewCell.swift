@@ -18,7 +18,6 @@ final class CategoryCollectionViewCell: BaseCollectionViewCell {
     private let imageView = {
         let view = UIImageView()
         view.backgroundColor = .white
-        view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 24
         return view
     }()
@@ -64,9 +63,10 @@ final class CategoryCollectionViewCell: BaseCollectionViewCell {
         }
     }
     
-    func configureCell(_ data: Category) {
-        categoryLabel.text = data.rawValue
-        imageView.image = data.iconImage
-        imageView.tintColor = data.backgroundColor
+    func configureCell(_ data: (Category, Int)) {
+        categoryLabel.text = data.0.rawValue
+        imageView.image = data.0.iconImage
+        imageView.tintColor = data.0.backgroundColor
+        countLabel.text = "\(data.1)"
     }
 }

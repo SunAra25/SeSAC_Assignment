@@ -18,7 +18,7 @@ final class DeadlineView: BaseView {
     }()
     lazy var textField = {
         let field = UITextField()
-        field.text = dateToString(Date())
+        field.text = Date().toString()
         field.textColor = .label
         field.tintColor = .label
         field.textAlignment = .center
@@ -40,14 +40,8 @@ final class DeadlineView: BaseView {
         }
     }
     
-    private func dateToString(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
-        return formatter.string(from: date)
-    }
-    
     @objc private func datePickerDidChanged(_ datePicker: UIDatePicker) {
         let date = datePicker.date
-        textField.text = dateToString(date)
+        textField.text = date.toString()
     }
 }

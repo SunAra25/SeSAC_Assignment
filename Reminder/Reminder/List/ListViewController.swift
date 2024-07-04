@@ -7,12 +7,10 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 final class ListViewController: BaseViewController {
     private let itemTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = "전체"
         label.font = .boldSystemFont(ofSize: 32)
         label.textAlignment = .left
         label.textColor = .systemBlue
@@ -25,14 +23,24 @@ final class ListViewController: BaseViewController {
         view.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifer)
         return view
     }()
-    private var list: Results<TodoTable> {
+    private lazy var list = {
+        switch self.category {
+        case .today: return self.repository.fetchTodayTodo()
+        case .expected: return self.repository.fetchScheduledTodo()
+        case .all: return self.repository.fetchAllTodo()
+        case .flag: return self.repository.fetchFlaggedTodo()
+        case .done: return self.repository.fetchCompletedTodo()
+        }
+    }() {
         didSet {
             tableView.reloadData()
         }
     }
+    private let category: Category
     
-    init(_ list: Results<TodoTable>) {
-        self.list = list
+    init(_ category: Category) {
+        self.category = category
+        itemTitleLabel.text = category.rawValue
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -57,17 +65,18 @@ final class ListViewController: BaseViewController {
         config.image = UIImage(systemName: "ellipsis.circle")
         button.configuration = config
         button.showsMenuAsPrimaryAction = true
+        
         let deadline = UIAction(title: "마감일 순") { [weak self] _ in
             guard let self else { return }
-            list = realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
+            list = repository.sortDeadline()
         }
         let title = UIAction(title: "제목 순") { [weak self] _ in
             guard let self else { return }
-            list = realm.objects(TodoTable.self).sorted(byKeyPath: "title", ascending: true)
+            list = repository.sortTitle()
         }
         let higherPriority = UIAction(title: "우선순위 낮음만") { [weak self] _ in
             guard let self else { return }
-            list = realm.objects(TodoTable.self).where { $0.priority == "낮음" }
+            list = repository.filterPriority()
         }
         let menu = UIMenu(title: "", children: [title, deadline, higherPriority])
         button.menu = menu
@@ -127,10 +136,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let delete = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
             guard let self else { return }
             let data = list[indexPath.row]
-            
-            try! realm.write {
-                self.realm.delete(data)
-            }
+            repository.deleteItem(data)
             tableView.reloadData()
             success(true)
         }
@@ -145,9 +151,7 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         let index = sender.tag
         let data = list[index]
         
-        try! realm.write {
-            data.isDone.toggle()
-        }
-        tableView.reloadRows(at: [IndexPath(item: index, section: 0)], with: .automatic)
+        repository.itemCompleted(data)
+        tableView.reloadData()
     }
 }

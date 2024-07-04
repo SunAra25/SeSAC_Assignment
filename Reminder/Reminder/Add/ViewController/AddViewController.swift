@@ -99,22 +99,10 @@ final class AddViewController: BaseViewController {
         let deadline = selectedValue[0]
         let priority = selectedValue[2]
         
-        var tagTable: TagTable?
+        let data = (title: title, content: content, tag: tag, deadline : deadline, priority : priority)
         
-        if let tag = tag {
-            if realm.objects(TagTable.self).contains(where: { $0.title == tag }) {
-                tagTable = realm.objects(TagTable.self).first(where: {$0.title == tag})
-            } else {
-                tagTable = TagTable(title: tag)
-            }
-        }
-        
-        let data = TodoTable(title: title, content: content, tag: tagTable, deadline: deadline, priority: priority)
-        
-        try! realm.write {
-            realm.add(data)
-            dismiss(animated: true)
-        }
+        repository.createItem(data)
+        dismiss(animated: true)
     }
 }
 

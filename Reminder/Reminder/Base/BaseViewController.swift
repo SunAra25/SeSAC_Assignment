@@ -6,10 +6,9 @@
 //
 
 import UIKit
-import RealmSwift
 
 class BaseViewController: UIViewController {
-    let realm = try! Realm()
+    let repository = TodoRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()

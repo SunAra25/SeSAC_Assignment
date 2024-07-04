@@ -7,7 +7,6 @@
 
 import UIKit
 import SnapKit
-import RealmSwift
 
 final class MainViewController: BaseViewController {
     private lazy var collectionView = {
@@ -47,7 +46,11 @@ final class MainViewController: BaseViewController {
         return button
     }()
     
-    private let repository = TodoRepository()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendUpdateNotification), name: NSNotification.Name("UpdateTodoTable"), object: nil)
+    }
     
     override func setHierarchy() {
         [collectionView, addButton].forEach {
@@ -70,6 +73,10 @@ final class MainViewController: BaseViewController {
     @objc func addBtnDidTap() {
         let nextVC = AddViewController()
         present(nextVC, animated: true)
+    }
+    
+    @objc func sendUpdateNotification(notification: NSNotification) {
+        collectionView.reloadData()
     }
 }
 
@@ -98,7 +105,8 @@ extension MainViewController: UICollectionViewDelegate, UICollectionViewDataSour
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let nextVC = ListViewController(realm.objects(TodoTable.self))
+        let category = Category.allCases[indexPath.row]
+        let nextVC = ListViewController(category)
         navigationController?.pushViewController(nextVC, animated: true)
     }
 }

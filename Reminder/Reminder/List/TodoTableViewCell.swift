@@ -17,6 +17,13 @@ final class TodoTableViewCell: BaseTableViewCell {
         button.configuration = config
         return button
     }()
+    private let priorityLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 15)
+        label.textAlignment = .left
+        label.textColor = .systemBlue
+        return label
+    }()
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 16)
@@ -51,7 +58,7 @@ final class TodoTableViewCell: BaseTableViewCell {
     }
     
     override func setLayout() {
-        [radiouButton, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
+        [radiouButton, priorityLabel, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
             contentView.addSubview($0)
         }
         
@@ -60,19 +67,24 @@ final class TodoTableViewCell: BaseTableViewCell {
             make.width.height.equalTo(28)
         }
         
-        titleLabel.snp.makeConstraints { make in
+        priorityLabel.snp.makeConstraints { make in
             make.centerY.equalTo(radiouButton)
             make.leading.equalTo(radiouButton.snp.trailing).offset(11)
         }
         
+        titleLabel.snp.makeConstraints { make in
+            make.centerY.equalTo(radiouButton)
+            make.leading.equalTo(priorityLabel.snp.trailing).offset(4)
+        }
+        
         contentLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(4)
-            make.leading.equalTo(titleLabel)
+            make.leading.equalTo(radiouButton.snp.trailing).offset(11)
         }
         
         dateLabel.snp.makeConstraints { make in
             make.top.equalTo(contentLabel.snp.bottom).offset(4)
-            make.leading.equalTo(titleLabel)
+            make.leading.equalTo(radiouButton.snp.trailing).offset(11)
         }
         
         tagLabel.snp.makeConstraints { make in
@@ -84,10 +96,57 @@ final class TodoTableViewCell: BaseTableViewCell {
     
     func configureCell(_ data: TodoTable) {
         titleLabel.text = data.title
+        
+        if let data = data.priority {
+            guard let priority = Priority(title: data) else { return }
+            priorityLabel.text = priority.degree
+            
+            titleLabel.snp.remakeConstraints { make in
+                make.centerY.equalTo(radiouButton)
+                make.leading.equalTo(priorityLabel.snp.trailing).offset(4)
+            }
+        } else {
+            titleLabel.snp.remakeConstraints { make in
+                make.centerY.equalTo(radiouButton)
+                make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+            }
+        }
+        
         contentLabel.text = data.content
+        contentLabel.isHidden = data.content == nil
+        
         dateLabel.text = data.deadline
+        dateLabel.isHidden = data.deadline == nil
+        
+        if contentLabel.isHidden {
+            dateLabel.snp.remakeConstraints { make in
+                make.top.equalTo(titleLabel.snp.bottom).offset(4)
+                make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+            }
+        } else {
+            dateLabel.snp.remakeConstraints { make in
+                make.top.equalTo(contentLabel.snp.bottom).offset(4)
+                make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+            }
+        }
+        
         radiouButton.configuration?.image = UIImage(systemName: data.isDone ? "circle.inset.filled" : "circle")
+        
         guard let tag = data.tag?.title else { return }
         tagLabel.text = "#\(tag)"
+        
+        if dateLabel.isHidden {
+            tagLabel.snp.remakeConstraints { make in
+                make.top.equalTo(dateLabel)
+                make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+                make.bottom.equalToSuperview().inset(8)
+            }
+        } else {
+            tagLabel.snp.remakeConstraints { make in
+                make.top.equalTo(dateLabel)
+                make.leading.equalTo(dateLabel.snp.trailing).offset(4)
+                make.bottom.equalToSuperview().inset(8)
+            }
+        }
     }
 }

@@ -62,4 +62,12 @@ enum Priority: Int, CaseIterable {
             return nil
         }
     }
+    
+    var degree: String {
+        switch self {
+        case .low: "!"
+        case .normal: "!!"
+        case .high: "!!!"
+        }
+    }
 }

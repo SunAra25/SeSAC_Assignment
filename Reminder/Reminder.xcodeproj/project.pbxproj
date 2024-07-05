@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C08269542C3796A700E95B8A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08269532C3796A700E95B8A /* UIViewController+.swift */; };
+		C08269562C37BF0C00E95B8A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08269552C37BF0C00E95B8A /* String+.swift */; };
 		C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11A2C33E26B000517CF /* AppDelegate.swift */; };
 		C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11C2C33E26B000517CF /* SceneDelegate.swift */; };
 		C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11E2C33E26B000517CF /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		C08269532C3796A700E95B8A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
+		C08269552C37BF0C00E95B8A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C0E0C1172C33E26B000517CF /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E0C11A2C33E26B000517CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0E0C11C2C33E26B000517CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				C0E2A4D22C36892A00E5EC8F /* Date+.swift */,
+				C08269552C37BF0C00E95B8A /* String+.swift */,
 				C08269532C3796A700E95B8A /* UIViewController+.swift */,
 			);
 			path = Extension;
@@ -300,6 +303,7 @@
 				C0E2A4C62C3574D700E5EC8F /* DetailViewController.swift in Sources */,
 				C0E0C13B2C33EBAF000517CF /* TodoTableViewCell.swift in Sources */,
 				C0E2A4C02C35508C00E5EC8F /* MainViewController.swift in Sources */,
+				C08269562C37BF0C00E95B8A /* String+.swift in Sources */,
 				C0E0C13D2C33EBBB000517CF /* BaseTableViewCell.swift in Sources */,
 				C0E2A4D32C36892A00E5EC8F /* Date+.swift in Sources */,
 				C0E2A4C42C3554E500E5EC8F /* BaseCollectionViewCell.swift in Sources */,

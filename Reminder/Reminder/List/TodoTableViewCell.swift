@@ -129,7 +129,7 @@ final class TodoTableViewCell: BaseTableViewCell {
         contentLabel.text = data.content
         contentLabel.isHidden = data.content == nil
         
-        dateLabel.text = data.deadline
+        dateLabel.text = data.deadline?.toString()
         dateLabel.isHidden = data.deadline == nil
         
         if contentLabel.isHidden {

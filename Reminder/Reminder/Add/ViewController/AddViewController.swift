@@ -10,7 +10,8 @@ import SnapKit
 import PhotosUI
 
 protocol SelectedDataDelegate {
-    func sendData(_ view: Input, value: String?)
+    func sendString(_ input: Input, value: String?)
+    func sendDate(_ input: Input, value: Date?)
 }
 
 final class AddViewController: BaseViewController {
@@ -58,6 +59,7 @@ final class AddViewController: BaseViewController {
     private let inputs = ["마감일", "태그", "우선순위", "이미지 추가"]
     private var selectedValue: [String?] = [nil, nil, nil, nil]
     private var selectedImage: UIImage?
+    private var selectedDate: Date?
     private var memoTitle = ""
     private var content: String?
     
@@ -98,7 +100,7 @@ final class AddViewController: BaseViewController {
         let title = memoTitle
         let content = content
         let tag = selectedValue[1]
-        let deadline = selectedValue[0]
+        let deadline = selectedDate
         let priority = selectedValue[2]
         
         let data = (title: title, content: content, tag: tag, deadline : deadline, priority : priority)
@@ -135,7 +137,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             let title = inputs[indexPath.row]
             let value = selectedValue[indexPath.row]
             cell.selectionStyle = .none
-            cell.configureCell((title, value, indexPath.row == inputs.count - 1 ? selectedImage : nil))
+            cell.configureCell((title, value, indexPath.row == inputs.count - 1 ? selectedImage : nil, indexPath.row == 0 ? selectedDate : nil))
             return cell
         }
     }
@@ -186,9 +188,15 @@ extension AddViewController: UITextViewDelegate {
 }
 
 extension AddViewController: SelectedDataDelegate {
-    func sendData(_ input: Input, value: String?) {
+    func sendString(_ input: Input, value: String?) {
         let index = input.rawValue
         selectedValue[index] = value
+        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+    }
+    
+    func sendDate(_ input: Input, value: Date?) {
+        let index = input.rawValue
+        selectedDate = value
         tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
     }
 }

@@ -16,11 +16,11 @@ final class TodoRepository {
     }
     
     func fetchTodayTodo() -> Results<TodoTable> {
-        return sortPin(realm.objects(TodoTable.self).where { $0.deadline == Date().toString() })
+        return sortPin(realm.objects(TodoTable.self).where { $0.deadline == Date().withoutTime() ?? Date() })
     }
     
     func fetchScheduledTodo() -> Results<TodoTable> {
-        return sortPin(realm.objects(TodoTable.self).where { !$0.isDone })
+        return sortPin(realm.objects(TodoTable.self).filter("deadline > %@", (Date().withoutTime() ?? Date()) as NSDate))
     }
     
     func fetchFlaggedTodo() -> Results<TodoTable> {
@@ -68,7 +68,7 @@ final class TodoRepository {
     }
     
     @discardableResult
-    func createItem(_ item: (title: String, content: String?, tag: String?, deadline: String?, priority: String?)) -> ObjectId {
+    func createItem(_ item: (title: String, content: String?, tag: String?, deadline: Date?, priority: String?)) -> ObjectId {
         var tagTable: TagTable?
         
         if let tag = item.tag {

@@ -16,7 +16,7 @@ final class DeadlineView: BaseView {
         picker.addTarget(self, action: #selector(datePickerDidChanged), for: [.valueChanged])
         return picker
     }()
-    lazy var textField = {
+    private lazy var textField = {
         let field = UITextField()
         field.text = Date().toString()
         field.textColor = .label
@@ -27,6 +27,7 @@ final class DeadlineView: BaseView {
         field.layer.cornerRadius = 12
         return field
     }()
+    var selectedDate: Date?
     
     override func setHierarchy() {
         addSubview(textField)
@@ -42,6 +43,7 @@ final class DeadlineView: BaseView {
     
     @objc private func datePickerDidChanged(_ datePicker: UIDatePicker) {
         let date = datePicker.date
+        selectedDate = date
         textField.text = date.toString()
     }
 }

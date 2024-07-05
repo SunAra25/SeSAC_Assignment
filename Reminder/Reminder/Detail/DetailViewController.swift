@@ -74,7 +74,7 @@ final class DetailViewController: BaseViewController {
     }()
     private lazy var deadlineContentLabel = {
         let label = UILabel()
-        label.text = todo.deadline
+        label.text = todo.deadline?.toString()
         label.font = .boldSystemFont(ofSize: 14)
         label.textAlignment = .left
         label.textColor = .secondaryLabel

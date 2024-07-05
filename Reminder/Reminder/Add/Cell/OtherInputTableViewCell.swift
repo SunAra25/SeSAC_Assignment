@@ -75,9 +75,9 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configureCell(_ data: (title: String, value: String?, image: UIImage?)) {
+    func configureCell(_ data: (title: String, value: String?, image: UIImage?, date: Date?)) {
         titleLabel.text = data.title
-        dataLabel.text = data.value
+        dataLabel.text = data.value == nil ? data.date?.toString() : data.value
         selectedImageView.image = data.image
     }
 }

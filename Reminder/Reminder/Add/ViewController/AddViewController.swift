@@ -100,7 +100,7 @@ final class AddViewController: BaseViewController {
         let title = memoTitle
         let content = content
         let tag = selectedValue[1]
-        let deadline = selectedDate
+        let deadline = selectedDate?.withoutTime()
         let priority = selectedValue[2]
         
         let data = (title: title, content: content, tag: tag, deadline : deadline, priority : priority)

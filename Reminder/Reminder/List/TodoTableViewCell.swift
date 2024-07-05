@@ -136,11 +136,13 @@ final class TodoTableViewCell: BaseTableViewCell {
             dateLabel.snp.remakeConstraints { make in
                 make.top.equalTo(titleLabel.snp.bottom).offset(4)
                 make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+                make.bottom.equalToSuperview().inset(8)
             }
         } else {
             dateLabel.snp.remakeConstraints { make in
                 make.top.equalTo(contentLabel.snp.bottom).offset(4)
                 make.leading.equalTo(radiouButton.snp.trailing).offset(11)
+                make.bottom.equalToSuperview().inset(8)
             }
         }
         

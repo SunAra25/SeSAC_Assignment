@@ -37,11 +37,19 @@ final class CalendarViewController: BaseViewController {
         calendar.locale = Locale(identifier: "ko_KR")
         return calendar
     }()
-    private let tableView: UITableView = {
+    private lazy var tableView: UITableView = {
         let view = UITableView()
-        
+        view.isScrollEnabled = true
+        view.delegate = self
+        view.dataSource = self
+        view.register(TodoTableViewCell.self, forCellReuseIdentifier: TodoTableViewCell.identifer)
         return view
     }()
+    private lazy var list = repository.fetchTodayTodo() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func setHierarchy() {
         view.addSubview(calendar)
@@ -63,6 +71,30 @@ final class CalendarViewController: BaseViewController {
 
 extension CalendarViewController: FSCalendarDelegate, FSCalendarDataSource, FSCalendarDelegateAppearance {
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        // TODO: tableView reload
+        
+        list = repository.fetchTodo(selectedDate: date)
+    }
+}
+
+extension CalendarViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TodoTableViewCell.identifer, for: indexPath) as? TodoTableViewCell else { return TodoTableViewCell() }
+        cell.configureCell(list[indexPath.row])
+        cell.radiouButton.tag = indexPath.row
+        cell.radiouButton.addTarget(self, action: #selector(radioBtnDidTap), for: .touchUpInside)
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    @objc func radioBtnDidTap(_ sender: UIButton) {
+        let index = sender.tag
+        let data = list[index]
+        
+        repository.itemCompleted(data)
+        tableView.reloadData()
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import PhotosUI
 
 protocol SelectedDataDelegate {
     func sendData(_ view: Input, value: String?)
@@ -54,8 +55,9 @@ final class AddViewController: BaseViewController {
         return view
     }()
     
-    private let inputs = ["마감일", "태그", "우선순위"]
-    private var selectedValue: [String?] = [nil, nil, nil]
+    private let inputs = ["마감일", "태그", "우선순위", "이미지 추가"]
+    private var selectedValue: [String?] = [nil, nil, nil, nil]
+    private var selectedImage: UIImage?
     private var memoTitle = ""
     private var content: String?
     
@@ -100,8 +102,12 @@ final class AddViewController: BaseViewController {
         let priority = selectedValue[2]
         
         let data = (title: title, content: content, tag: tag, deadline : deadline, priority : priority)
+        let id = repository.createItem(data)
         
-        repository.createItem(data)
+        if let image = selectedImage {
+            saveImageToDocument(image: image, filename: "\(id)")
+        }
+        
         dismiss(animated: true)
     }
 }
@@ -129,7 +135,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
             let title = inputs[indexPath.row]
             let value = selectedValue[indexPath.row]
             cell.selectionStyle = .none
-            cell.configureCell((title, value))
+            cell.configureCell((title, value, indexPath.row == inputs.count - 1 ? selectedImage : nil))
             return cell
         }
     }
@@ -162,10 +168,19 @@ extension AddViewController: UITextViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 0 { return }
+        if indexPath.row < inputs.count - 1 {
             let nextVC = OtherInputViewController(indexPath.row)
             nextVC.selectedDelegate = self
             present(nextVC, animated: true)
+        } else {
+            var config = PHPickerConfiguration()
+            config.selectionLimit = 1
+            config.filter = .images
+            let picker = PHPickerViewController(configuration: config)
+            picker.delegate = self
+            
+            present(picker, animated: true)
         }
     }
 }
@@ -175,5 +190,21 @@ extension AddViewController: SelectedDataDelegate {
         let index = input.rawValue
         selectedValue[index] = value
         tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+    }
+}
+
+extension AddViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        picker.dismiss(animated: true)
+        
+        if let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                DispatchQueue.main.async { [weak self] in
+                    guard let self else { return }
+                    selectedImage = image as? UIImage
+                    tableView.reloadRows(at: [IndexPath(row: inputs.count - 1, section: 1)], with: .automatic)
+                }
+            }
+        }
     }
 }

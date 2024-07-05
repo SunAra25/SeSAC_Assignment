@@ -50,7 +50,8 @@ final class TodoRepository {
         }
     }
     
-    func createItem(_ item: (title: String, content: String?, tag: String?, deadline: String?, priority: String?)) {
+    @discardableResult
+    func createItem(_ item: (title: String, content: String?, tag: String?, deadline: String?, priority: String?)) -> ObjectId {
         var tagTable: TagTable?
         
         if let tag = item.tag {
@@ -67,6 +68,8 @@ final class TodoRepository {
             realm.add(item)
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
         }
+        
+        return item._id
     }
     
     func deleteItem(_ item: TodoTable) {

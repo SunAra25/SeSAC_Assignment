@@ -30,6 +30,12 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         label.textColor = .systemGray
         return label
     }()
+    private let selectedImageView = {
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFill
+        view.clipsToBounds = true
+        return view
+    }()
     private let nextImageView = {
         let view = UIImageView()
         view.image = UIImage(systemName: "chevron.right")
@@ -40,7 +46,7 @@ final class OtherInputTableViewCell: BaseTableViewCell {
     override func setLayout() {
         contentView.addSubview(backView)
         
-        [titleLabel, dataLabel, nextImageView].forEach {
+        [titleLabel, dataLabel, selectedImageView, nextImageView].forEach {
             backView.addSubview($0)
         }
         
@@ -61,10 +67,17 @@ final class OtherInputTableViewCell: BaseTableViewCell {
             make.trailing.equalTo(nextImageView.snp.leading)
             make.centerY.equalTo(titleLabel)
         }
+        
+        selectedImageView.snp.makeConstraints { make in
+            make.trailing.equalTo(nextImageView.snp.leading).offset(-8)
+            make.verticalEdges.equalToSuperview().inset(8)
+            make.width.equalTo(selectedImageView.snp.height)
+        }
     }
     
-    func configureCell(_ data: (title: String, value: String?)) {
+    func configureCell(_ data: (title: String, value: String?, image: UIImage?)) {
         titleLabel.text = data.title
         dataLabel.text = data.value
+        selectedImageView.image = data.image
     }
 }

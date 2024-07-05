@@ -27,7 +27,7 @@ final class MainViewController: BaseViewController {
         let size = (width - inset * 2 - padding) / 2
         
         layout.itemSize = CGSize(width: size, height: 100)
-        layout.sectionInset = UIEdgeInsets.init(top: 0, left: 12, bottom: 0, right: 12)
+        layout.sectionInset = UIEdgeInsets.init(top: 10, left: 12, bottom: 0, right: 12)
         return layout
     }()
     private lazy var addButton = {
@@ -52,6 +52,13 @@ final class MainViewController: BaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(sendUpdateNotification), name: NSNotification.Name("UpdateTodoTable"), object: nil)
     }
     
+    override func setNavigation() {
+        super.setNavigation()
+        
+        let barButtonItem = UIBarButtonItem(image: UIImage(systemName: "calendar"), style: .plain, target: self, action: #selector(calendarBtnDidTap))
+        navigationItem.leftBarButtonItem = barButtonItem
+    }
+    
     override func setHierarchy() {
         [collectionView, addButton].forEach {
             view.addSubview($0)
@@ -68,6 +75,11 @@ final class MainViewController: BaseViewController {
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(addButton.snp.top).offset(8)
         }
+    }
+    
+    @objc func calendarBtnDidTap() {
+        let nextVC = CalendarViewController()
+        present(nextVC, animated: true)
     }
     
     @objc func addBtnDidTap() {

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C08269542C3796A700E95B8A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08269532C3796A700E95B8A /* UIViewController+.swift */; };
 		C08269562C37BF0C00E95B8A /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08269552C37BF0C00E95B8A /* String+.swift */; };
+		C08269592C37C7B400E95B8A /* FSCalendar in Frameworks */ = {isa = PBXBuildFile; productRef = C08269582C37C7B400E95B8A /* FSCalendar */; };
+		C082695B2C37C8DC00E95B8A /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C082695A2C37C8DC00E95B8A /* CalendarViewController.swift */; };
 		C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11A2C33E26B000517CF /* AppDelegate.swift */; };
 		C0E0C11D2C33E26B000517CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11C2C33E26B000517CF /* SceneDelegate.swift */; };
 		C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0E0C11E2C33E26B000517CF /* ViewController.swift */; };
@@ -41,6 +43,7 @@
 /* Begin PBXFileReference section */
 		C08269532C3796A700E95B8A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C08269552C37BF0C00E95B8A /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		C082695A2C37C8DC00E95B8A /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		C0E0C1172C33E26B000517CF /* Reminder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Reminder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0E0C11A2C33E26B000517CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C0E0C11C2C33E26B000517CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,6 +78,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0E0C1402C33F682000517CF /* RealmSwift in Frameworks */,
+				C08269592C37C7B400E95B8A /* FSCalendar in Frameworks */,
 				C0E0C1392C33E875000517CF /* Kingfisher in Frameworks */,
 				C0E0C1362C33E869000517CF /* SnapKit in Frameworks */,
 			);
@@ -182,6 +186,7 @@
 			children = (
 				C0E2A4BF2C35508C00E5EC8F /* MainViewController.swift */,
 				C0E2A4C12C3554CD00E5EC8F /* CategoryCollectionViewCell.swift */,
+				C082695A2C37C8DC00E95B8A /* CalendarViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -233,6 +238,7 @@
 				C0E0C1352C33E869000517CF /* SnapKit */,
 				C0E0C1382C33E875000517CF /* Kingfisher */,
 				C0E0C13F2C33F682000517CF /* RealmSwift */,
+				C08269582C37C7B400E95B8A /* FSCalendar */,
 			);
 			productName = Reminder;
 			productReference = C0E0C1172C33E26B000517CF /* Reminder.app */;
@@ -266,6 +272,7 @@
 				C0E0C1342C33E869000517CF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C0E0C1372C33E875000517CF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				C0E0C13E2C33F682000517CF /* XCRemoteSwiftPackageReference "realm-swift" */,
+				C08269572C37C7B400E95B8A /* XCRemoteSwiftPackageReference "FSCalendar" */,
 			);
 			productRefGroup = C0E0C1182C33E26B000517CF /* Products */;
 			projectDirPath = "";
@@ -298,6 +305,7 @@
 				C0E0C11F2C33E26B000517CF /* ViewController.swift in Sources */,
 				C0E0C1452C3403FE000517CF /* AddViewController.swift in Sources */,
 				C0E2A4C22C3554CD00E5EC8F /* CategoryCollectionViewCell.swift in Sources */,
+				C082695B2C37C8DC00E95B8A /* CalendarViewController.swift in Sources */,
 				C0E0C11B2C33E26B000517CF /* AppDelegate.swift in Sources */,
 				C0E0C1422C33F71D000517CF /* Todo.swift in Sources */,
 				C0E2A4C62C3574D700E5EC8F /* DetailViewController.swift in Sources */,
@@ -543,6 +551,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C08269572C37C7B400E95B8A /* XCRemoteSwiftPackageReference "FSCalendar" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/WenchaoD/FSCalendar.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.4;
+			};
+		};
 		C0E0C1342C33E869000517CF /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -570,6 +586,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C08269582C37C7B400E95B8A /* FSCalendar */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C08269572C37C7B400E95B8A /* XCRemoteSwiftPackageReference "FSCalendar" */;
+			productName = FSCalendar;
+		};
 		C0E0C1352C33E869000517CF /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C0E0C1342C33E869000517CF /* XCRemoteSwiftPackageReference "SnapKit" */;

@@ -14,7 +14,8 @@ class TodoTable: Object {
     @Persisted var content: String?
     @Persisted var tag: TagTable?
     @Persisted var isDone: Bool
-    @Persisted var isImportant: Bool
+    @Persisted var isFlag: Bool
+    @Persisted var isPin: Bool
     @Persisted var deadline: String?
     @Persisted var priority: String?
     
@@ -24,7 +25,8 @@ class TodoTable: Object {
         self.content = content
         self.tag = tag
         self.isDone = false
-        self.isImportant = false
+        self.isFlag = false
+        self.isPin = false
         self.deadline = deadline
         self.priority = priority
     }

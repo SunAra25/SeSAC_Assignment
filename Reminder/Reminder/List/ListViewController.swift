@@ -133,6 +133,20 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
+        let pin = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
+            guard let self else { return }
+            let data = list[indexPath.row]
+            repository.itemPinned(data)
+            tableView.reloadData()
+            success(true)
+        }
+        let flag = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
+            guard let self else { return }
+            let data = list[indexPath.row]
+            repository.itemFlagged(data)
+            tableView.reloadData()
+            success(true)
+        }
         let delete = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
             guard let self else { return }
             let data = list[indexPath.row]
@@ -144,7 +158,13 @@ extension ListViewController: UITableViewDelegate, UITableViewDataSource {
         delete.backgroundColor = .systemRed
         delete.image = UIImage(systemName: "trash.fill")
         
-        return UISwipeActionsConfiguration(actions: [delete])
+        flag.backgroundColor = .systemOrange
+        flag.image = UIImage(systemName: "flag.fill")
+        
+        pin.backgroundColor = .systemYellow
+        pin.image = UIImage(systemName: "pin.fill")
+        
+        return UISwipeActionsConfiguration(actions: [delete, flag, pin])
     }
     
     @objc func radioBtnDidTap(_ sender: UIButton) {

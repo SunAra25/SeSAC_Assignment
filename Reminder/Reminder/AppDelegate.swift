@@ -15,8 +15,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        let config = Realm.Configuration(schemaVersion: 1) { migration, oldSchemaVersion in
+        let config = Realm.Configuration(schemaVersion: 2) { migration, oldSchemaVersion in
             if oldSchemaVersion > 1 { }
+            
+            if oldSchemaVersion < 2 {
+                migration.renameProperty(onType: TodoTable.className(), from: "isImportant", to: "isFlag")
+            }
         }
         
         Realm.Configuration.defaultConfiguration = config

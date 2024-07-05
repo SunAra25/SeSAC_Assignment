@@ -31,6 +31,12 @@ final class TodoTableViewCell: BaseTableViewCell {
         label.textColor = .label
         return label
     }()
+    private let pinImageView: UIImageView = {
+        let view = UIImageView()
+        view.tintColor = .systemYellow
+        view.image = UIImage(systemName: "pin.fill")
+        return view
+    }()
     private let contentLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 14)
@@ -58,7 +64,7 @@ final class TodoTableViewCell: BaseTableViewCell {
     }
     
     override func setLayout() {
-        [radiouButton, priorityLabel, titleLabel, contentLabel, dateLabel, tagLabel].forEach {
+        [radiouButton, priorityLabel, titleLabel, pinImageView, contentLabel, dateLabel, tagLabel].forEach {
             contentView.addSubview($0)
         }
         
@@ -75,6 +81,12 @@ final class TodoTableViewCell: BaseTableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalTo(radiouButton)
             make.leading.equalTo(priorityLabel.snp.trailing).offset(4)
+        }
+        
+        pinImageView.snp.makeConstraints { make in
+            make.centerY.equalTo(radiouButton)
+            make.leading.equalTo(titleLabel.snp.trailing).offset(4)
+            make.size.equalTo(12)
         }
         
         contentLabel.snp.makeConstraints { make in
@@ -96,6 +108,8 @@ final class TodoTableViewCell: BaseTableViewCell {
     
     func configureCell(_ data: TodoTable) {
         titleLabel.text = data.title
+        
+        pinImageView.isHidden = !data.isPin
         
         if let data = data.priority {
             guard let priority = Priority(title: data) else { return }

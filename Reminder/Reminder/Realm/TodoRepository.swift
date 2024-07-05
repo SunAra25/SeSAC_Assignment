@@ -12,41 +12,58 @@ final class TodoRepository {
     private let realm = try! Realm()
     
     func fetchAllTodo() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self)
+        return sortPin(realm.objects(TodoTable.self))
     }
     
     func fetchTodayTodo() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).where { $0.deadline == Date().toString() }
+        return sortPin(realm.objects(TodoTable.self).where { $0.deadline == Date().toString() })
     }
     
     func fetchScheduledTodo() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).where { !$0.isDone }
+        return sortPin(realm.objects(TodoTable.self).where { !$0.isDone })
     }
     
     func fetchFlaggedTodo() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).where { $0.isImportant }
+        return sortPin(realm.objects(TodoTable.self).where { $0.isFlag })
     }
     
     func fetchCompletedTodo() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).where { $0.isDone }
+        return sortPin(realm.objects(TodoTable.self).where { $0.isDone })
+    }
+    
+    func sortPin(_ table: Results<TodoTable>) -> Results<TodoTable> {
+        return table.sorted(byKeyPath: "isPin", ascending: false)
     }
     
     func sortDeadline() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true)
+        return sortPin(realm.objects(TodoTable.self).sorted(byKeyPath: "deadline", ascending: true))
     }
     
     func sortTitle() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).sorted(byKeyPath: "title", ascending: true)
+        return sortPin(realm.objects(TodoTable.self).sorted(byKeyPath: "title", ascending: true))
     }
     
     func filterPriority() -> Results<TodoTable> {
-        return realm.objects(TodoTable.self).where { $0.priority == "낮음" }
+        return sortPin(realm.objects(TodoTable.self).where { $0.priority == "낮음" })
     }
     
     func itemCompleted(_ item: TodoTable) {
         try! realm.write {
             item.isDone.toggle()
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
+        }
+    }
+    
+    func itemFlagged(_ item: TodoTable) {
+        try! realm.write {
+            item.isFlag.toggle()
+            NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
+        }
+    }
+    
+    func itemPinned(_ item: TodoTable) {
+        try! realm.write {
+            item.isPin.toggle()
         }
     }
     

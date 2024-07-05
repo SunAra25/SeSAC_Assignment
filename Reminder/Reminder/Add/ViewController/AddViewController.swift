@@ -63,6 +63,12 @@ final class AddViewController: BaseViewController {
     private var memoTitle = ""
     private var content: String?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
          super.viewWillDisappear(animated)
          NotificationCenter.default.post(name:NSNotification.Name("DismissAddView"), object: nil, userInfo: nil)
@@ -112,6 +118,10 @@ final class AddViewController: BaseViewController {
         
         dismiss(animated: true)
     }
+    
+    @objc func keyboardDismiss() {
+        view.endEditing(true)
+    }
 }
 
 extension AddViewController: UITableViewDelegate, UITableViewDataSource {
@@ -142,33 +152,6 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 0 ? 180 : 72
-    }
-}
-
-extension AddViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        guard let input = textField.text else { return }
-        addButton.isEnabled = !input.isEmpty
-        memoTitle = input
-    }
-}
-
-extension AddViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == .systemGray2 {
-            textView.text = ""
-            textView.textColor = .label
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        guard let input = textView.text else { return }
-        
-        content = input
-    }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 { return }
         if indexPath.row < inputs.count - 1 {
@@ -184,6 +167,38 @@ extension AddViewController: UITextViewDelegate {
             
             present(picker, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 0 ? 180 : 72
+    }
+}
+
+extension AddViewController: UITextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        guard let input = textField.text else { return }
+        addButton.isEnabled = !input.isEmpty
+        memoTitle = input
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}
+
+extension AddViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == .systemGray2 {
+            textView.text = ""
+            textView.textColor = .label
+        }
+    }
+    
+    func textViewDidChange(_ textView: UITextView) {
+        guard let input = textView.text else { return }
+        
+        content = input
     }
 }
 

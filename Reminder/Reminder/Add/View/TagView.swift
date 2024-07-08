@@ -19,9 +19,16 @@ class TagView: BaseView {
         field.layer.cornerRadius = 12
         return field
     }()
+    let tableView = {
+        let view = UITableView()
+        view.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        view.rowHeight = 60
+        return view
+    }()
     
     override func setHierarchy() {
         addSubview(textField)
+        addSubview(tableView)
     }
     
     override func setConstraints() {
@@ -29,6 +36,11 @@ class TagView: BaseView {
             make.top.equalTo(safeAreaLayoutGuide).inset(40)
             make.horizontalEdges.equalTo(safeAreaLayoutGuide).inset(20)
             make.height.equalTo(48)
+        }
+        
+        tableView.snp.makeConstraints { make in
+            make.top.equalTo(textField.snp.bottom).offset(8)
+            make.horizontalEdges.bottom.equalTo(safeAreaLayoutGuide)
         }
     }
 }

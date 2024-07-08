@@ -40,7 +40,7 @@ final class DetailViewController: BaseViewController {
     }()
     private lazy var tagView = {
         let view = UIView()
-        view.isHidden = todo.tag == nil
+        //view.isHidden = todo.tag == nil
         return view
     }()
     private let tagTitleLabel = {
@@ -53,7 +53,7 @@ final class DetailViewController: BaseViewController {
     }()
     private lazy var tagContentLabel = {
         let label = UILabel()
-        label.text = todo.tag?.title
+        //label.text = todo.tag?.title
         label.font = .boldSystemFont(ofSize: 14)
         label.textAlignment = .left
         label.textColor = .secondaryLabel

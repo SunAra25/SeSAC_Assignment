@@ -10,8 +10,7 @@ import SnapKit
 import PhotosUI
 
 protocol SelectedDataDelegate {
-    func sendString(_ input: Input, value: String?)
-    func sendDate(_ input: Input, value: Date?)
+    func sendData<T>(_ input: Input, value: T)
 }
 
 final class AddViewController: BaseViewController {
@@ -57,15 +56,17 @@ final class AddViewController: BaseViewController {
     }()
     
     private let inputs = ["마감일", "태그", "우선순위", "이미지 추가"]
-    private var selectedValue: [String?] = [nil, nil, nil, nil]
+    private var selectedPriority: String?
     private var selectedImage: UIImage?
     private var selectedDate: Date?
+    private var selectedTag: TagTable?
     private var memoTitle = ""
     private var content: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(keyboardDismiss))
+        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -105,12 +106,12 @@ final class AddViewController: BaseViewController {
     @objc func addBtnDidTap() {
         let title = memoTitle
         let content = content
-        let tag = selectedValue[1]
         let deadline = selectedDate?.withoutTime()
-        let priority = selectedValue[2]
+        let priority = selectedPriority
         
-        let data = (title: title, content: content, tag: tag, deadline : deadline, priority : priority)
-        let id = repository.createItem(data)
+        let data = (title: title, content: content, deadline : deadline, priority : priority)
+        guard let tag = selectedTag else { return }
+        let id = repository.createItem(tag: tag, data)
         
         if let image = selectedImage {
             saveImageToDocument(image: image, filename: "\(id)")
@@ -145,9 +146,8 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
         } else {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: OtherInputTableViewCell.identifer, for: indexPath) as? OtherInputTableViewCell else { return UITableViewCell() }
             let title = inputs[indexPath.row]
-            let value = selectedValue[indexPath.row]
             cell.selectionStyle = .none
-            cell.configureCell((title, value, indexPath.row == inputs.count - 1 ? selectedImage : nil, indexPath.row == 0 ? selectedDate : nil))
+            cell.configureCell((title, selectedDate, selectedTag, selectedPriority, selectedImage))
             return cell
         }
     }
@@ -177,7 +177,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
 extension AddViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         guard let input = textField.text else { return }
-        addButton.isEnabled = !input.isEmpty
+        addButton.isEnabled = !input.isEmpty && selectedTag != nil
         memoTitle = input
     }
     
@@ -203,16 +203,32 @@ extension AddViewController: UITextViewDelegate {
 }
 
 extension AddViewController: SelectedDataDelegate {
-    func sendString(_ input: Input, value: String?) {
+    func sendData<T>(_ input: Input, value: T) {
         let index = input.rawValue
-        selectedValue[index] = value
+        switch index {
+        case 0: selectedDate = value as? Date
+        case 1: selectedTag = value as? TagTable
+        case 2: selectedPriority = value as? String
+        case 3: selectedImage = value as? UIImage
+        default: break
+        }
+        
         tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
     }
-    
-    func sendDate(_ input: Input, value: Date?) {
-        let index = input.rawValue
-        selectedDate = value
-        tableView.reloadRows(at: [IndexPath(row: index, section: 1)], with: .automatic)
+}
+
+extension AddViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        var view: UIView? = touch.view
+        
+        while let currentView = view {
+            guard !(currentView is UITableView || currentView is UITableViewCell) else {
+                return false
+            }
+            view = currentView.superview
+        }
+        
+        return true
     }
 }
 

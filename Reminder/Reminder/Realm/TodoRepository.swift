@@ -11,6 +11,10 @@ import RealmSwift
 final class TodoRepository {
     private let realm = try! Realm()
     
+    func fetchTags() -> Results<TagTable> {
+        return realm.objects(TagTable.self)
+    }
+    
     func fetchAllTodo() -> Results<TodoTable> {
         return sortPin(realm.objects(TodoTable.self))
     }
@@ -72,21 +76,11 @@ final class TodoRepository {
     }
     
     @discardableResult
-    func createItem(_ item: (title: String, content: String?, tag: String?, deadline: Date?, priority: String?)) -> ObjectId {
-        var tagTable: TagTable?
-        
-        if let tag = item.tag {
-            if realm.objects(TagTable.self).contains(where: { $0.title == tag }) {
-                tagTable = realm.objects(TagTable.self).first(where: {$0.title == tag})
-            } else {
-                tagTable = TagTable(title: tag)
-            }
-        }
-        
-        let item = TodoTable(title: item.title, content: item.content, tag: tagTable, deadline: item.deadline, priority: item.priority)
+    func createItem(tag: TagTable, _ item: (title: String, content: String?, deadline: Date?, priority: String?)) -> ObjectId {
+        let item = TodoTable(title: item.title, content: item.content, deadline: item.deadline, priority: item.priority)
         
         try! realm.write {
-            realm.add(item)
+            tag.todoList.append(item)
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
         }
         

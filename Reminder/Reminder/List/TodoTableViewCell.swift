@@ -148,7 +148,7 @@ final class TodoTableViewCell: BaseTableViewCell {
         
         radiouButton.configuration?.image = UIImage(systemName: data.isDone ? "circle.inset.filled" : "circle")
         
-        guard let tag = data.tag?.title else { return }
+        guard let tag = data.main.first?.title else { return }
         tagLabel.text = "#\(tag)"
         
         if dateLabel.isHidden {

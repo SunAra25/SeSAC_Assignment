@@ -60,7 +60,7 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         
         nextImageView.snp.makeConstraints { make in
             make.verticalEdges.trailing.equalToSuperview().inset(16)
-            make.size.equalTo(16)
+            make.width.equalTo(16)
         }
         
         dataLabel.snp.makeConstraints { make in
@@ -75,9 +75,9 @@ final class OtherInputTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configureCell(_ data: (title: String, value: String?, image: UIImage?, date: Date?)) {
+    func configureCell(_ data: (title: String, deadline: Date?, tag: TagTable?, priority: String?, image: UIImage?)) {
         titleLabel.text = data.title
-        dataLabel.text = data.value == nil ? data.date?.toString() : data.value
+        dataLabel.text = data.deadline == nil ? data.tag == nil ? data.priority : data.tag?.title : data.deadline?.toString()
         selectedImageView.image = data.image
     }
 }

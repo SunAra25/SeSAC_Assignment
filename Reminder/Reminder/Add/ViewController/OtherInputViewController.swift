@@ -14,6 +14,7 @@ final class OtherInputViewController: BaseViewController {
     private let priorityView = PriorityView()
     
     private var currentInput: Input?
+    private var tagList: [TagTable] = []
     var selectedDelegate: SelectedDataDelegate?
     
     init(_ num: Int) {
@@ -30,6 +31,15 @@ final class OtherInputViewController: BaseViewController {
         view = currentInput?.view
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard let tagView = view as? TagView else { return }
+        tagList = Array(repository.fetchTags())
+        tagView.tableView.delegate = self
+        tagView.tableView.dataSource = self
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         guard let currentInput else { return }
@@ -38,16 +48,34 @@ final class OtherInputViewController: BaseViewController {
         case .deadline:
             guard let view = view as? DeadlineView else { return }
             let value = view.selectedDate
-            selectedDelegate?.sendDate(currentInput, value: value)
+            selectedDelegate?.sendData(currentInput, value: value)
         case .tag:
-            guard let view = view as? TagView else { return }
-            let value = view.textField.text
-            selectedDelegate?.sendString(currentInput, value: value)
+            guard let view = view as? TagView, let text = view.textField.text else { return }
+            let value = TagTable(title: text)
+            selectedDelegate?.sendData(currentInput, value: value)
         case .priority:
             guard let view = view as? PriorityView else { return }
             let value = view.priority?.title
-            selectedDelegate?.sendString(currentInput, value: value)
+            selectedDelegate?.sendData(currentInput, value: value)
         }
+    }
+}
+
+extension OtherInputViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tagList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as UITableViewCell
+        cell.textLabel?.text = tagList[indexPath.row].title
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let view = view as? TagView else { return }
+        view.textField.text = tagList[indexPath.row].title
+        dismiss(animated: true)
     }
 }
 

@@ -108,10 +108,9 @@ final class AddViewController: BaseViewController {
         let content = content
         let deadline = selectedDate?.withoutTime()
         let priority = selectedPriority
-        
-        let data = (title: title, content: content, deadline : deadline, priority : priority)
+        let item = TodoTable(title: title, content: content, deadline: deadline, priority: priority)
         guard let tag = selectedTag else { return }
-        let id = repository.createItem(tag: tag, data)
+        let id = repository.createItem(tag: tag, item)
         
         if let image = selectedImage {
             saveImageToDocument(image: image, filename: "\(id)")
@@ -207,7 +206,9 @@ extension AddViewController: SelectedDataDelegate {
         let index = input.rawValue
         switch index {
         case 0: selectedDate = value as? Date
-        case 1: selectedTag = value as? TagTable
+        case 1: 
+            selectedTag = value as? TagTable
+            addButton.isEnabled = selectedTag != nil
         case 2: selectedPriority = value as? String
         case 3: selectedImage = value as? UIImage
         default: break

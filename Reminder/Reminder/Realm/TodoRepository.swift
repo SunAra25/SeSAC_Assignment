@@ -76,9 +76,7 @@ final class TodoRepository {
     }
     
     @discardableResult
-    func createItem(tag: TagTable, _ item: (title: String, content: String?, deadline: Date?, priority: String?)) -> ObjectId {
-        let item = TodoTable(title: item.title, content: item.content, deadline: item.deadline, priority: item.priority)
-        
+    func createItem(tag: TagTable, _ item: TodoTable) -> ObjectId {
         try! realm.write {
             tag.todoList.append(item)
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))

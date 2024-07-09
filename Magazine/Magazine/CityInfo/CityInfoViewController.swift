@@ -11,9 +11,8 @@ class CityInfoViewController: UIViewController {
     @IBOutlet var cityTableView: UITableView!
     @IBOutlet var segmentedControl: UISegmentedControl!
     
-    let list = CityInfo.city
-    var filterList: [City] = []
-    
+    let viewModel = CityInfoViewModel()
+    var currentList: [City] = []
     let items = ["전체", "국내", "해외"]
     
     override func viewDidLoad() {
@@ -21,10 +20,9 @@ class CityInfoViewController: UIViewController {
         
         navigationItem.title = "인기 도시"
         
-        filterList = list
-        
         setTableView()
         setSegment()
+        bindData()
     }
     
     func setTableView() {
@@ -34,10 +32,28 @@ class CityInfoViewController: UIViewController {
         cityTableView.rowHeight = 150
     }
     
+    func bindData() {
+        viewModel.outputShowWholeList.bind { [weak self] list in
+            guard let self else { return }
+            currentList = list
+            cityTableView.reloadData()
+        }
+        
+        viewModel.outputShowDomesticList.bind { [weak self] list in
+            guard let self else { return }
+            currentList = list
+            cityTableView.reloadData()
+        }
+        
+        viewModel.outputShowOverseaList.bind { [weak self] list in
+            guard let self else { return }
+            currentList = list
+            cityTableView.reloadData()
+        }
+    }
+    
     func setSegment() {
         segmentedControl.removeAllSegments()
-        
-        let actions = [showAllList, filterDomestic, filterOverseas]
         
         for idx in 0..<items.count {
             segmentedControl.insertSegment(withTitle: items[idx], at: idx, animated: true)
@@ -46,41 +62,25 @@ class CityInfoViewController: UIViewController {
         segmentedControl.addTarget(self, action: #selector(segmentBtnDidTap(segment:)), for: .valueChanged)
         segmentedControl.selectedSegmentIndex = 0
     }
-}
-
-extension CityInfoViewController {
-    func showAllList() {
-        filterList = list
-    }
-    
-    func filterDomestic() {
-        filterList = list.filter { $0.domestic_travel == true }
-        cityTableView.reloadData()
-    }
-    
-    func filterOverseas() {
-        filterList = list.filter { $0.domestic_travel == false }
-        cityTableView.reloadData()
-    }
     
     @objc func segmentBtnDidTap(segment: UISegmentedControl) {
-        switch segment.selectedSegmentIndex {
-        case 0: showAllList()
-        case 1: filterDomestic()
-        case 2: filterOverseas()
-        default: break
-        }
-    }
+         switch segment.selectedSegmentIndex {
+         case 0: viewModel.inputWholeTap.value = ()
+         case 1: viewModel.inputDomesticTap.value = ()
+         case 2: viewModel.inputOverseaTap.value = ()
+         default: break
+         }
+     }
 }
 
 extension CityInfoViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        filterList.count
+        currentList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = cityTableView.dequeueReusableCell(withIdentifier: CityTableViewCell.identifier, for: indexPath) as! CityTableViewCell
-        let data = filterList[indexPath.row]
+        let data = currentList[indexPath.row]
         
         cell.configureCell(data)
         

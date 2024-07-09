@@ -101,4 +101,13 @@ final class TodoRepository {
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
         }
     }
+    
+    func deleteTag(_ tag: TagTable) {
+        try! realm.write {
+            realm.delete(tag.todoList)
+            realm.delete(tag)
+        }
+        
+        NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
+    }
 }

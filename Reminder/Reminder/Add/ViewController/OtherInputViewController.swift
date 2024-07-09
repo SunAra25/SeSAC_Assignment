@@ -39,6 +39,8 @@ final class OtherInputViewController: BaseViewController {
         tagList = Array(repository.fetchTags())
         tagView.tableView.delegate = self
         tagView.tableView.dataSource = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(sendUpdateNotification), name: NSNotification.Name("UpdateTodoTable"), object: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -66,6 +68,10 @@ final class OtherInputViewController: BaseViewController {
             selectedDelegate?.sendData(currentInput, value: value)
         }
     }
+    
+    @objc func sendUpdateNotification() {
+        tagList = Array(repository.fetchTags())
+    }
 }
 
 extension OtherInputViewController: UITableViewDelegate, UITableViewDataSource {
@@ -80,9 +86,25 @@ extension OtherInputViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let view = view as? TagView else { return }
+        guard view is TagView else { return }
         selectedTag = tagList[indexPath.row]
         dismiss(animated: true)
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "") { [weak self] (_, _, success: @escaping (Bool) -> Void) in
+            guard let self else { return }
+            let data = tagList[indexPath.row]
+            repository.deleteTag(data)
+            tableView.reloadData()
+            success(true)
+        }
+        
+        delete.backgroundColor = .systemRed
+        delete.image = UIImage(systemName: "trash.fill")
+        
+        return UISwipeActionsConfiguration(actions: [delete])
     }
 }
 

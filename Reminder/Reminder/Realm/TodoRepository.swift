@@ -76,13 +76,23 @@ final class TodoRepository {
     }
     
     @discardableResult
-    func createItem(tag: TagTable, _ item: TodoTable) -> ObjectId {
+    func createItem(tag: TagTable?, _ item: TodoTable) -> ObjectId {
         try! realm.write {
-            tag.todoList.append(item)
+            tag!.todoList.append(item)
             NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
+            
         }
         
         return item._id
+    }
+    
+    func createTag(_ item: TagTable?) {
+        guard let item else { return }
+        try! realm.write {
+            realm.add(item)
+            NotificationCenter.default.post(Notification(name: NSNotification.Name("UpdateTodoTable")))
+            
+        }
     }
     
     func deleteItem(_ item: TodoTable) {

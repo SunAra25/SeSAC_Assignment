@@ -110,7 +110,7 @@ final class AddViewController: BaseViewController {
         let priority = selectedPriority
         let item = TodoTable(title: title, content: content, deadline: deadline, priority: priority)
         guard let tag = selectedTag else { return }
-        let id = repository.createItem(tag: tag, item)
+        let id = repository.createItem(tag: selectedTag, item)
         
         if let image = selectedImage {
             saveImageToDocument(image: image, filename: "\(id)")

@@ -15,6 +15,7 @@ final class OtherInputViewController: BaseViewController {
     
     private var currentInput: Input?
     private var tagList: [TagTable] = []
+    private var selectedTag: TagTable?
     var selectedDelegate: SelectedDataDelegate?
     
     init(_ num: Int) {
@@ -51,7 +52,13 @@ final class OtherInputViewController: BaseViewController {
             selectedDelegate?.sendData(currentInput, value: value)
         case .tag:
             guard let view = view as? TagView, let text = view.textField.text else { return }
-            let value = TagTable(title: text)
+            var value: TagTable?
+            if selectedTag == nil {
+                value = TagTable(title: text)
+                repository.createTag(value)
+            } else {
+                value = selectedTag
+            }
             selectedDelegate?.sendData(currentInput, value: value)
         case .priority:
             guard let view = view as? PriorityView else { return }
@@ -74,7 +81,7 @@ extension OtherInputViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let view = view as? TagView else { return }
-        view.textField.text = tagList[indexPath.row].title
+        selectedTag = tagList[indexPath.row]
         dismiss(animated: true)
     }
 }

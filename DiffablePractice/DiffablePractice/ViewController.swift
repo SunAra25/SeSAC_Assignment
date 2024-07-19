@@ -42,7 +42,8 @@ final class ViewController: UIViewController {
         return view
     }()
     private let compositionalLayout: UICollectionViewLayout = {
-        var config = UICollectionLayoutListConfiguration(appearance: .insetGrouped )
+        var config = UICollectionLayoutListConfiguration(appearance: .plain)
+        config.headerMode = .supplementary
         let layout = UICollectionViewCompositionalLayout.list(using: config)
         return layout
     }()
@@ -76,11 +77,22 @@ final class ViewController: UIViewController {
             cell.contentConfiguration = content
         }
         
+        let headerRegistration = UICollectionView.SupplementaryRegistration<UICollectionViewListCell>(elementKind: UICollectionView.elementKindSectionHeader) { supplementaryView, elementKind, indexPath in
+            var configutation = UIListContentConfiguration.groupedHeader()
+            configutation.text = Setting(rawValue: indexPath.section)?.title
+            supplementaryView.contentConfiguration = configutation
+        }
+        
         dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             
             let cell = collectionView.dequeueConfiguredReusableCell(using: registeration, for: indexPath, item: itemIdentifier.title)
             return cell
         })
+        
+        
+        dataSource.supplementaryViewProvider = { collectionView, elementKind, indexPath in
+            collectionView.dequeueConfiguredReusableSupplementary(using: headerRegistration, for: indexPath)
+        }
     }
     
     func updateSnapshot() {

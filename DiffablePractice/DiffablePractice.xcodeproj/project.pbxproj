@@ -14,6 +14,8 @@
 		C0F2D78E2C4917EA00BEFFFB /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C0F2D78D2C4917EA00BEFFFB /* Base */; };
 		C0F2D7972C4918EF00BEFFFB /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C0F2D7962C4918EF00BEFFFB /* SnapKit */; };
 		C0F2D79A2C4A3F6C00BEFFFB /* ChattingData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F2D7992C4A3F6C00BEFFFB /* ChattingData.swift */; };
+		C0F2D79E2C4A418600BEFFFB /* ChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F2D79D2C4A418600BEFFFB /* ChattingViewController.swift */; };
+		C0F2D7A02C4A4DFD00BEFFFB /* UIImage+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0F2D79F2C4A4DFD00BEFFFB /* UIImage+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C0F2D78D2C4917EA00BEFFFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C0F2D78F2C4917EA00BEFFFB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0F2D7992C4A3F6C00BEFFFB /* ChattingData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingData.swift; sourceTree = "<group>"; };
+		C0F2D79D2C4A418600BEFFFB /* ChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChattingViewController.swift; sourceTree = "<group>"; };
+		C0F2D79F2C4A4DFD00BEFFFB /* UIImage+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +69,7 @@
 				C0F2D78A2C4917EA00BEFFFB /* Assets.xcassets */,
 				C0F2D78C2C4917EA00BEFFFB /* LaunchScreen.storyboard */,
 				C0F2D78F2C4917EA00BEFFFB /* Info.plist */,
+				C0F2D79F2C4A4DFD00BEFFFB /* UIImage+.swift */,
 			);
 			path = DiffablePractice;
 			sourceTree = "<group>";
@@ -73,6 +78,7 @@
 			isa = PBXGroup;
 			children = (
 				C0F2D7992C4A3F6C00BEFFFB /* ChattingData.swift */,
+				C0F2D79D2C4A418600BEFFFB /* ChattingViewController.swift */,
 			);
 			path = ChattingList;
 			sourceTree = "<group>";
@@ -154,7 +160,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0F2D7862C4917E800BEFFFB /* ViewController.swift in Sources */,
+				C0F2D79E2C4A418600BEFFFB /* ChattingViewController.swift in Sources */,
 				C0F2D79A2C4A3F6C00BEFFFB /* ChattingData.swift in Sources */,
+				C0F2D7A02C4A4DFD00BEFFFB /* UIImage+.swift in Sources */,
 				C0F2D7822C4917E800BEFFFB /* AppDelegate.swift in Sources */,
 				C0F2D7842C4917E800BEFFFB /* SceneDelegate.swift in Sources */,
 			);
